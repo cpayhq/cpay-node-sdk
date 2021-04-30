@@ -1,3 +1,5 @@
+import { MemoizeExpiring } from "typescript-memoize";
+
 import { CpaySDKBase, CpaySDKBaseOptions } from "./CpaySDKBase";
 
 import {
@@ -26,16 +28,26 @@ export class CpaySDK extends CpaySDKBase {
     super.setOptions(options);
   };
 
-  private auth(): Promise<CpayToken> {
+  @MemoizeExpiring(
+    7200,
+    (publicKey: string, privateKey: string, walletId?: string) => {
+      return publicKey + ";" + privateKey + ";" + walletId;
+    }
+  )
+  private auth(
+    publicKey: string,
+    privateKey: string,
+    walletId?: string
+  ): Promise<CpayToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
-        publicKey: this.options.publicKey,
-        privateKey: this.options.privateKey,
+        publicKey,
+        privateKey,
       };
 
-      if (this.options.walletId) {
-        data = Object.assign(data, { walletId: this.options.walletId });
+      if (walletId) {
+        data = Object.assign(data, { walletId });
       }
 
       return this.request<CpayToken>(`${path}`, {
@@ -51,7 +63,10 @@ export class CpaySDK extends CpaySDKBase {
     options: CreateWalletOptions
   ): Promise<CreateWalletInfo> {
     try {
-      const { token } = await this.auth();
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey
+      );
       const path = `/api/public/wallet/${options.currency}`;
 
       return this.auth_post<CreateWalletInfo>(`${path}`, {}, token);
@@ -65,7 +80,11 @@ export class CpaySDK extends CpaySDKBase {
       if (!this.options.walletId) {
         throw new Error("WalletId is required.");
       }
-      const { token } = await this.auth();
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId
+      );
       const path = `/api/public/wallet`;
 
       return this.auth_get<WalletInfo>(`${path}`, {}, token);
@@ -81,7 +100,11 @@ export class CpaySDK extends CpaySDKBase {
       if (!this.options.walletId) {
         throw new Error("WalletId is required.");
       }
-      const { token } = await this.auth();
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId
+      );
       const path = `/api/public/withdrawal`;
 
       return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
@@ -95,7 +118,11 @@ export class CpaySDK extends CpaySDKBase {
       if (!this.options.walletId) {
         throw new Error("WalletId is required.");
       }
-      const { token } = await this.auth();
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId
+      );
       const path = `/api/public/transaction/fee`;
 
       return this.auth_post<EstimateFeeInfo>(`${path}`, options, token);
@@ -109,7 +136,11 @@ export class CpaySDK extends CpaySDKBase {
       if (!this.options.walletId) {
         throw new Error("WalletId is required.");
       }
-      const { token } = await this.auth();
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId
+      );
       const path = `/api/public/transaction/income`;
 
       return this.auth_post<boolean>(`${path}`, options, token);

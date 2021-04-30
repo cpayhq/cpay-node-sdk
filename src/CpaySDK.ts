@@ -54,7 +54,7 @@ export class CpaySDK extends CpaySDKBase {
       const { token } = await this.auth();
       const path = `/api/public/wallet/${options.currency}`;
 
-      return this.auth_post<CreateWalletInfo>(`${path}`, null, token);
+      return this.auth_post<CreateWalletInfo>(`${path}`, {}, token);
     } catch (err) {
       throw err;
     }
@@ -68,7 +68,7 @@ export class CpaySDK extends CpaySDKBase {
       const { token } = await this.auth();
       const path = `/api/public/wallet`;
 
-      return this.auth_get<WalletInfo>(`${path}`, null, token);
+      return this.auth_get<WalletInfo>(`${path}`, {}, token);
     } catch (err) {
       throw err;
     }

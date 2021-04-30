@@ -4,7 +4,12 @@ import {
   CpayToken,
   CreateWalletInfo,
   CreateWalletOptions,
+  CreateWithdrawalOptions,
+  CreateWithdrawalInfo,
   WalletInfo,
+  EstimateFeeInfo,
+  EstimateFeeOptions,
+  IncomeBalanceOptions,
 } from "./interfaces/cpay.interface";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
@@ -42,7 +47,9 @@ export class CpaySDK extends CpaySDKBase {
     }
   }
 
-  async createWallet(options: CreateWalletOptions): Promise<CreateWalletInfo> {
+  async createDepositWallet(
+    options: CreateWalletOptions
+  ): Promise<CreateWalletInfo> {
     try {
       const { token } = await this.auth();
       const path = `/api/public/wallet/${options.currency}`;
@@ -62,6 +69,50 @@ export class CpaySDK extends CpaySDKBase {
       const path = `/api/public/wallet`;
 
       return this.auth_get<WalletInfo>(`${path}`, null, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async withdrawal(
+    options: CreateWithdrawalOptions
+  ): Promise<CreateWithdrawalInfo> {
+    try {
+      if (!this.options.walletId) {
+        throw new Error("WalletId is required.");
+      }
+      const { token } = await this.auth();
+      const path = `/api/public/withdrawal`;
+
+      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async estimateFee(options: EstimateFeeOptions): Promise<EstimateFeeInfo> {
+    try {
+      if (!this.options.walletId) {
+        throw new Error("WalletId is required.");
+      }
+      const { token } = await this.auth();
+      const path = `/api/public/transaction/fee`;
+
+      return this.auth_post<EstimateFeeInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async setIncomeBalance(options: IncomeBalanceOptions): Promise<boolean> {
+    try {
+      if (!this.options.walletId) {
+        throw new Error("WalletId is required.");
+      }
+      const { token } = await this.auth();
+      const path = `/api/public/transaction/income`;
+
+      return this.auth_post<boolean>(`${path}`, options, token);
     } catch (err) {
       throw err;
     }

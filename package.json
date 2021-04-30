@@ -18,7 +18,7 @@
   "homepage": "https://github.com/cpayhq/cpay-node-sdk#readme",
   "license": "ISC",
   "main": "lib/index.js",
-  "name": "cpay-exchange-node-api-sdk",
+  "name": "cpay-node-api-sdk",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cpayhq/cpay-node-sdk"

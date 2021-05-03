@@ -29,7 +29,7 @@ export class CpaySDK extends CpaySDKBase {
   };
 
   @MemoizeExpiring(
-    60000 *,
+    60000 * 60,
     (publicKey: string, privateKey: string, walletId?: string) => {
       return publicKey + ";" + privateKey + ";" + walletId;
     }

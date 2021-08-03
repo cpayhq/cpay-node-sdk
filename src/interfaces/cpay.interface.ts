@@ -3,7 +3,12 @@ export interface CpayToken {
 }
 
 export interface CreateWalletOptions {
-  currency: AvailableWalletCurrencies;
+  currencyId: string;
+}
+
+export interface CurrencyOptions {
+  page?: number;
+  limit?: number;
 }
 
 export interface CreateWithdrawalOptions {
@@ -27,6 +32,18 @@ export interface CreateWalletInfo {
   address: string;
   balance: number;
   balanceUSD: number;
+}
+
+export interface CurrencyInfo {
+  data: {
+    currencies: {
+      _id: string;
+      title: string;
+      name: string;
+      nodeType: string;
+      currencyType: string;
+    }[];
+  };
 }
 
 export interface CreateWithdrawalInfo {

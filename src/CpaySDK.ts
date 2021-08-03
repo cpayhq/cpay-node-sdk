@@ -12,6 +12,8 @@ import {
   EstimateFeeInfo,
   EstimateFeeOptions,
   IncomeBalanceOptions,
+  CurrencyOptions,
+  CurrencyInfo,
 } from "./interfaces/cpay.interface";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
@@ -67,9 +69,25 @@ export class CpaySDK extends CpaySDKBase {
         this.options.publicKey,
         this.options.privateKey
       );
-      const path = `/api/public/wallet/${options.currency}`;
+      const path = `/api/public/wallet/${options.currencyId}`;
 
       return this.auth_post<CreateWalletInfo>(`${path}`, {}, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getAvailableCurrencies(
+    options: CurrencyOptions
+  ): Promise<CurrencyInfo> {
+    try {
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey
+      );
+      const path = `/api/public/currency`;
+
+      return this.auth_get<CurrencyInfo>(`${path}`, { ...options }, token);
     } catch (err) {
       throw err;
     }

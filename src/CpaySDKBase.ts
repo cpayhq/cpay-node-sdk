@@ -11,6 +11,7 @@ export interface CpaySDKBaseOptions {
   privateKey: string;
 
   walletId?: string;
+  passphrase?: string;
 
   errLogger?: (mssage: string, ...arg: any[]) => void;
 

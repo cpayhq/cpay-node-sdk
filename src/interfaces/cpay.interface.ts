@@ -32,6 +32,7 @@ export interface CreateWalletInfo {
   address: string;
   balance: number;
   balanceUSD: number;
+  passphrase: string;
 }
 
 export interface CurrencyInfo {

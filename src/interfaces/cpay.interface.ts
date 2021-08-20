@@ -36,15 +36,15 @@ export interface CreateWalletInfo {
 }
 
 export interface CurrencyInfo {
-  data: {
-    currencies: {
-      _id: string;
-      title: string;
-      name: string;
-      nodeType: string;
-      currencyType: string;
-    }[];
-  };
+  currencies: {
+    _id: string;
+    title: string;
+    name: string;
+    nodeType: string;
+    currencyType: string;
+  }[];
+  page: number;
+  pages: number;
 }
 
 export interface CreateWithdrawalInfo {

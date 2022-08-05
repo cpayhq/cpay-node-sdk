@@ -162,24 +162,7 @@ export class CpaySDK extends CpaySDKBase {
     }
   }
 
-  async setIncomeBalance(options: IncomeBalanceOptions): Promise<boolean> {
-    try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
-      }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
-      const path = `/api/public/transaction/income`;
-
-      return this.auth_post<boolean>(`${path}`, options, token);
-    } catch (err) {
-      throw err;
-    }
-  }
+  
 }
 
 export default CpaySDK;

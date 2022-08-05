@@ -10,7 +10,8 @@ import CpaySDK from 'cpay-node-api-sdk';
 let options = {
   publicKey: 'publicKey',
   privateKey: 'privateKey',
-  walletId?: 'walletId'
+  walletId?: 'walletId',
+  passphrase?: 'passphrase'
 }
 const cpay = new CpaySDK(options)
 ```
@@ -21,9 +22,9 @@ Available Methods:
 
 ```
 let options = {
-  currency?: string;
+  currencyId?: string;
 }
-Available Currencies: eth, btc, usdt;
+Available Currencies: See point 5.
 const wallet = await cpay.createDepositWallet(options);
 ```
 
@@ -31,6 +32,7 @@ const wallet = await cpay.createDepositWallet(options);
 
 ```
 walletId - is required.
+passphrase - is required.
 const walletInfo = await cpay.getWalletInfo();
 ```
 
@@ -43,6 +45,7 @@ let options = {
   priorityFee?: number;
 }
 walletId - is required.
+passphrase - is required.
 const withdrawal = await cpay.withdrawal(options);
 ```
 
@@ -55,17 +58,14 @@ let options = {
   priority: boolean;
 }
 walletId - is required.
+passphrase - is required.
 const estimateFee = await cpay.estimateFee(options);
 ```
 
-5. Set income balance
+5. Available merchant currencies
 
 ```
-This function is needed in order that, if within the system encountered an internal currency conversion, for example, changed the ETH to BTC, it is necessary to establish a new balance for the purse in the system, so that the funds could be derived.
-
 let options = {
-  amount: number;
 }
-walletId - is required.
-const estimateFee = await cpay.setIncomeBalance(options);
+const currencies = await cpay.getAvailableCurrencies(options);
 ```

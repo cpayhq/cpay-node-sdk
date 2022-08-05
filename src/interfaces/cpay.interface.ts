@@ -13,13 +13,13 @@ export interface CurrencyOptions {
 
 export interface CreateWithdrawalOptions {
   to: string;
-  amount: number;
+  amount: string;
   priorityFee?: number;
 }
 
 export interface EstimateFeeOptions {
   to: string;
-  amount: number;
+  amount: string;
   priority: boolean;
 }
 

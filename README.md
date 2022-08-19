@@ -18,54 +18,97 @@ const cpay = new CpaySDK(options)
 
 Available Methods:
 
-1. Create deposit wallet
+1. Wallet
 
 ```
+Create deposit wallet.
+
 let options = {
   currencyId?: string;
+  typeWallet?: string; // user, merchant
 }
 Available Currencies: See point 5.
-const wallet = await cpay.createDepositWallet(options);
+const wallet = await cpay.wallet.createDepositWallet(options);
 ```
 
-2. Get wallet info
-
 ```
+Get wallet info
+
 walletId - is required.
 passphrase - is required.
-const walletInfo = await cpay.getWalletInfo();
-```
-
-3. Create withdrawal request.
+const walletInfo = await cpay.wallet.getWalletInfo();
 
 ```
-let options = {
-  to: string;
-  amount: number;
-  priorityFee?: number;
-}
-walletId - is required.
-passphrase - is required.
-const withdrawal = await cpay.withdrawal(options);
-```
 
-4. Estimate transaction fee
+2. Withdrawal
 
 ```
+Estimate transaction fee.
+
 let options = {
   to: string;
   amount: number;
   priority: boolean;
+  currencyToken?: string;
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await cpay.estimateFee(options);
+const estimateFee = await cpay.withdrawal.estimateFee(options);
 ```
 
-5. Available merchant currencies
+```
+Create withdrawal request.
+
+let options = {
+  to: string;
+  amount: number;
+  priorityFee?: number;
+  currencyToken?: string;
+}
+walletId - is required.
+passphrase - is required.
+const withdrawal = await cpay.withdrawal.create(options);
+```
+
+3. Available merchant currencies
 
 ```
 let options = {
 }
-const currencies = await cpay.getAvailableCurrencies(options);
+const currencies = await cpay.currency.getAvailableCurrencies(options);
+```
+
+4. Multisend
+
+```
+Estimate system fee.
+let options = {
+  currencyToken: string;
+  multisendWallets: { address: string; amount: string }[];
+}
+const estimateData = await cpay.multisend.estimateSystemFee(options);
+```
+
+```
+Approve.
+let options = {
+  estimationId: string;
+}
+const approveData = await cpay.multisend.approve(options);
+```
+
+```
+Estimate miner fee.
+let options = {
+  estimationId: string;
+}
+const approveData = await cpay.multisend.estimateMinerFee(options);
+```
+
+```
+Create multisend.
+let options = {
+  estimationId: string;
+}
+const approveData = await cpay.multisend.create(options);
 ```

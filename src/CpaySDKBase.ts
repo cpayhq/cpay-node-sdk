@@ -1,7 +1,9 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import { MemoizeExpiring } from "typescript-memoize";
 
 import { REST_URL } from "./constant";
+import { CpayToken } from "./interfaces/cpay.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
@@ -33,7 +35,8 @@ const DEFAUTL_HTTP_OPTIONS = {
 };
 
 export class CpaySDKBase {
-  options: Required<CpaySDKBaseOptions> = {} as Required<CpaySDKBaseOptions>;
+  protected options: Required<CpaySDKBaseOptions> =
+    {} as Required<CpaySDKBaseOptions>;
 
   constructor(options?: Partial<CpaySDKBaseOptions>) {
     if (!options) {
@@ -41,7 +44,7 @@ export class CpaySDKBase {
     }
     this.setOptions(options);
   }
-  setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     Object.assign(this.options, {
@@ -58,7 +61,7 @@ export class CpaySDKBase {
       Object.assign(this.options, otherOptions);
     }
   }
-  _request = <T>(path: string, options: HttpOptions): Promise<T> => {
+  protected _request = <T>(path: string, options: HttpOptions): Promise<T> => {
     return request<T>(path, {
       ...this.options.httpOptions,
       ...options,
@@ -90,13 +93,15 @@ export class CpaySDKBase {
         this.errLogger(options.method as string, "-", path, err);
       });
   };
-  request = <T>(path: string, options: HttpOptions): Promise<T> => {
+
+  protected request = <T>(path: string, options: HttpOptions): Promise<T> => {
     if (!this.options.url.rest) {
       return Promise.reject("Rest url is required.");
     }
     return this._request<T>(`${this.options.url.rest}${path}`, options);
   };
-  auth_get = <T = any>(
+
+  protected auth_get = <T = any>(
     path: string,
     params: Record<string, any> = {} as Record<string, any>,
     token: string
@@ -115,7 +120,7 @@ export class CpaySDKBase {
     });
   };
 
-  auth_post = <T = any>(
+  protected auth_post = <T = any>(
     path: string,
     data: Record<string, any>,
     token: string
@@ -131,7 +136,7 @@ export class CpaySDKBase {
     });
   };
 
-  errLogger = (msg: string, ...arg: any[]) => {
+  protected errLogger = (msg: string, ...arg: any[]) => {
     if (typeof this.options.errLogger === "function") {
       this.options.errLogger(msg, ...arg);
       return;
@@ -141,7 +146,8 @@ export class CpaySDKBase {
       .format("YYYY-MM-DD HH:mm:ss")}] [ERROR] `;
     console.error(`${prefix} ${msg}`, ...arg);
   };
-  outLogger = (msg: string, ...arg: any[]) => {
+
+  protected outLogger = (msg: string, ...arg: any[]) => {
     if (typeof this.options.outLogger === "function") {
       this.options.outLogger(msg, ...arg);
       return;
@@ -152,4 +158,45 @@ export class CpaySDKBase {
 
     console.log(`${prefix} ${msg}`, ...arg);
   };
+
+  @MemoizeExpiring(
+    60000 * 60,
+    (
+      publicKey: string,
+      privateKey: string,
+      walletId?: string,
+      passphrase?: string
+    ) => {
+      return publicKey + ";" + privateKey + ";" + walletId + ";" + passphrase;
+    }
+  )
+  protected auth(
+    publicKey: string,
+    privateKey: string,
+    walletId?: string,
+    passphrase?: string
+  ): Promise<CpayToken> {
+    if (this.options.publicKey && this.options.privateKey) {
+      const path = `/api/public/auth`;
+      let data = {
+        publicKey,
+        privateKey,
+      };
+
+      if (walletId) {
+        data = Object.assign(data, { walletId });
+        if (!passphrase) {
+          throw new Error("Passphrase is required.");
+        }
+        data = Object.assign(data, { passphrase });
+      }
+
+      return this.request<CpayToken>(`${path}`, {
+        method: "POST",
+        json: data,
+      });
+    } else {
+      throw new Error("Keys is required.");
+    }
+  }
 }

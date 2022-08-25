@@ -1,3 +1,4 @@
+import Checkout from "./checkout/checkout";
 import { CpaySDKBaseOptions } from "./CpaySDKBase";
 import { Currency } from "./currency/currency";
 import { Multisend } from "./multisend/multisend";
@@ -15,12 +16,14 @@ export class CpaySDK {
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
     this.multisend = new Multisend(parameters);
+    this.checkout = new Checkout(parameters);
   }
 
   wallet: Wallet;
   currency: Currency;
   withdrawal: Withdrawal;
   multisend: Multisend;
+  checkout: Checkout;
 }
 
 export default CpaySDK;

@@ -136,6 +136,38 @@ export class CpaySDKBase {
     });
   };
 
+  protected auth_delete = <T = any>(
+    path: string,
+    data: Record<string, any>,
+    token: string
+  ) => {
+    const PATH = `${this.options.url.rest}${path}`;
+
+    return this._request<T>(PATH, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      json: data,
+    });
+  };
+
+  protected auth_patch = <T = any>(
+    path: string,
+    data: Record<string, any>,
+    token: string
+  ) => {
+    const PATH = `${this.options.url.rest}${path}`;
+
+    return this._request<T>(PATH, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      json: data,
+    });
+  };
+
   protected errLogger = (msg: string, ...arg: any[]) => {
     if (typeof this.options.errLogger === "function") {
       this.options.errLogger(msg, ...arg);

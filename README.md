@@ -112,3 +112,159 @@ let options = {
 }
 const approveData = await cpay.multisend.create(options);
 ```
+
+5. Checkout
+
+```
+Checkout list.
+
+let options = {
+  search?: 'string',
+  sort?: string,
+  order?: string,
+  page?: number,
+  limit?: number
+}
+const checkoutList = await cpay.checkout.list(options);
+```
+
+```
+Create donation checkout.
+
+let options = {
+  expireTime: number,
+  linkImage: string,
+  currencies: string[],
+  collectName?: boolean,
+  collectEmail?: boolean,
+  description: string,
+  organizationName: string
+}
+
+const createDonation = await cpay.checkout.createDonation(options);
+```
+
+```
+Create sale checkout.
+
+let options = {
+  expireTime: number;
+  linkImage?: string;
+  currencies: string[];
+  collectName?: boolean;
+  collectEmail?: boolean;
+  description: string;
+  productName: string;
+  price: string;
+  fiatCurrency: string;
+}
+
+const createSale = await cpay.checkout.createSale(options);
+```
+
+```
+Create sale token checkout.
+
+let options = {
+  expireTime: number;
+  linkImage: string;
+  currencies: string[];
+  collectName: boolean;
+  collectEmail: boolean;
+  description: string;
+  productName: string;
+  price?: string;
+  min: string;
+  max: string;
+  fiatCurrency?: string;
+  fixed: string;
+  tradedCurrency: string;
+  tradedWallet: string;
+}
+
+const createSaleToken = await cpay.checkout.createSaleToken(options);
+```
+
+```
+Estimate sale token max value.
+
+let options = {
+  tradedWallet: string;
+  tradedCurrency: string;
+  checkoutId?: string;
+}
+
+const saleTokenEstimateMax = await cpay.checkout.saleTokenEstimateMax(options);
+```
+
+```
+Get checkout info.
+
+const info = await cpay.checkout.info(checkoutId: string);
+```
+
+```
+Delete checkout.
+
+const remove = await cpay.checkout.remove(checkoutId: string);
+```
+
+```
+Update donation checkout.
+
+let options = {
+  expireTime: number,
+  linkImage: string,
+  currencies: string[],
+  collectName?: boolean,
+  collectEmail?: boolean,
+  description: string,
+  organizationName: string,
+  deleteImage?: boolean;
+}
+
+const updateDonation = await cpay.checkout.updateDonation(options);
+```
+
+```
+Update sale checkout.
+
+let options = {
+  expireTime: number;
+  linkImage?: string;
+  currencies: string[];
+  collectName?: boolean;
+  collectEmail?: boolean;
+  description: string;
+  productName: string;
+  price: string;
+  fiatCurrency: string;
+  deleteImage?: boolean;
+}
+
+const updateSale = await cpay.checkout.updateSale(options);
+```
+
+```
+Update sale token checkout.
+
+let options = {
+  expireTime: number;
+  linkImage: string;
+  currencies: string[];
+  collectName: boolean;
+  collectEmail: boolean;
+  description: string;
+  productName: string;
+  price?: string;
+  min: string;
+  max: string;
+  fiatCurrency?: string;
+  fixed: string;
+  tradedCurrency: string;
+  tradedWallet: string;
+  deleteImage?: boolean;
+}
+
+const updateSaleToken = await cpay.checkout.updateSaleToken(options);
+```

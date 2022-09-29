@@ -4,6 +4,7 @@ import {
   CreateWithdrawalOptions,
   EstimateFeeInfo,
   EstimateFeeOptions,
+  InternalTransferOptions,
 } from "./withdrawal.interface";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
@@ -27,6 +28,27 @@ export class Withdrawal extends CpaySDKBase {
         this.options.passphrase
       );
       const path = `/api/public/withdrawal`;
+
+      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async internalTransfer(
+    options: InternalTransferOptions
+  ): Promise<CreateWithdrawalInfo> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/internal`;
 
       return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
     } catch (err) {

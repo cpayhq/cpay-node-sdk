@@ -48,7 +48,7 @@ export class Withdrawal extends CpaySDKBase {
         this.options.walletId,
         this.options.passphrase
       );
-      const path = `/api/public/internal`;
+      const path = `/api/public/withdrawal/internal`;
 
       return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
     } catch (err) {

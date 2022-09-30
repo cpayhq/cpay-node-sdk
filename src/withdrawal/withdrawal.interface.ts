@@ -18,6 +18,11 @@ export interface CreateWithdrawalOptions {
   currencyToken?: string;
 }
 
+export interface InternalTransferOptions {
+  to: string;
+  amount: string;
+}
+
 export interface EstimateFeeOptions {
   to: string;
   amount: string;

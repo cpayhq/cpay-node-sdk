@@ -9,7 +9,7 @@
   "dependencies": {
     "dayjs": "^1.10.3",
     "got": "^11.8.2",
-    "typescript-memoize": "^1.0.1"
+    "typescript-memoize": "^1.1.1"
   },
   "deprecated": false,
   "description": "Cpay REST API",
@@ -29,5 +29,5 @@
     "publish:patch": "npm version patch && npm publish",
     "deploy": "npm run build && npm publish"
   },
-  "version": "1.2.0"
+  "version": "1.2.2"
 }

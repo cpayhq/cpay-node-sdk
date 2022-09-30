@@ -47,7 +47,7 @@ Estimate transaction fee.
 
 let options = {
   to: string;
-  amount: number;
+  amount: string;
   priority: boolean;
   currencyToken?: string;
 }
@@ -61,13 +61,25 @@ Create withdrawal request.
 
 let options = {
   to: string;
-  amount: number;
+  amount: string;
   priorityFee?: number;
   currencyToken?: string;
 }
 walletId - is required.
 passphrase - is required.
 const withdrawal = await cpay.withdrawal.create(options);
+```
+
+```
+Create InternalTransfer request.
+
+let options = {
+  to: string;
+  amount: string;
+}
+walletId - is required.
+passphrase - is required.
+const withdrawal = await cpay.withdrawal.internalTransfer(options);
 ```
 
 3. Available merchant currencies

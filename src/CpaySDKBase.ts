@@ -78,6 +78,7 @@ export class CpaySDKBase {
               path,
               json.data.message
             );
+            return Promise.reject(json.data.message);
           }
         } catch (error) {
           this.errLogger(
@@ -87,10 +88,12 @@ export class CpaySDKBase {
             "Parse Error",
             error
           );
+          return Promise.reject(error);
         }
       })
       .catch((err) => {
         this.errLogger(options.method as string, "-", path, err);
+        return Promise.reject(err);
       });
   };
 

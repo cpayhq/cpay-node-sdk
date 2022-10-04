@@ -28,22 +28,31 @@ export const request = async function <T>(url, options: Options = {}) {
     },
   });
 
-  const response = await instance<T>(url, {
-    method: options.method,
-    timeout: options.timeout || 6000,
-    headers: options.headers || DEFAULT_HEADER,
-    agent: {
-      http: keepAliveAgent,
-      https: keepAliveAgent2,
-    },
-    json: options.json,
-    searchParams: options.searchParams,
-  });
+  try {
+    const response = await instance<T>(url, {
+      method: options.method,
+      timeout: options.timeout || 6000,
+      headers: options.headers || DEFAULT_HEADER,
+      agent: {
+        http: keepAliveAgent,
+        https: keepAliveAgent2,
+      },
+      json: options.json,
+      searchParams: options.searchParams,
+    });
 
-  if (response.statusCode >= 200 && response.statusCode < 300) {
-    return response.body;
-  }
-  if (response.statusMessage) {
-    throw Error(response.statusMessage);
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return response.body;
+    }
+    if (response.statusMessage) {
+      throw Error(response.statusMessage);
+    }
+  } catch (err) {
+    const parseError = JSON.parse(err.response.body);
+    if (parseError && parseError.data && parseError.data.message) {
+      throw Error(parseError.data.message);
+    }
+
+    throw Error(err.message);
   }
 };

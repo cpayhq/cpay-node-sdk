@@ -1,30 +1,54 @@
 import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
 import {
-  CreateWalletInfo,
-  CreateWalletOptions,
-  WalletInfo,
-} from "./wallet.interface";
+  ExternalEstimateWriteInfo,
+  ExternalOptions,
+  ExternalWriteInfo,
+} from "./external.interface";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
 
-export class Wallet extends CpaySDKBase {
+export class External extends CpaySDKBase {
   constructor(parameters: CpaySDKOptions) {
     super(parameters);
   }
 
-  async createDepositWallet(
-    options: CreateWalletOptions
-  ): Promise<CreateWalletInfo> {
+  async read(options: ExternalOptions): Promise<any> {
     try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
       const { token } = await this.auth(
         this.options.publicKey,
-        this.options.privateKey
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
       );
-      const path = `/api/public/wallet/${options.currencyId}`;
+      const path = `/api/public/external/read`;
 
-      return this.auth_post<CreateWalletInfo>(
+      return this.auth_post<any>(`${path}`, { ...options }, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async estimateWrite(
+    options: ExternalOptions
+  ): Promise<ExternalEstimateWriteInfo> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/external/estimateWrite`;
+
+      return this.auth_post<ExternalEstimateWriteInfo>(
         `${path}`,
-        options.typeWallet ? { typeWallet: options.typeWallet } : {},
+        { ...options },
         token
       );
     } catch (err) {
@@ -32,7 +56,7 @@ export class Wallet extends CpaySDKBase {
     }
   }
 
-  async getWalletInfo(): Promise<WalletInfo> {
+  async write(options: ExternalOptions): Promise<ExternalWriteInfo> {
     try {
       if (!this.options.walletId || !this.options.passphrase) {
         throw new Error("WalletId and passphrase is required.");
@@ -43,32 +67,17 @@ export class Wallet extends CpaySDKBase {
         this.options.walletId,
         this.options.passphrase
       );
-      const path = `/api/public/wallet`;
+      const path = `/api/public/external/write`;
 
-      return this.auth_get<WalletInfo>(`${path}`, {}, token);
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  async getPrivateKey(): Promise<string> {
-    try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
-      }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
+      return this.auth_post<ExternalWriteInfo>(
+        `${path}`,
+        { ...options },
+        token
       );
-      const path = `/api/public/private-key`;
-
-      return this.auth_get<string>(`${path}`, {}, token);
     } catch (err) {
       throw err;
     }
   }
 }
 
-export default Wallet;
+export default External;

@@ -62,7 +62,7 @@ export class Wallet extends CpaySDKBase {
         this.options.walletId,
         this.options.passphrase
       );
-      const path = `/api/public/private-key`;
+      const path = `/api/public/wallet/private-key`;
 
       return this.auth_get<string>(`${path}`, {}, token);
     } catch (err) {

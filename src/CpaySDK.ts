@@ -1,7 +1,9 @@
 import Checkout from "./checkout/checkout";
 import { CpaySDKBaseOptions } from "./CpaySDKBase";
 import { Currency } from "./currency/currency";
+import External from "./external/external";
 import { Multisend } from "./multisend/multisend";
+import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
@@ -17,6 +19,8 @@ export class CpaySDK {
     this.withdrawal = new Withdrawal(parameters);
     this.multisend = new Multisend(parameters);
     this.checkout = new Checkout(parameters);
+    this.transaction = new Transaction(parameters);
+    this.externalCall = new External(parameters);
   }
 
   wallet: Wallet;
@@ -24,6 +28,8 @@ export class CpaySDK {
   withdrawal: Withdrawal;
   multisend: Multisend;
   checkout: Checkout;
+  transaction: Transaction;
+  externalCall: External;
 }
 
 export default CpaySDK;

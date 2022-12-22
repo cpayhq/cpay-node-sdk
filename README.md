@@ -40,6 +40,15 @@ const walletInfo = await cpay.wallet.getWalletInfo();
 
 ```
 
+```
+Get private key
+
+walletId - is required.
+passphrase - is required.
+const pk = await cpay.wallet.getPrivateKey();
+
+```
+
 2. Withdrawal
 
 ```
@@ -279,4 +288,77 @@ let options = {
 }
 
 const updateSaleToken = await cpay.checkout.updateSaleToken(options);
+```
+
+6. Transaction
+
+```
+Transaction list.
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  from: number;
+  to: number;
+  currencyId: string;
+  fromUSD: number;
+  toUSD: number;
+  type: string;
+  status: string;
+  sort: string;
+  order: string;
+  page: number;
+  limit: number;
+}
+const transactionList = await cpay.transaction.list(options);
+```
+
+7. External call
+
+```
+Read from contract.
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  abi: Record<string, any>[];
+  contractAddress: string;
+  method: string;
+  args?: any[];
+  value?: string;
+  options?: Record<string, any>;
+}
+const info = await cpay.externalCall.read(options);
+```
+
+```
+Estimate write.
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  abi: Record<string, any>[];
+  contractAddress: string;
+  method: string;
+  args?: any[];
+  value?: string;
+  options?: Record<string, any>;
+}
+const info = await cpay.externalCall.estimateWrite(options);
+```
+
+```
+Write to the contract.
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  abi: Record<string, any>[];
+  contractAddress: string;
+  method: string;
+  args?: any[];
+  value?: string;
+  options?: Record<string, any>;
+}
+const info = await cpay.externalCall.write(options);
 ```

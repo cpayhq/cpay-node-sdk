@@ -1,4 +1,5 @@
 export interface TransactionListOptions {
+  search?: string;
   from?: number;
   to?: number;
   currencyId?: string;

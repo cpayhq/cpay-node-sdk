@@ -298,17 +298,18 @@ walletId - is required.
 passphrase - is required.
 
 let options = {
-  from: number;
-  to: number;
-  currencyId: string;
-  fromUSD: number;
-  toUSD: number;
-  type: string;
-  status: string;
-  sort: string;
-  order: string;
-  page: number;
-  limit: number;
+  search?: string;
+  from?: number;
+  to?: number;
+  currencyId?: string;
+  fromUSD?: number;
+  toUSD?: number;
+  type?: string;
+  status?: string;
+  sort?: string;
+  order?: string;
+  page?: number;
+  limit?: number;
 }
 const transactionList = await cpay.transaction.list(options);
 ```

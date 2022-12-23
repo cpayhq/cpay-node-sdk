@@ -4,6 +4,8 @@ import {
   CreateWithdrawalOptions,
   EstimateFeeInfo,
   EstimateFeeOptions,
+  EstimateMaxInfo,
+  EstimateMaxOptions,
   InternalTransferOptions,
 } from "./withdrawal.interface";
 
@@ -70,6 +72,25 @@ export class Withdrawal extends CpaySDKBase {
       const path = `/api/public/transaction/fee`;
 
       return this.auth_post<EstimateFeeInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async estimateMax(options: EstimateMaxOptions): Promise<EstimateMaxInfo> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/withdrawal/estimate-max`;
+
+      return this.auth_post<EstimateMaxInfo>(`${path}`, options, token);
     } catch (err) {
       throw err;
     }

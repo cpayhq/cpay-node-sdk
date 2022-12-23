@@ -11,6 +11,10 @@ export interface EstimateFeeInfo {
   currencyFee: string;
 }
 
+export interface EstimateMaxInfo {
+  amount: string;
+}
+
 export interface CreateWithdrawalOptions {
   to: string;
   amount: string;
@@ -27,5 +31,10 @@ export interface EstimateFeeOptions {
   to: string;
   amount: string;
   priority: boolean;
+  currencyToken?: string;
+}
+
+export interface EstimateMaxOptions {
+  to: string;
   currencyToken?: string;
 }

@@ -66,6 +66,18 @@ const estimateFee = await cpay.withdrawal.estimateFee(options);
 ```
 
 ```
+Estimate max withdrawal.
+
+let options = {
+  to: string;
+  currencyToken?: string;
+}
+walletId - is required.
+passphrase - is required.
+const max = await cpay.withdrawal.estimateMax(options);
+```
+
+```
 Create withdrawal request.
 
 let options = {

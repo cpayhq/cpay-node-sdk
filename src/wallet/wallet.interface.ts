@@ -1,7 +1,11 @@
 interface WalletTokensData {
   currencyId: string;
+  currencyName: string;
   balance: string;
   holdBalance: string;
+  balanceUSD: string;
+  availableBalance: string;
+  availableBalanceUSD: string;
 }
 
 export interface WalletInfo {

@@ -1,8 +1,11 @@
 import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
 import {
+  CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
   CreateWithdrawalOptions,
   EstimateFeeInfo,
+  EstimateFeeNftInfo,
+  EstimateFeeNftOptions,
   EstimateFeeOptions,
   EstimateMaxInfo,
   EstimateMaxOptions,
@@ -30,6 +33,27 @@ export class Withdrawal extends CpaySDKBase {
         this.options.passphrase
       );
       const path = `/api/public/withdrawal`;
+
+      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async nftTransfer(
+    options: CreateNftWithdrawalOptions
+  ): Promise<CreateWithdrawalInfo> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/withdrawal/nft`;
 
       return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
     } catch (err) {
@@ -72,6 +96,27 @@ export class Withdrawal extends CpaySDKBase {
       const path = `/api/public/transaction/fee`;
 
       return this.auth_post<EstimateFeeInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async estimateNftFee(
+    options: EstimateFeeNftOptions
+  ): Promise<EstimateFeeNftInfo> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/transaction/feeNft`;
+
+      return this.auth_post<EstimateFeeNftInfo>(`${path}`, options, token);
     } catch (err) {
       throw err;
     }

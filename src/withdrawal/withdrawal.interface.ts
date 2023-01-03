@@ -11,6 +11,14 @@ export interface EstimateFeeInfo {
   currencyFee: string;
 }
 
+export interface EstimateFeeNftInfo {
+  fee: string;
+  minerFee: string;
+  systemFee: string;
+  currencyMinerFee: string;
+  currencySystemFee: string;
+}
+
 export interface EstimateMaxInfo {
   amount: string;
 }
@@ -33,6 +41,21 @@ export interface EstimateFeeOptions {
   priority: boolean;
   currencyToken?: string;
 }
+
+enum TypeNFt {
+  ERC_721 = "erc721",
+  ERC_1155 = "erc1155",
+}
+
+export interface EstimateFeeNftOptions {
+  to: string;
+  amount: string;
+  contractAddress: string;
+  tokenId: number;
+  type: TypeNFt;
+}
+
+export interface CreateNftWithdrawalOptions extends EstimateFeeNftOptions {}
 
 export interface EstimateMaxOptions {
   to: string;

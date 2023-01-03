@@ -66,6 +66,21 @@ const estimateFee = await cpay.withdrawal.estimateFee(options);
 ```
 
 ```
+Estimate nft transaction fee.
+
+let options = {
+  to: string;
+  amount: string;
+  contractAddress: string;
+  tokenId: number;
+  type: string; //erc721 or erc1155
+}
+walletId - is required.
+passphrase - is required.
+const estimateFee = await cpay.withdrawal.estimateNftFee(options);
+```
+
+```
 Estimate max withdrawal.
 
 let options = {
@@ -89,6 +104,21 @@ let options = {
 walletId - is required.
 passphrase - is required.
 const withdrawal = await cpay.withdrawal.create(options);
+```
+
+```
+Create nft withdrawal request.
+
+let options = {
+  to: string;
+  amount: string;
+  contractAddress: string;
+  tokenId: number;
+  type: string; //erc721 or erc1155
+}
+walletId - is required.
+passphrase - is required.
+const withdrawal = await cpay.withdrawal.nftTransfer(options);
 ```
 
 ```

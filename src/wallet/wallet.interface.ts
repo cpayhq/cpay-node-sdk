@@ -8,6 +8,20 @@ interface WalletTokensData {
   availableBalanceUSD: string;
 }
 
+interface NftItem {
+  contractAddress: string;
+  tokenId: number;
+  balance: number;
+  holdBalance: number;
+  name: string;
+  symbol: string;
+}
+
+interface NftData {
+  erc721: NftItem[];
+  erc1155: NftItem[];
+}
+
 export interface WalletInfo {
   balance: string;
   balanceUSD: string;
@@ -15,6 +29,7 @@ export interface WalletInfo {
   availableBalance: string;
   availableBalanceUSD: string;
   tokens?: WalletTokensData[];
+  nfts?: NftData;
 }
 
 export interface CreateWalletOptions {

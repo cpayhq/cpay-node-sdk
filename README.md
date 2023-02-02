@@ -49,6 +49,15 @@ const pk = await cpay.wallet.getPrivateKey();
 
 ```
 
+```
+Get mnemonic
+
+walletId - is required.
+passphrase - is required.
+const pk = await cpay.wallet.getMnemonic();
+
+```
+
 2. Withdrawal
 
 ```

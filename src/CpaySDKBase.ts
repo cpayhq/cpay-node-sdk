@@ -139,6 +139,15 @@ export class CpaySDKBase {
     });
   };
 
+  protected post = <T = any>(path: string, data: Record<string, any>) => {
+    const PATH = `${this.options.url.rest}${path}`;
+
+    return this._request<T>(PATH, {
+      method: "POST",
+      json: data,
+    });
+  };
+
   protected auth_delete = <T = any>(
     path: string,
     data: Record<string, any>,

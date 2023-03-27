@@ -18,7 +18,23 @@ const cpay = new CpaySDK(options)
 
 Available Methods:
 
-1. Wallet
+1. Auth
+
+```
+Create account
+
+let options = {
+  email: string;
+  password: string;
+  inviterId?: string;
+  roles: string[];
+  agent?: string;
+}
+
+const result = await cpay.auth.register(options);
+```
+
+2. Wallet
 
 ```
 Create deposit wallet.
@@ -58,7 +74,7 @@ const pk = await cpay.wallet.getMnemonic();
 
 ```
 
-2. Withdrawal
+3. Withdrawal
 
 ```
 Estimate transaction fee.
@@ -142,7 +158,7 @@ passphrase - is required.
 const withdrawal = await cpay.withdrawal.internalTransfer(options);
 ```
 
-3. Available merchant currencies
+4. Available merchant currencies
 
 ```
 let options = {
@@ -150,7 +166,7 @@ let options = {
 const currencies = await cpay.currency.getAvailableCurrencies(options);
 ```
 
-4. Multisend
+5. Multisend
 
 ```
 Estimate system fee.
@@ -185,7 +201,7 @@ let options = {
 const approveData = await cpay.multisend.create(options);
 ```
 
-5. Checkout
+6. Checkout
 
 ```
 Checkout list.
@@ -341,7 +357,7 @@ let options = {
 const updateSaleToken = await cpay.checkout.updateSaleToken(options);
 ```
 
-6. Transaction
+7. Transaction
 
 ```
 Transaction list.
@@ -365,7 +381,7 @@ let options = {
 const transactionList = await cpay.transaction.list(options);
 ```
 
-7. External call
+8. External call
 
 ```
 Read from contract.

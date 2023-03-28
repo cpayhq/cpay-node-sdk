@@ -9,8 +9,8 @@ import { request, Options as HttpOptions } from "./utils/httpClient";
 dayjs.extend(utc);
 
 export interface CpaySDKBaseOptions {
-  publicKey: string;
-  privateKey: string;
+  publicKey?: string;
+  privateKey?: string;
 
   walletId?: string;
   passphrase?: string;

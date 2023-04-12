@@ -466,8 +466,8 @@ const result = await cpay.swap.create(options);
 
 ```
 History swap
-walletId - is required.
-passphrase - is required.
+walletId - is not required.
+passphrase - is not required.
 
 let options = {
   currencyFromId?: string;

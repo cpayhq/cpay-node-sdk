@@ -59,9 +59,6 @@ export class Swap extends CpaySDKBase {
 
   async history(options: SwapHistoryListOptions): Promise<SwapHistoryInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
-      }
       const { token } = await this.auth(
         this.options.publicKey,
         this.options.privateKey,

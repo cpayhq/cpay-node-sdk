@@ -24,10 +24,3 @@ export interface RegisterInfo {
   merchantId: string;
   userId: string;
 }
-
-export interface MoveWalletOptions {
-  fromMerchant: string;
-  toMerchant: string;
-  walletId: string;
-  isMain: boolean;
-}

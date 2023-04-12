@@ -4,6 +4,7 @@ import {
   SwapCreateOptions,
   SwapEstimateInfo,
   SwapEstimateOptions,
+  SwapHistoryInfo,
   SwapHistoryListOptions,
 } from "./swap.interface";
 
@@ -56,7 +57,7 @@ export class Swap extends CpaySDKBase {
     }
   }
 
-  async history(options: SwapHistoryListOptions): Promise<SwapCreateInfo> {
+  async history(options: SwapHistoryListOptions): Promise<SwapHistoryInfo> {
     try {
       if (!this.options.walletId || !this.options.passphrase) {
         throw new Error("WalletId and passphrase is required.");
@@ -69,7 +70,7 @@ export class Swap extends CpaySDKBase {
       );
       const path = `/api/public/swap/history`;
 
-      return this.auth_get<SwapCreateInfo>(`${path}`, { ...options }, token);
+      return this.auth_get<SwapHistoryInfo>(`${path}`, { ...options }, token);
     } catch (err) {
       throw err;
     }

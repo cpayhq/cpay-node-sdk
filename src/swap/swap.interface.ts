@@ -46,3 +46,41 @@ export interface SwapHistoryListOptions {
   page?: number;
   limit?: number;
 }
+
+interface SwapWalletInfo {
+  id: string;
+  address: string;
+  amount: {
+    value: number;
+    usd: number;
+  };
+  currency: {
+    id: string;
+    name: string;
+  };
+  paymentId: string;
+  hash: string;
+}
+
+export interface SwapHistoryInfo {
+  page: number;
+  pages: number;
+  countItems: number;
+  entities: {
+    _id: string;
+    exchangeId: string;
+    partner: string;
+    fixed: boolean;
+    typeNetwork: string;
+    status: boolean;
+    systemStatus: string;
+    convertRate: number;
+    from: SwapWalletInfo;
+    to: SwapWalletInfo;
+    merchant: string;
+    user: string;
+    rateId: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[];
+}

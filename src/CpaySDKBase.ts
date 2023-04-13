@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { MemoizeExpiring } from "typescript-memoize";
 
 import { REST_URL } from "./constant";
 import { CpayToken } from "./interfaces/cpay.interface";
@@ -203,17 +202,6 @@ export class CpaySDKBase {
     console.log(`${prefix} ${msg}`, ...arg);
   };
 
-  @MemoizeExpiring(
-    60000 * 60,
-    (
-      publicKey: string,
-      privateKey: string,
-      walletId?: string,
-      passphrase?: string
-    ) => {
-      return publicKey + ";" + privateKey + ";" + walletId + ";" + passphrase;
-    }
-  )
   protected auth(
     publicKey: string,
     privateKey: string,

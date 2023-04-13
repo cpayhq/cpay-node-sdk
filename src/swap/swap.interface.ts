@@ -1,4 +1,5 @@
 export interface SwapEstimateOptions {
+  fromId: string;
   toId: string;
   amount: string;
   sort?: string;

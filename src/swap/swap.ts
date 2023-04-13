@@ -17,9 +17,6 @@ export class Swap extends CpaySDKBase {
 
   async estimate(options: SwapEstimateOptions): Promise<SwapEstimateInfo[]> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
-      }
       const { token } = await this.auth(
         this.options.publicKey,
         this.options.privateKey,

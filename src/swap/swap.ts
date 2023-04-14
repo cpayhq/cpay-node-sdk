@@ -35,6 +35,22 @@ export class Swap extends CpaySDKBase {
     }
   }
 
+  async bestOffer(options: SwapEstimateOptions): Promise<SwapEstimateInfo> {
+    try {
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/swap/best-offer`;
+
+      return this.auth_get<SwapEstimateInfo>(`${path}`, { ...options }, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async create(options: SwapCreateOptions): Promise<SwapCreateInfo> {
     try {
       if (!this.options.walletId || !this.options.passphrase) {

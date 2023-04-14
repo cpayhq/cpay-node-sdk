@@ -435,16 +435,31 @@ const info = await cpay.externalCall.write(options);
 
 ```
 Estimate swap
-walletId - is required.
-passphrase - is required.
+walletId - is not required.
+passphrase - is not required.
 
 let options = {
+  fromId: string; // currencyId
   toId: string; // currencyId
   amount: string;
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
 const result = await cpay.swap.estimate(options);
+```
+
+```
+Best offer swap
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  fromId: string; // currencyId
+  toId: string; // currencyId
+  amount: string;
+  type?: string; // fixed or float
+}
+const result = await cpay.swap.bestOffer(options);
 ```
 
 ```

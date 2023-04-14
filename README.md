@@ -430,3 +430,68 @@ let options = {
 }
 const info = await cpay.externalCall.write(options);
 ```
+
+9. Swap
+
+```
+Estimate swap
+walletId - is not required.
+passphrase - is not required.
+
+let options = {
+  fromId: string; // currencyId
+  toId: string; // currencyId
+  amount: string;
+  sort?: string; // rate or duration
+  type?: string; // fixed or float
+}
+const result = await cpay.swap.estimate(options);
+```
+
+```
+Best offer swap
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  fromId: string; // currencyId
+  toId: string; // currencyId
+  amount: string;
+  type?: string; // fixed or float
+}
+const result = await cpay.swap.bestOffer(options);
+```
+
+```
+Create swap
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  currencyFromId: string; // currencyId
+  toId: string; // walletId
+  currencyToId: string; // currencyId
+  amount: number;
+  partner: string;
+  fixed: boolean;
+  rateId: string;
+}
+const result = await cpay.swap.create(options);
+```
+
+```
+History swap
+walletId - is not required.
+passphrase - is not required.
+
+let options = {
+  currencyFromId?: string;
+  currencyToId?: string;
+  search?: string;
+  sort?: string;
+  order?: string;
+  page?: number;
+  limit?: number;
+}
+const result = await cpay.swap.history(options);
+```

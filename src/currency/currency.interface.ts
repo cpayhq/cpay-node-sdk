@@ -5,6 +5,11 @@ export interface CurrencyInfo {
     name: string;
     nodeType: string;
     currencyType: string;
+    mainCurrency?: string;
+    replenishMinimumValue?: number;
+    decimals: number;
+    supportMultisend: boolean;
+    supportSwap: boolean;
   }[];
   page: number;
   pages: number;

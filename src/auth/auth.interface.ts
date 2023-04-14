@@ -21,4 +21,6 @@ export interface RegisterInfo {
     publicKey: string;
     privateKey: string;
   };
+  merchantId: string;
+  userId: string;
 }

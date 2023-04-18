@@ -35,6 +35,9 @@ export interface WalletInfo {
 export interface CreateWalletOptions {
   currencyId: string;
   typeWallet?: string;
+  privateKey?: string;
+  isMnemonic?: boolean;
+  setMain?: boolean;
 }
 
 export interface CreateWalletInfo {

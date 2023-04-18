@@ -22,11 +22,9 @@ export class Wallet extends CpaySDKBase {
       );
       const path = `/api/public/wallet/${options.currencyId}`;
 
-      return this.auth_post<CreateWalletInfo>(
-        `${path}`,
-        options.typeWallet ? { typeWallet: options.typeWallet } : {},
-        token
-      );
+      delete options.currencyId;
+
+      return this.auth_post<CreateWalletInfo>(`${path}`, { ...options }, token);
     } catch (err) {
       throw err;
     }

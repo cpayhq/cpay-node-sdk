@@ -42,6 +42,9 @@ Create deposit wallet.
 let options = {
   currencyId?: string;
   typeWallet?: string; // user, merchant
+  privateKey?: string;
+  isMnemonic?: boolean;
+  setMain?: boolean;
 }
 Available Currencies: See point 5.
 const wallet = await cpay.wallet.createDepositWallet(options);

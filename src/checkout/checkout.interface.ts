@@ -19,8 +19,12 @@ export interface CheckoutInfo {
   min?: string;
   tradedCurrency?: string;
   tradedWallet?: string;
+  accentColor?: string;
+  backgroundColor?: string;
+  logoImage?: string;
+  image?: string;
+  metadata?: Record<string, any>;
 }
-
 export interface CheckoutListInfo {
   entities: CheckoutInfo[];
   page: number;
@@ -28,43 +32,52 @@ export interface CheckoutListInfo {
   countItem: number;
 }
 
-export interface CreateDonationOptions {
+export interface CreateCheckoutBaseOptions {
   expireTime: number;
-  linkImage: string;
   currencies: string[];
   collectName?: boolean;
   collectEmail?: boolean;
   description: string;
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
+}
+
+export interface UpdateCheckoutBaseOptions {
+  deleteImage?: boolean;
+  deleteLogoImage?: boolean;
+}
+
+export interface CreateDonationOptions extends CreateCheckoutBaseOptions {
   organizationName: string;
 }
 
-export interface UpdateDonationOptions extends CreateDonationOptions {
-  deleteImage?: boolean;
-}
+export interface UpdateDonationOptions
+  extends CreateDonationOptions,
+    UpdateCheckoutBaseOptions {}
 
-export interface CreateSaleOptions {
-  expireTime: number;
-  linkImage?: string;
-  currencies: string[];
-  collectName?: boolean;
-  collectEmail?: boolean;
-  description: string;
+export interface CreateSaleOptions extends CreateCheckoutBaseOptions {
   productName: string;
   price: string;
   fiatCurrency: string;
 }
 
-export interface UpdateSaleOptions extends CreateSaleOptions {
-  deleteImage?: boolean;
+export interface UpdateSaleOptions
+  extends CreateSaleOptions,
+    UpdateCheckoutBaseOptions {}
+
+export interface CreateCartOptions extends CreateCheckoutBaseOptions {
+  cartName: string;
+  fiatCurrency: string;
 }
 
-export interface CreateSaleTokenOptions {
-  expireTime: number;
-  linkImage: string;
-  currencies: string[];
-  collectName: boolean;
-  collectEmail: boolean;
-  description: string;
+export interface UpdateCartOptions
+  extends CreateCartOptions,
+    UpdateCheckoutBaseOptions {}
+
+export interface CreateSaleTokenOptions extends CreateCheckoutBaseOptions {
   productName: string;
   price?: string;
   min: string;
@@ -75,9 +88,9 @@ export interface CreateSaleTokenOptions {
   tradedWallet: string;
 }
 
-export interface UpdateSaleTokenOptions extends CreateSaleTokenOptions {
-  deleteImage?: boolean;
-}
+export interface UpdateSaleTokenOptions
+  extends CreateSaleTokenOptions,
+    UpdateCheckoutBaseOptions {}
 
 export interface SaleTokenEstimateMaxOptions {
   tradedWallet: string;

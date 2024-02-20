@@ -45,6 +45,7 @@ let options = {
   privateKey?: string;
   isMnemonic?: boolean;
   setMain?: boolean;
+  password?: string;
 }
 Available Currencies: See point 5.
 const wallet = await cpay.wallet.createDepositWallet(options);
@@ -87,6 +88,8 @@ let options = {
   amount: string;
   priority: boolean;
   currencyToken?: string;
+  sign?: string;
+  password?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -102,6 +105,8 @@ let options = {
   contractAddress: string;
   tokenId: number;
   type: string; //erc721 or erc1155
+  sign?: string;
+  password?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -114,6 +119,8 @@ Estimate max withdrawal.
 let options = {
   to: string;
   currencyToken?: string;
+  sign?: string;
+  password?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -128,6 +135,8 @@ let options = {
   amount: string;
   priorityFee?: number;
   currencyToken?: string;
+  sign?: string;
+  password?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -143,6 +152,8 @@ let options = {
   contractAddress: string;
   tokenId: number;
   type: string; //erc721 or erc1155
+  sign?: string;
+  password?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -176,6 +187,8 @@ Estimate system fee.
 let options = {
   currencyToken: string;
   multisendWallets: { address: string; amount: string }[];
+  sign?: string;
+  password?: string;
 }
 const estimateData = await cpay.multisend.estimateSystemFee(options);
 ```
@@ -184,6 +197,8 @@ const estimateData = await cpay.multisend.estimateSystemFee(options);
 Approve.
 let options = {
   estimationId: string;
+  sign?: string;
+  password?: string;
 }
 const approveData = await cpay.multisend.approve(options);
 ```
@@ -192,6 +207,8 @@ const approveData = await cpay.multisend.approve(options);
 Estimate miner fee.
 let options = {
   estimationId: string;
+  sign?: string;
+  password?: string;
 }
 const approveData = await cpay.multisend.estimateMinerFee(options);
 ```
@@ -200,8 +217,10 @@ const approveData = await cpay.multisend.estimateMinerFee(options);
 Create multisend.
 let options = {
   estimationId: string;
+  sign?: string;
+  password?: string;
 }
-const approveData = await cpay.multisend.create(options);
+const result = await cpay.multisend.create(options);
 ```
 
 6. Checkout
@@ -223,8 +242,12 @@ const checkoutList = await cpay.checkout.list(options);
 Create donation checkout.
 
 let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
   expireTime: number,
-  linkImage: string,
   currencies: string[],
   collectName?: boolean,
   collectEmail?: boolean,
@@ -236,11 +259,37 @@ const createDonation = await cpay.checkout.createDonation(options);
 ```
 
 ```
+Create cart checkout.
+
+let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
+  expireTime: number;
+  currencies: string[];
+  collectName?: boolean;
+  collectEmail?: boolean;
+  description: string;
+  organizationName: string;
+  cartName: string;
+  fiatCurrency: string;
+}
+
+const createDonation = await cpay.checkout.createCart(options);
+```
+
+```
 Create sale checkout.
 
 let options = {
-  expireTime: number;
   linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
+  expireTime: number;
   currencies: string[];
   collectName?: boolean;
   collectEmail?: boolean;
@@ -257,8 +306,12 @@ const createSale = await cpay.checkout.createSale(options);
 Create sale token checkout.
 
 let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
   expireTime: number;
-  linkImage: string;
   currencies: string[];
   collectName: boolean;
   collectEmail: boolean;
@@ -304,14 +357,19 @@ const remove = await cpay.checkout.remove(checkoutId: string);
 Update donation checkout.
 
 let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
   expireTime: number,
-  linkImage: string,
   currencies: string[],
   collectName?: boolean,
   collectEmail?: boolean,
   description: string,
   organizationName: string,
   deleteImage?: boolean;
+  deleteLogoImage?: boolean;
 }
 
 const updateDonation = await cpay.checkout.updateDonation(options);
@@ -321,8 +379,12 @@ const updateDonation = await cpay.checkout.updateDonation(options);
 Update sale checkout.
 
 let options = {
-  expireTime: number;
   linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
+  expireTime: number;
   currencies: string[];
   collectName?: boolean;
   collectEmail?: boolean;
@@ -331,6 +393,7 @@ let options = {
   price: string;
   fiatCurrency: string;
   deleteImage?: boolean;
+  deleteLogoImage?: boolean;
 }
 
 const updateSale = await cpay.checkout.updateSale(options);
@@ -340,8 +403,12 @@ const updateSale = await cpay.checkout.updateSale(options);
 Update sale token checkout.
 
 let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
   expireTime: number;
-  linkImage: string;
   currencies: string[];
   collectName: boolean;
   collectEmail: boolean;
@@ -355,6 +422,31 @@ let options = {
   tradedCurrency: string;
   tradedWallet: string;
   deleteImage?: boolean;
+  deleteLogoImage?: boolean;
+}
+
+const updateSaleToken = await cpay.checkout.updateSaleToken(options);
+```
+
+```
+Update cart checkout.
+
+let options = {
+  linkImage?: string;
+  linkLogoImage?: string;
+  metadata?: Record<string, any>;
+  accentColor?: string;
+  backgroundColor?: string;
+  expireTime: number;
+  currencies: string[];
+  collectName?: boolean;
+  collectEmail?: boolean;
+  description: string;
+  organizationName: string;
+  cartName: string;
+  fiatCurrency: string;
+  deleteImage?: boolean;
+  deleteLogoImage?: boolean;
 }
 
 const updateSaleToken = await cpay.checkout.updateSaleToken(options);
@@ -414,6 +506,8 @@ let options = {
   args?: any[];
   value?: string;
   options?: Record<string, any>;
+  sign?: string;
+  password?: string;
 }
 const info = await cpay.externalCall.estimateWrite(options);
 ```
@@ -430,6 +524,8 @@ let options = {
   args?: any[];
   value?: string;
   options?: Record<string, any>;
+  sign?: string;
+  password?: string;
 }
 const info = await cpay.externalCall.write(options);
 ```
@@ -478,6 +574,8 @@ let options = {
   partner: string;
   fixed: boolean;
   rateId: string;
+  sign?: string;
+  password?: string;
 }
 const result = await cpay.swap.create(options);
 ```
@@ -497,4 +595,60 @@ let options = {
   limit?: number;
 }
 const result = await cpay.swap.history(options);
+```
+
+10. Wallet Signature
+
+```
+Enable Signature
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  sign: string;
+  password?: string;
+}
+const result = await cpay.wallet.signature.on(options);
+```
+
+```
+Disable Signature
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  password: string;
+}
+const result = await cpay.wallet.signature.off(options);
+```
+
+```
+Download Signature
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  password: string;
+}
+const result = await cpay.wallet.signature.download(options);
+```
+
+```
+Status Signature
+walletId - is required.
+passphrase - is required.
+
+const result = await cpay.wallet.signature.status();
+```
+
+```
+Change Password Signature
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  oldPassword?: string;
+  password: string;
+}
+const result = await cpay.wallet.signature.changePassword(options);
 ```

@@ -1,3 +1,5 @@
+import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+
 export interface CreateWithdrawalInfo {
   id: string;
 }
@@ -23,7 +25,7 @@ export interface EstimateMaxInfo {
   amount: string;
 }
 
-export interface CreateWithdrawalOptions {
+export interface CreateWithdrawalOptions extends AccessWalletOptions {
   to: string;
   amount: string;
   priorityFee?: number;
@@ -35,7 +37,7 @@ export interface InternalTransferOptions {
   amount: string;
 }
 
-export interface EstimateFeeOptions {
+export interface EstimateFeeOptions extends AccessWalletOptions {
   to: string;
   amount: string;
   priority: boolean;
@@ -47,7 +49,7 @@ enum TypeNFt {
   ERC_1155 = "erc1155",
 }
 
-export interface EstimateFeeNftOptions {
+export interface EstimateFeeNftOptions extends AccessWalletOptions {
   to: string;
   amount: string;
   contractAddress: string;
@@ -57,7 +59,7 @@ export interface EstimateFeeNftOptions {
 
 export interface CreateNftWithdrawalOptions extends EstimateFeeNftOptions {}
 
-export interface EstimateMaxOptions {
+export interface EstimateMaxOptions extends AccessWalletOptions {
   to: string;
   currencyToken?: string;
 }

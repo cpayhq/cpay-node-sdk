@@ -1,3 +1,5 @@
+import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+
 export interface SwapEstimateOptions {
   fromId: string;
   toId: string;
@@ -6,7 +8,7 @@ export interface SwapEstimateOptions {
   type?: string;
 }
 
-export interface SwapCreateOptions {
+export interface SwapCreateOptions extends AccessWalletOptions {
   currencyFromId: string;
   toId: string;
   currencyToId: string;

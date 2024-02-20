@@ -1,4 +1,6 @@
-export interface ExternalOptions {
+import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+
+export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];
   contractAddress: string;
   method: string;

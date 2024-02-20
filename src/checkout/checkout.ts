@@ -3,10 +3,12 @@ import { BasePaginationOptions } from "../interfaces/cpay.interface";
 import {
   CheckoutInfo,
   CheckoutListInfo,
+  CreateCartOptions,
   CreateDonationOptions,
   CreateSaleOptions,
   CreateSaleTokenOptions,
   SaleTokenEstimateMaxOptions,
+  UpdateCartOptions,
   UpdateDonationOptions,
   UpdateSaleOptions,
   UpdateSaleTokenOptions,
@@ -103,6 +105,20 @@ export class Checkout extends CpaySDKBase {
     }
   }
 
+  async createCart(options: CreateCartOptions) {
+    try {
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey
+      );
+      const path = `/api/public/checkout/cart`;
+
+      return this.auth_post<CheckoutInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async saleTokenEstimateMax(options: SaleTokenEstimateMaxOptions) {
     try {
       const { token } = await this.auth(
@@ -152,6 +168,20 @@ export class Checkout extends CpaySDKBase {
         this.options.privateKey
       );
       const path = `/api/public/checkout/${checkoutId}/saleToken`;
+
+      return this.auth_patch<CheckoutInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async updateCart(checkoutId: string, options: UpdateCartOptions) {
+    try {
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey
+      );
+      const path = `/api/public/checkout/${checkoutId}/cart`;
 
       return this.auth_patch<CheckoutInfo>(`${path}`, options, token);
     } catch (err) {

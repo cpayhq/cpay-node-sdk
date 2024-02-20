@@ -4,13 +4,17 @@ import {
   CreateWalletOptions,
   WalletInfo,
 } from "./wallet.interface";
+import { WalletSignature } from "./wallet.signature";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
 
 export class Wallet extends CpaySDKBase {
   constructor(parameters: CpaySDKOptions) {
     super(parameters);
+    this.signature = new WalletSignature(parameters);
   }
+
+  signature: WalletSignature;
 
   async createDepositWallet(
     options: CreateWalletOptions
@@ -24,7 +28,7 @@ export class Wallet extends CpaySDKBase {
 
       delete options.currencyId;
 
-      return this.auth_post<CreateWalletInfo>(`${path}`, { ...options }, token);
+      return this.auth_post<CreateWalletInfo>(`${path}`, options, token);
     } catch (err) {
       throw err;
     }

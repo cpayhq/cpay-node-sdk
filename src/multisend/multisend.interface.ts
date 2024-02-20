@@ -1,3 +1,5 @@
+import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+
 interface MultisendFileOptions {
   address: string;
   amount: string;
@@ -20,7 +22,7 @@ export interface EstimateMultisendInfo {
   multisendWallets: MultisendFileOptions[];
 }
 
-export interface EstimateMultisendCommonOptions {
+export interface EstimateMultisendCommonOptions extends AccessWalletOptions {
   estimationId: string;
 }
 

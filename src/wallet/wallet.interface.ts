@@ -37,6 +37,7 @@ export interface CreateWalletOptions {
   typeWallet?: string;
   privateKey?: string;
   isMnemonic?: boolean;
+  password?: string;
   setMain?: boolean;
 }
 
@@ -46,4 +47,17 @@ export interface CreateWalletInfo {
   balance: number;
   balanceUSD: number;
   passphrase: string;
+}
+
+export interface SignatureCommonOptions {
+  password?: string;
+}
+
+export interface SignatureOnOptions extends SignatureCommonOptions {
+  sign: string;
+}
+
+export interface SignatureChangePasswordOptions {
+  oldPassword?: string;
+  password: string;
 }

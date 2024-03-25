@@ -372,7 +372,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await cpay.checkout.updateDonation(options);
+const updateDonation = await cpay.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -396,7 +396,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await cpay.checkout.updateSale(options);
+const updateSale = await cpay.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -425,7 +425,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await cpay.checkout.updateSaleToken(options);
+const updateSaleToken = await cpay.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -449,7 +449,21 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await cpay.checkout.updateSaleToken(options);
+const updateCart = await cpay.checkout.updateCart(checkoutId, options);
+```
+
+```
+Get charges list by checkout
+
+let options = {
+  search?: 'string',
+  sort?: string,
+  order?: string,
+  page?: number,
+  limit?: number
+}
+
+const updateSaleToken = await cpay.checkout.chargeList(checkoutId, options);
 ```
 
 7. Transaction
@@ -528,6 +542,52 @@ let options = {
   password?: string;
 }
 const info = await cpay.externalCall.write(options);
+```
+
+```
+Mint Solana Nft
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  name: string;
+  description: string;
+  symbol: string;
+  attributes?: SolanaMetadataOptions[];
+  type: SolanaNftType;
+  image: string;
+  sellerFeeBasisPoints?: number;
+  collectionAddress?: string;
+  storage?: SolanaNftStorageType;
+  collectionInfo?: SolanaCollectionInfo;
+  payerFeePrivateKey?: string;
+  sign?: string;
+  password?: string;
+}
+const result = await cpay.externalCall.solana.mintNft(options);
+```
+
+```
+Estimate Mint Solana Nft
+walletId - is required.
+passphrase - is required.
+
+let options = {
+  name: string;
+  description: string;
+  symbol: string;
+  attributes?: SolanaMetadataOptions[];
+  type: SolanaNftType;
+  image: string;
+  sellerFeeBasisPoints?: number;
+  collectionAddress?: string;
+  storage?: SolanaNftStorageType;
+  collectionInfo?: SolanaCollectionInfo;
+  payerFeePrivateKey?: string;
+  sign?: string;
+  password?: string;
+}
+const result = await cpay.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap

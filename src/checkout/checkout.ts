@@ -1,6 +1,7 @@
 import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
 import { BasePaginationOptions } from "../interfaces/cpay.interface";
 import {
+  CheckoutChargeListInfo,
   CheckoutInfo,
   CheckoutListInfo,
   CreateCartOptions,
@@ -184,6 +185,24 @@ export class Checkout extends CpaySDKBase {
       const path = `/api/public/checkout/${checkoutId}/cart`;
 
       return this.auth_patch<CheckoutInfo>(`${path}`, options, token);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async chargeList(checkoutId: string, options?: BasePaginationOptions) {
+    try {
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey
+      );
+      const path = `/api/public/checkout/${checkoutId}/charge-list`;
+
+      return this.auth_get<CheckoutChargeListInfo>(
+        `${path}`,
+        { ...options },
+        token
+      );
     } catch (err) {
       throw err;
     }

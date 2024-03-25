@@ -10,12 +10,49 @@ export interface ExternalOptions extends AccessWalletOptions {
 }
 
 export interface ExternalEstimateWriteInfo {
-  gasPrice: string;
-  gasLimit: string;
+  gasPrice?: string;
+  gasLimit?: string;
   fee: string;
 }
 
 export interface ExternalWriteInfo {
   _id: string;
   hash: string;
+}
+
+export interface ExternalSolanaMintNftInfo extends ExternalWriteInfo {
+  address: string;
+}
+
+export interface SolanaMetadataOptions {
+  trait_type: string;
+  value: string;
+}
+
+export enum SolanaNftType {
+  COLLECTION = "collection",
+  NFT = "nft",
+}
+
+export enum SolanaNftStorageType {
+  CPAY = "cpay",
+}
+
+export interface SolanaCollectionInfo {
+  name: string;
+  family: string;
+}
+
+export interface ExternalSolanaMintNftOptions extends AccessWalletOptions {
+  name: string;
+  description: string;
+  symbol: string;
+  attributes?: SolanaMetadataOptions[];
+  type: SolanaNftType;
+  image: string;
+  sellerFeeBasisPoints?: number;
+  collectionAddress?: string;
+  storage?: SolanaNftStorageType;
+  collectionInfo?: SolanaCollectionInfo;
+  payerFeePrivateKey?: string;
 }

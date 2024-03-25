@@ -4,13 +4,17 @@ import {
   ExternalOptions,
   ExternalWriteInfo,
 } from "./external.interface";
+import { ExternalSolana } from "./external.solana";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
 
 export class External extends CpaySDKBase {
   constructor(parameters: CpaySDKOptions) {
     super(parameters);
+    this.solana = new ExternalSolana(parameters);
   }
+
+  solana: ExternalSolana;
 
   async read(options: ExternalOptions): Promise<any> {
     try {

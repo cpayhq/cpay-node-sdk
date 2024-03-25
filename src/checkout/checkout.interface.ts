@@ -32,6 +32,17 @@ export interface CheckoutListInfo {
   countItem: number;
 }
 
+export interface CheckoutChargeListInfo {
+  entities: {
+    id: boolean;
+    systemStatus: string;
+    createdAt: string;
+  }[];
+  page: number;
+  pages: number;
+  countItem: number;
+}
+
 export interface CreateCheckoutBaseOptions {
   expireTime: number;
   currencies: string[];

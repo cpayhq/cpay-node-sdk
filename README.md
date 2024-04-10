@@ -90,6 +90,7 @@ let options = {
   currencyToken?: string;
   sign?: string;
   password?: string;
+  payerFeePrivateKey?: string; // Only solana
 }
 walletId - is required.
 passphrase - is required.
@@ -107,6 +108,7 @@ let options = {
   type: string; //erc721 or erc1155
   sign?: string;
   password?: string;
+  payerFeePrivateKey?: string; // Only solana
 }
 walletId - is required.
 passphrase - is required.
@@ -121,6 +123,7 @@ let options = {
   currencyToken?: string;
   sign?: string;
   password?: string;
+  payerFeePrivateKey?: string; // Only solana
 }
 walletId - is required.
 passphrase - is required.
@@ -137,6 +140,7 @@ let options = {
   currencyToken?: string;
   sign?: string;
   password?: string;
+  payerFeePrivateKey?: string; // Only solana
 }
 walletId - is required.
 passphrase - is required.
@@ -154,6 +158,7 @@ let options = {
   type: string; //erc721 or erc1155
   sign?: string;
   password?: string;
+  payerFeePrivateKey?: string; // Only solana
 }
 walletId - is required.
 passphrase - is required.

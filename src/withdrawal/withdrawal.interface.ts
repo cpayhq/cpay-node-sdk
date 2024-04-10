@@ -30,6 +30,7 @@ export interface CreateWithdrawalOptions extends AccessWalletOptions {
   amount: string;
   priorityFee?: number;
   currencyToken?: string;
+  payerFeePrivateKey?: string;
 }
 
 export interface InternalTransferOptions {
@@ -42,6 +43,7 @@ export interface EstimateFeeOptions extends AccessWalletOptions {
   amount: string;
   priority: boolean;
   currencyToken?: string;
+  payerFeePrivateKey?: string;
 }
 
 enum TypeNFt {
@@ -55,6 +57,7 @@ export interface EstimateFeeNftOptions extends AccessWalletOptions {
   contractAddress: string;
   tokenId: number;
   type: TypeNFt;
+  payerFeePrivateKey?: string;
 }
 
 export interface CreateNftWithdrawalOptions extends EstimateFeeNftOptions {}
@@ -62,4 +65,5 @@ export interface CreateNftWithdrawalOptions extends EstimateFeeNftOptions {}
 export interface EstimateMaxOptions extends AccessWalletOptions {
   to: string;
   currencyToken?: string;
+  payerFeePrivateKey?: string;
 }

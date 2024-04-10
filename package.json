@@ -29,5 +29,5 @@
     "publish:patch": "npm version patch && npm publish",
     "deploy": "npm run build && npm publish"
   },
-  "version": "1.7.0"
+  "version": "1.7.1"
 }

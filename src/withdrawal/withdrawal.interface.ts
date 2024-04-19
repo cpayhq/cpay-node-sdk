@@ -25,10 +25,16 @@ export interface EstimateMaxInfo {
   amount: string;
 }
 
+export enum PriorityTx {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+}
+
 export interface CreateWithdrawalOptions extends AccessWalletOptions {
   to: string;
   amount: string;
-  priorityFee?: number;
+  priority?: PriorityTx;
   currencyToken?: string;
   payerFeePrivateKey?: string;
 }
@@ -41,7 +47,7 @@ export interface InternalTransferOptions {
 export interface EstimateFeeOptions extends AccessWalletOptions {
   to: string;
   amount: string;
-  priority: boolean;
+  priority?: PriorityTx;
   currencyToken?: string;
   payerFeePrivateKey?: string;
 }
@@ -66,4 +72,5 @@ export interface EstimateMaxOptions extends AccessWalletOptions {
   to: string;
   currencyToken?: string;
   payerFeePrivateKey?: string;
+  priority?: PriorityTx;
 }

@@ -86,7 +86,7 @@ Estimate transaction fee.
 let options = {
   to: string;
   amount: string;
-  priority: boolean;
+  priority?: string;
   currencyToken?: string;
   sign?: string;
   password?: string;
@@ -124,6 +124,7 @@ let options = {
   sign?: string;
   password?: string;
   payerFeePrivateKey?: string; // Only solana
+  priority?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -136,7 +137,7 @@ Create withdrawal request.
 let options = {
   to: string;
   amount: string;
-  priorityFee?: number;
+  priority?: string;
   currencyToken?: string;
   sign?: string;
   password?: string;

@@ -46,6 +46,7 @@ let options = {
   isMnemonic?: boolean;
   setMain?: boolean;
   password?: string;
+  isNew?: boolean;
 }
 Available Currencies: See point 5.
 const wallet = await cpay.wallet.createDepositWallet(options);

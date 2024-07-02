@@ -39,6 +39,7 @@ export interface CreateWalletOptions {
   isMnemonic?: boolean;
   password?: string;
   setMain?: boolean;
+  isNew?: boolean;
 }
 
 export interface CreateWalletInfo {

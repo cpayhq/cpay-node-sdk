@@ -719,3 +719,11 @@ let options = {
 }
 const result = await cpay.wallet.signature.changePassword(options);
 ```
+
+```
+Get Status Password Signature
+walletId - is required.
+passphrase - is required.
+
+const result = await cpay.wallet.signature.passwordStatus();
+```

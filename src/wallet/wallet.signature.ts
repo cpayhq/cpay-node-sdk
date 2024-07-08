@@ -108,6 +108,25 @@ export class WalletSignature extends CpaySDKBase {
       throw err;
     }
   }
+
+  async passwordStatus(): Promise<boolean> {
+    try {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+      const { token } = await this.auth(
+        this.options.publicKey,
+        this.options.privateKey,
+        this.options.walletId,
+        this.options.passphrase
+      );
+      const path = `/api/public/wallet/signature/password-status`;
+
+      return this.auth_get<boolean>(`${path}`, {}, token);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 export default WalletSignature;

@@ -92,6 +92,7 @@ let options = {
   sign?: string;
   password?: string;
   payerFeePrivateKey?: string; // Only solana
+  comment?: string; //Only TON
 }
 walletId - is required.
 passphrase - is required.

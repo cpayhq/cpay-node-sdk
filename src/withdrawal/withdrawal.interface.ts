@@ -37,6 +37,7 @@ export interface CreateWithdrawalOptions extends AccessWalletOptions {
   priority?: PriorityTx;
   currencyToken?: string;
   payerFeePrivateKey?: string;
+  comment?: string;
 }
 
 export interface InternalTransferOptions {

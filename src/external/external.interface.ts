@@ -55,4 +55,6 @@ export interface ExternalSolanaMintNftOptions extends AccessWalletOptions {
   storage?: SolanaNftStorageType;
   collectionInfo?: SolanaCollectionInfo;
   payerFeePrivateKey?: string;
+  tokenOwner?: string;
+  creators?: { address: string; share: number }[];
 }

@@ -571,6 +571,8 @@ let options = {
   payerFeePrivateKey?: string;
   sign?: string;
   password?: string;
+  tokenOwner?: string;
+  creators?: {address: string; share: number}[]
 }
 const result = await cpay.externalCall.solana.mintNft(options);
 ```
@@ -594,6 +596,8 @@ let options = {
   payerFeePrivateKey?: string;
   sign?: string;
   password?: string;
+  tokenOwner?: string;
+  creators?: {address: string; share: number}[]
 }
 const result = await cpay.externalCall.solana.estimateMintNft(options);
 ```

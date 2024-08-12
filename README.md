@@ -573,6 +573,7 @@ let options = {
   password?: string;
   tokenOwner?: string;
   creators?: {address: string; share: number}[]
+  imageLink?: srting;
 }
 const result = await cpay.externalCall.solana.mintNft(options);
 ```
@@ -598,6 +599,7 @@ let options = {
   password?: string;
   tokenOwner?: string;
   creators?: {address: string; share: number}[]
+  imageLink?: srting;
 }
 const result = await cpay.externalCall.solana.estimateMintNft(options);
 ```

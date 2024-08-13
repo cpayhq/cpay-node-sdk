@@ -49,7 +49,7 @@ export interface ExternalSolanaMintNftOptions extends AccessWalletOptions {
   symbol: string;
   attributes?: SolanaMetadataOptions[];
   type: SolanaNftType;
-  image: string;
+  image?: string;
   sellerFeeBasisPoints?: number;
   collectionAddress?: string;
   storage?: SolanaNftStorageType;

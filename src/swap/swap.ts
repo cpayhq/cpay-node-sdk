@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +8,10 @@ import {
   SwapHistoryListOptions,
 } from "./swap.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class Swap extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Swap extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
   }
 

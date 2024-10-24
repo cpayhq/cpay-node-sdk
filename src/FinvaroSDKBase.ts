@@ -2,12 +2,12 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
 import { REST_URL } from "./constant";
-import { CpayToken } from "./interfaces/cpay.interface";
+import { FinvaroToken } from "./interfaces/finvaro.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface CpaySDKBaseOptions {
+export interface FinvaroSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -33,17 +33,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000,
 };
 
-export class CpaySDKBase {
-  protected options: Required<CpaySDKBaseOptions> =
-    {} as Required<CpaySDKBaseOptions>;
+export class FinvaroSDKBase {
+  protected options: Required<FinvaroSDKBaseOptions> =
+    {} as Required<FinvaroSDKBaseOptions>;
 
-  constructor(options?: Partial<CpaySDKBaseOptions>) {
+  constructor(options?: Partial<FinvaroSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<FinvaroSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     Object.assign(this.options, {
@@ -207,7 +207,7 @@ export class CpaySDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<CpayToken> {
+  ): Promise<FinvaroToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -223,7 +223,7 @@ export class CpaySDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<CpayToken>(`${path}`, {
+      return this.request<FinvaroToken>(`${path}`, {
         method: "POST",
         json: data,
       });

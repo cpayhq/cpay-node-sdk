@@ -1,10 +1,10 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import { CurrencyInfo, CurrencyOptions } from "./currency.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class Currency extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Currency extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
   }
 

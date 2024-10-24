@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import {
   EstimateMultisendCommonOptions,
   EstimateMultisendInfo,
@@ -6,10 +6,10 @@ import {
   MultisendInfo,
 } from "./multisend.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class Multisend extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Multisend extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
   }
 

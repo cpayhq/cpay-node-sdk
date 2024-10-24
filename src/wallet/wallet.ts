@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import {
   CreateWalletInfo,
   CreateWalletOptions,
@@ -6,10 +6,10 @@ import {
 } from "./wallet.interface";
 import { WalletSignature } from "./wallet.signature";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class Wallet extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Wallet extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
     this.signature = new WalletSignature(parameters);
   }

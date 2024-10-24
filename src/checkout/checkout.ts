@@ -1,5 +1,5 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
-import { BasePaginationOptions } from "../interfaces/cpay.interface";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { BasePaginationOptions } from "../interfaces/finvaro.interface";
 import {
   CheckoutChargeListInfo,
   CheckoutInfo,
@@ -15,10 +15,10 @@ import {
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class Checkout extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Checkout extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
   }
 

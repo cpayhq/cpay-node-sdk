@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalOptions,
@@ -6,10 +6,10 @@ import {
 } from "./external.interface";
 import { ExternalSolana } from "./external.solana";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class External extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class External extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
     this.solana = new ExternalSolana(parameters);
   }

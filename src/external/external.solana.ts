@@ -1,14 +1,14 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalSolanaMintNftInfo,
   ExternalSolanaMintNftOptions,
 } from "./external.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
 
-export class ExternalSolana extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class ExternalSolana extends FinvaroSDKBase {
+  constructor(parameters: FinvaroSDKOptions) {
     super(parameters);
   }
 

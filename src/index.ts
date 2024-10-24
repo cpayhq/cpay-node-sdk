@@ -1,5 +1,5 @@
 export * from "./constant";
-export { default as CpaySDK } from "./CpaySDK";
-export { default as default } from "./CpaySDK";
-export { CpaySDKBase } from "./CpaySDKBase";
-export * from "./interfaces/cpay.interface";
+export { default as FinvaroSDK } from "./FinvaroSDK";
+export { default as default } from "./FinvaroSDK";
+export { FinvaroSDKBase } from "./FinvaroSDKBase";
+export * from "./interfaces/finvaro.interface";

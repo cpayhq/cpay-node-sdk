@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/finva.interface";
+import { AccessWalletOptions } from "src/interfaces/finvaro.interface";
 
 export interface SwapEstimateOptions {
   fromId: string;

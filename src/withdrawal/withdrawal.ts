@@ -20,122 +20,112 @@ export class Withdrawal extends FinvaroSDKBase {
   }
 
   async create(
-    options: CreateWithdrawalOptions
+    options: CreateWithdrawalOptions,
+    accessToken?: string
   ): Promise<CreateWithdrawalInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/withdrawal`;
 
-      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+      return this.auth_post<CreateWithdrawalInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
   async nftTransfer(
-    options: CreateNftWithdrawalOptions
+    options: CreateNftWithdrawalOptions,
+    accessToken?: string
   ): Promise<CreateWithdrawalInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/withdrawal/nft`;
 
-      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+      return this.auth_post<CreateWithdrawalInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
   async internalTransfer(
-    options: InternalTransferOptions
+    options: InternalTransferOptions,
+    accessToken?: string
   ): Promise<CreateWithdrawalInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/withdrawal/internal`;
 
-      return this.auth_post<CreateWithdrawalInfo>(`${path}`, options, token);
+      return this.auth_post<CreateWithdrawalInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async estimateFee(options: EstimateFeeOptions): Promise<EstimateFeeInfo> {
+  async estimateFee(
+    options: EstimateFeeOptions,
+    accessToken?: string
+  ): Promise<EstimateFeeInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/transaction/fee`;
 
-      return this.auth_post<EstimateFeeInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateFeeInfo>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
   async estimateNftFee(
-    options: EstimateFeeNftOptions
+    options: EstimateFeeNftOptions,
+    accessToken?: string
   ): Promise<EstimateFeeNftInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/transaction/feeNft`;
 
-      return this.auth_post<EstimateFeeNftInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateFeeNftInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async estimateMax(options: EstimateMaxOptions): Promise<EstimateMaxInfo> {
+  async estimateMax(
+    options: EstimateMaxOptions,
+    accessToken?: string
+  ): Promise<EstimateMaxInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/withdrawal/estimate-max`;
 
-      return this.auth_post<EstimateMaxInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateMaxInfo>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }

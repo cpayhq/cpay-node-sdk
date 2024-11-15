@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import _ from "lodash";
 
 import { REST_URL } from "./constant";
 import { FinvaroToken } from "./interfaces/finvaro.interface";
@@ -46,25 +47,19 @@ export class FinvaroSDKBase {
   protected setOptions(options: Partial<FinvaroSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
-    Object.assign(this.options, {
-      httpOptions: {
-        ...DEFAUTL_HTTP_OPTIONS,
-        ...(httpOptions || {}),
-      },
+    _.merge(this.options, {
+      httpOptions: _.merge({}, DEFAUTL_HTTP_OPTIONS, httpOptions || {}),
       url: {
         rest: REST_URL,
         ...(url || {}),
       },
     });
     if (otherOptions) {
-      Object.assign(this.options, otherOptions);
+      _.merge(this.options, otherOptions);
     }
   }
   protected _request = <T>(path: string, options: HttpOptions): Promise<T> => {
-    return request<T>(path, {
-      ...this.options.httpOptions,
-      ...options,
-    })
+    return request<T>(path, _.merge({}, this.options.httpOptions, options))
       .then((data: any) => {
         try {
           const json = JSON.parse(data);
@@ -230,5 +225,20 @@ export class FinvaroSDKBase {
     } else {
       throw new Error("Keys is required.");
     }
+  }
+
+  protected async getToken(isWallet = false): Promise<string> {
+    if (isWallet) {
+      if (!this.options.walletId || !this.options.passphrase) {
+        throw new Error("WalletId and passphrase is required.");
+      }
+    }
+    const { token } = await this.auth(
+      this.options.publicKey,
+      this.options.privateKey,
+      this.options?.walletId,
+      this.options?.passphrase
+    );
+    return token;
   }
 }

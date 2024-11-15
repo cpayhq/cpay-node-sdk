@@ -12,117 +12,91 @@ export class WalletSignature extends FinvaroSDKBase {
     super(parameters);
   }
 
-  async on(options: SignatureOnOptions): Promise<boolean> {
+  async on(
+    options: SignatureOnOptions,
+    accessToken?: string
+  ): Promise<boolean> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/on`;
 
-      return this.auth_post<boolean>(`${path}`, options, token);
+      return this.auth_post<boolean>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async off(options: SignatureCommonOptions): Promise<string> {
+  async off(
+    options: SignatureCommonOptions,
+    accessToken?: string
+  ): Promise<string> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/off`;
 
-      return this.auth_post<string>(`${path}`, options, token);
+      return this.auth_post<string>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async status(): Promise<boolean> {
+  async status(accessToken?: string): Promise<boolean> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/status`;
 
-      return this.auth_get<boolean>(`${path}`, {}, token);
+      return this.auth_get<boolean>(`${path}`, {}, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async download(options: SignatureCommonOptions): Promise<string> {
+  async download(
+    options: SignatureCommonOptions,
+    accessToken?: string
+  ): Promise<string> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/download`;
 
-      return this.auth_post<string>(`${path}`, options, token);
+      return this.auth_post<string>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
   async changePassword(
-    options: SignatureChangePasswordOptions
+    options: SignatureChangePasswordOptions,
+    accessToken?: string
   ): Promise<boolean> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/change-password`;
 
-      return this.auth_post<boolean>(`${path}`, options, token);
+      return this.auth_post<boolean>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async passwordStatus(): Promise<boolean> {
+  async passwordStatus(accessToken?: string): Promise<boolean> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/signature/password-status`;
 
-      return this.auth_get<boolean>(`${path}`, {}, token);
+      return this.auth_get<boolean>(`${path}`, {}, accessToken);
     } catch (err) {
       throw err;
     }

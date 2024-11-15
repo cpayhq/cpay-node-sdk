@@ -17,75 +17,57 @@ export class Wallet extends FinvaroSDKBase {
   signature: WalletSignature;
 
   async createDepositWallet(
-    options: CreateWalletOptions
+    options: CreateWalletOptions,
+    accessToken?: string
   ): Promise<CreateWalletInfo> {
     try {
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey
-      );
+      if (!accessToken) {
+        accessToken = await this.getToken();
+      }
       const path = `/api/public/wallet/${options.currencyId}`;
 
       delete options.currencyId;
 
-      return this.auth_post<CreateWalletInfo>(`${path}`, options, token);
+      return this.auth_post<CreateWalletInfo>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async getWalletInfo(): Promise<WalletInfo> {
+  async getWalletInfo(accessToken?: string): Promise<WalletInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet`;
 
-      return this.auth_get<WalletInfo>(`${path}`, {}, token);
+      return this.auth_get<WalletInfo>(`${path}`, {}, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async getPrivateKey(): Promise<string> {
+  async getPrivateKey(accessToken?: string): Promise<string> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/private-key`;
 
-      return this.auth_get<string>(`${path}`, {}, token);
+      return this.auth_get<string>(`${path}`, {}, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async getMnemonic(): Promise<string> {
+  async getMnemonic(accessToken?: string): Promise<string> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/wallet/mnemonic`;
 
-      return this.auth_get<string>(`${path}`, {}, token);
+      return this.auth_get<string>(`${path}`, {}, accessToken);
     } catch (err) {
       throw err;
     }

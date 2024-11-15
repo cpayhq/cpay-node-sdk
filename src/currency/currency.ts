@@ -9,16 +9,24 @@ export class Currency extends CpaySDKBase {
   }
 
   async getAvailableCurrencies(
-    options: CurrencyOptions
+    options: CurrencyOptions,
+    accessToken?: string
   ): Promise<CurrencyInfo> {
     try {
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey
-      );
+      if (!accessToken) {
+        const { token } = await this.auth(
+          this.options.publicKey,
+          this.options.privateKey
+        );
+        accessToken = token;
+      }
       const path = `/api/public/currency`;
 
-      return this.auth_get<CurrencyInfo>(`${path}`, { ...options }, token);
+      return this.auth_get<CurrencyInfo>(
+        `${path}`,
+        { ...options },
+        accessToken
+      );
     } catch (err) {
       throw err;
     }

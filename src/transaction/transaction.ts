@@ -11,23 +11,20 @@ export class Transaction extends CpaySDKBase {
     super(parameters);
   }
 
-  async list(options: TransactionListOptions): Promise<TransactionListInfo> {
+  async list(
+    options: TransactionListOptions,
+    accessToken?: string
+  ): Promise<TransactionListInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/transaction/list`;
 
       return this.auth_get<TransactionListInfo>(
         `${path}`,
         { ...options },
-        token
+        accessToken
       );
     } catch (err) {
       throw err;

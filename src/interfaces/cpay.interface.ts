@@ -14,3 +14,10 @@ export interface BasePaginationOptions {
   page?: number;
   limit?: number;
 }
+
+export interface IGetToken {
+  publicKey: string;
+  privateKey: string;
+  walletId?: string;
+  passphrase?: string;
+}

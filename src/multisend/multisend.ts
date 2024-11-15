@@ -14,84 +14,76 @@ export class Multisend extends CpaySDKBase {
   }
 
   async estimateSystemFee(
-    options: EstimateSystemFeeOptions
+    options: EstimateSystemFeeOptions,
+    accessToken?: string
   ): Promise<EstimateMultisendInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/multisend/estimateSystemFee`;
 
-      return this.auth_post<EstimateMultisendInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateMultisendInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
   async approve(
-    options: EstimateMultisendCommonOptions
+    options: EstimateMultisendCommonOptions,
+    accessToken?: string
   ): Promise<EstimateMultisendInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/multisend/approve`;
 
-      return this.auth_post<EstimateMultisendInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateMultisendInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
   async estimateMinerFee(
-    options: EstimateMultisendCommonOptions
+    options: EstimateMultisendCommonOptions,
+    accessToken?: string
   ): Promise<EstimateMultisendInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/multisend/estimateMinerFee`;
 
-      return this.auth_post<EstimateMultisendInfo>(`${path}`, options, token);
+      return this.auth_post<EstimateMultisendInfo>(
+        `${path}`,
+        options,
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
   async create(
-    options: EstimateMultisendCommonOptions
+    options: EstimateMultisendCommonOptions,
+    accessToken?: string
   ): Promise<MultisendInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/multisend`;
 
-      return this.auth_post<MultisendInfo>(`${path}`, options, token);
+      return this.auth_post<MultisendInfo>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }

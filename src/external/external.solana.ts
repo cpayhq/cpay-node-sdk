@@ -13,24 +13,19 @@ export class ExternalSolana extends CpaySDKBase {
   }
 
   async mintNft(
-    options: ExternalSolanaMintNftOptions
+    options: ExternalSolanaMintNftOptions,
+    accessToken?: string
   ): Promise<ExternalSolanaMintNftInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/external/mint-solana-nft`;
 
       return this.auth_post<ExternalSolanaMintNftInfo>(
         `${path}`,
         options,
-        token
+        accessToken
       );
     } catch (err) {
       throw err;
@@ -38,24 +33,19 @@ export class ExternalSolana extends CpaySDKBase {
   }
 
   async estimateMintNft(
-    options: ExternalSolanaMintNftOptions
+    options: ExternalSolanaMintNftOptions,
+    accessToken?: string
   ): Promise<ExternalEstimateWriteInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/external/mint-solana-nft/estimate`;
 
       return this.auth_post<ExternalEstimateWriteInfo>(
         `${path}`,
         options,
-        token
+        accessToken
       );
     } catch (err) {
       throw err;

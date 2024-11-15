@@ -16,67 +16,53 @@ export class External extends CpaySDKBase {
 
   solana: ExternalSolana;
 
-  async read(options: ExternalOptions): Promise<any> {
+  async read(options: ExternalOptions, accessToken?: string): Promise<any> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/external/read`;
 
-      return this.auth_post<any>(`${path}`, { ...options }, token);
+      return this.auth_post<any>(`${path}`, { ...options }, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
   async estimateWrite(
-    options: ExternalOptions
+    options: ExternalOptions,
+    accessToken?: string
   ): Promise<ExternalEstimateWriteInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/external/estimateWrite`;
 
       return this.auth_post<ExternalEstimateWriteInfo>(
         `${path}`,
         { ...options },
-        token
+        accessToken
       );
     } catch (err) {
       throw err;
     }
   }
 
-  async write(options: ExternalOptions): Promise<ExternalWriteInfo> {
+  async write(
+    options: ExternalOptions,
+    accessToken?: string
+  ): Promise<ExternalWriteInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/external/write`;
 
       return this.auth_post<ExternalWriteInfo>(
         `${path}`,
         { ...options },
-        token
+        accessToken
       );
     } catch (err) {
       throw err;

@@ -15,72 +15,77 @@ export class Swap extends CpaySDKBase {
     super(parameters);
   }
 
-  async estimate(options: SwapEstimateOptions): Promise<SwapEstimateInfo[]> {
+  async estimate(
+    options: SwapEstimateOptions,
+    accessToken?: string
+  ): Promise<SwapEstimateInfo[]> {
     try {
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
+      }
       const path = `/api/public/swap/estimate`;
 
       return this.auth_get<SwapEstimateInfo[]>(
         `${path}`,
         { ...options },
-        token
+        accessToken
       );
     } catch (err) {
       throw err;
     }
   }
 
-  async bestOffer(options: SwapEstimateOptions): Promise<SwapEstimateInfo> {
+  async bestOffer(
+    options: SwapEstimateOptions,
+    accessToken?: string
+  ): Promise<SwapEstimateInfo> {
     try {
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
+      }
       const path = `/api/public/swap/best-offer`;
 
-      return this.auth_get<SwapEstimateInfo>(`${path}`, { ...options }, token);
+      return this.auth_get<SwapEstimateInfo>(
+        `${path}`,
+        { ...options },
+        accessToken
+      );
     } catch (err) {
       throw err;
     }
   }
 
-  async create(options: SwapCreateOptions): Promise<SwapCreateInfo> {
+  async create(
+    options: SwapCreateOptions,
+    accessToken?: string
+  ): Promise<SwapCreateInfo> {
     try {
-      if (!this.options.walletId || !this.options.passphrase) {
-        throw new Error("WalletId and passphrase is required.");
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
       }
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
       const path = `/api/public/swap/create`;
 
-      return this.auth_post<SwapCreateInfo>(`${path}`, options, token);
+      return this.auth_post<SwapCreateInfo>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }
   }
 
-  async history(options: SwapHistoryListOptions): Promise<SwapHistoryInfo> {
+  async history(
+    options: SwapHistoryListOptions,
+    accessToken?: string
+  ): Promise<SwapHistoryInfo> {
     try {
-      const { token } = await this.auth(
-        this.options.publicKey,
-        this.options.privateKey,
-        this.options.walletId,
-        this.options.passphrase
-      );
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
+      }
       const path = `/api/public/swap/history`;
 
-      return this.auth_get<SwapHistoryInfo>(`${path}`, { ...options }, token);
+      return this.auth_get<SwapHistoryInfo>(
+        `${path}`,
+        { ...options },
+        accessToken
+      );
     } catch (err) {
       throw err;
     }

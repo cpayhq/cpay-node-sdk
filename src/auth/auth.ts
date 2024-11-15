@@ -17,4 +17,15 @@ export class Auth extends CpaySDKBase {
       throw err;
     }
   }
+
+  async login(): Promise<string> {
+    const { token } = await this.auth(
+      this.options.publicKey,
+      this.options.privateKey,
+      this.options?.walletId,
+      this.options?.passphrase
+    );
+
+    return token;
+  }
 }

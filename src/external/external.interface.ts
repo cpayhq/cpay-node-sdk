@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/finvaro.interface";
+import { AccessWalletOptions } from "src/interfaces/clarnium.interface";
 
 export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];

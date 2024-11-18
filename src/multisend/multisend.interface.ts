@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/finvaro.interface";
+import { AccessWalletOptions } from "src/interfaces/clarnium.interface";
 
 interface MultisendFileOptions {
   address: string;

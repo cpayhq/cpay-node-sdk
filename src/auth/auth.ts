@@ -1,10 +1,10 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import { RegisterInfo, RegisterOptions } from "./auth.interface";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Auth extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Auth extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
   }
 

@@ -1,4 +1,4 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalOptions,
@@ -6,10 +6,10 @@ import {
 } from "./external.interface";
 import { ExternalSolana } from "./external.solana";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class External extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class External extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
     this.solana = new ExternalSolana(parameters);
   }

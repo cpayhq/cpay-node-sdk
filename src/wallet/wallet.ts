@@ -1,4 +1,4 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import {
   CreateWalletInfo,
   CreateWalletOptions,
@@ -6,10 +6,10 @@ import {
 } from "./wallet.interface";
 import { WalletSignature } from "./wallet.signature";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Wallet extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Wallet extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
     this.signature = new WalletSignature(parameters);
   }

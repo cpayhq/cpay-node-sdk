@@ -1,11 +1,11 @@
-# finvaro-node-sdk
+# clarnium-node-sdk
 
 ```
-npm i finvaro-node-api-sdk
+npm i clarnium-node-api-sdk
 ```
 
 ```
-import FinvaroSDK from 'finvaro-node-api-sdk';
+import ClarniumSDK from 'clarnium-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',
@@ -13,7 +13,7 @@ let options = {
   walletId?: 'walletId',
   passphrase?: 'passphrase'
 }
-const finvaro = new FinvaroSDK(options)
+const clarnium = new ClarniumSDK(options)
 ```
 
 Available Methods:
@@ -31,7 +31,7 @@ let options = {
   agent?: string;
 }
 
-const result = await finvaro.auth.register(options);
+const result = await clarnium.auth.register(options);
 ```
 
 2. Wallet
@@ -49,7 +49,7 @@ let options = {
   isNew?: boolean;
 }
 Available Currencies: See point 5.
-const wallet = await finvaro.wallet.createDepositWallet(options);
+const wallet = await clarnium.wallet.createDepositWallet(options);
 ```
 
 ```
@@ -57,7 +57,7 @@ Get wallet info
 
 walletId - is required.
 passphrase - is required.
-const walletInfo = await finvaro.wallet.getWalletInfo();
+const walletInfo = await clarnium.wallet.getWalletInfo();
 
 ```
 
@@ -66,7 +66,7 @@ Get private key
 
 walletId - is required.
 passphrase - is required.
-const pk = await finvaro.wallet.getPrivateKey();
+const pk = await clarnium.wallet.getPrivateKey();
 
 ```
 
@@ -75,7 +75,7 @@ Get mnemonic
 
 walletId - is required.
 passphrase - is required.
-const pk = await finvaro.wallet.getMnemonic();
+const pk = await clarnium.wallet.getMnemonic();
 
 ```
 
@@ -96,7 +96,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await finvaro.withdrawal.estimateFee(options);
+const estimateFee = await clarnium.withdrawal.estimateFee(options);
 ```
 
 ```
@@ -114,7 +114,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await finvaro.withdrawal.estimateNftFee(options);
+const estimateFee = await clarnium.withdrawal.estimateNftFee(options);
 ```
 
 ```
@@ -130,7 +130,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const max = await finvaro.withdrawal.estimateMax(options);
+const max = await clarnium.withdrawal.estimateMax(options);
 ```
 
 ```
@@ -147,7 +147,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await finvaro.withdrawal.create(options);
+const withdrawal = await clarnium.withdrawal.create(options);
 ```
 
 ```
@@ -165,7 +165,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await finvaro.withdrawal.nftTransfer(options);
+const withdrawal = await clarnium.withdrawal.nftTransfer(options);
 ```
 
 ```
@@ -177,7 +177,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await finvaro.withdrawal.internalTransfer(options);
+const withdrawal = await clarnium.withdrawal.internalTransfer(options);
 ```
 
 4. Available merchant currencies
@@ -185,7 +185,7 @@ const withdrawal = await finvaro.withdrawal.internalTransfer(options);
 ```
 let options = {
 }
-const currencies = await finvaro.currency.getAvailableCurrencies(options);
+const currencies = await clarnium.currency.getAvailableCurrencies(options);
 ```
 
 5. Multisend
@@ -198,7 +198,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const estimateData = await finvaro.multisend.estimateSystemFee(options);
+const estimateData = await clarnium.multisend.estimateSystemFee(options);
 ```
 
 ```
@@ -208,7 +208,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await finvaro.multisend.approve(options);
+const approveData = await clarnium.multisend.approve(options);
 ```
 
 ```
@@ -218,7 +218,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await finvaro.multisend.estimateMinerFee(options);
+const approveData = await clarnium.multisend.estimateMinerFee(options);
 ```
 
 ```
@@ -228,7 +228,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const result = await finvaro.multisend.create(options);
+const result = await clarnium.multisend.create(options);
 ```
 
 6. Checkout
@@ -243,7 +243,7 @@ let options = {
   page?: number,
   limit?: number
 }
-const checkoutList = await finvaro.checkout.list(options);
+const checkoutList = await clarnium.checkout.list(options);
 ```
 
 ```
@@ -263,7 +263,7 @@ let options = {
   organizationName: string
 }
 
-const createDonation = await finvaro.checkout.createDonation(options);
+const createDonation = await clarnium.checkout.createDonation(options);
 ```
 
 ```
@@ -285,7 +285,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createDonation = await finvaro.checkout.createCart(options);
+const createDonation = await clarnium.checkout.createCart(options);
 ```
 
 ```
@@ -307,7 +307,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createSale = await finvaro.checkout.createSale(options);
+const createSale = await clarnium.checkout.createSale(options);
 ```
 
 ```
@@ -334,7 +334,7 @@ let options = {
   tradedWallet: string;
 }
 
-const createSaleToken = await finvaro.checkout.createSaleToken(options);
+const createSaleToken = await clarnium.checkout.createSaleToken(options);
 ```
 
 ```
@@ -346,19 +346,19 @@ let options = {
   checkoutId?: string;
 }
 
-const saleTokenEstimateMax = await finvaro.checkout.saleTokenEstimateMax(options);
+const saleTokenEstimateMax = await clarnium.checkout.saleTokenEstimateMax(options);
 ```
 
 ```
 Get checkout info.
 
-const info = await finvaro.checkout.info(checkoutId: string);
+const info = await clarnium.checkout.info(checkoutId: string);
 ```
 
 ```
 Delete checkout.
 
-const remove = await finvaro.checkout.remove(checkoutId: string);
+const remove = await clarnium.checkout.remove(checkoutId: string);
 ```
 
 ```
@@ -380,7 +380,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await finvaro.checkout.updateDonation(checkoutId, options);
+const updateDonation = await clarnium.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -404,7 +404,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await finvaro.checkout.updateSale(checkoutId, options);
+const updateSale = await clarnium.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -433,7 +433,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await finvaro.checkout.updateSaleToken(checkoutId, options);
+const updateSaleToken = await clarnium.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -457,7 +457,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateCart = await finvaro.checkout.updateCart(checkoutId, options);
+const updateCart = await clarnium.checkout.updateCart(checkoutId, options);
 ```
 
 ```
@@ -471,7 +471,7 @@ let options = {
   limit?: number
 }
 
-const updateSaleToken = await finvaro.checkout.chargeList(checkoutId, options);
+const updateSaleToken = await clarnium.checkout.chargeList(checkoutId, options);
 ```
 
 7. Transaction
@@ -495,7 +495,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const transactionList = await finvaro.transaction.list(options);
+const transactionList = await clarnium.transaction.list(options);
 ```
 
 8. External call
@@ -513,7 +513,7 @@ let options = {
   value?: string;
   options?: Record<string, any>;
 }
-const info = await finvaro.externalCall.read(options);
+const info = await clarnium.externalCall.read(options);
 ```
 
 ```
@@ -531,7 +531,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await finvaro.externalCall.estimateWrite(options);
+const info = await clarnium.externalCall.estimateWrite(options);
 ```
 
 ```
@@ -549,7 +549,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await finvaro.externalCall.write(options);
+const info = await clarnium.externalCall.write(options);
 ```
 
 ```
@@ -575,7 +575,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await finvaro.externalCall.solana.mintNft(options);
+const result = await clarnium.externalCall.solana.mintNft(options);
 ```
 
 ```
@@ -601,7 +601,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await finvaro.externalCall.solana.estimateMintNft(options);
+const result = await clarnium.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap
@@ -618,7 +618,7 @@ let options = {
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
-const result = await finvaro.swap.estimate(options);
+const result = await clarnium.swap.estimate(options);
 ```
 
 ```
@@ -632,7 +632,7 @@ let options = {
   amount: string;
   type?: string; // fixed or float
 }
-const result = await finvaro.swap.bestOffer(options);
+const result = await clarnium.swap.bestOffer(options);
 ```
 
 ```
@@ -651,7 +651,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const result = await finvaro.swap.create(options);
+const result = await clarnium.swap.create(options);
 ```
 
 ```
@@ -668,7 +668,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const result = await finvaro.swap.history(options);
+const result = await clarnium.swap.history(options);
 ```
 
 10. Wallet Signature
@@ -682,7 +682,7 @@ let options = {
   sign: string;
   password?: string;
 }
-const result = await finvaro.wallet.signature.on(options);
+const result = await clarnium.wallet.signature.on(options);
 ```
 
 ```
@@ -693,7 +693,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await finvaro.wallet.signature.off(options);
+const result = await clarnium.wallet.signature.off(options);
 ```
 
 ```
@@ -704,7 +704,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await finvaro.wallet.signature.download(options);
+const result = await clarnium.wallet.signature.download(options);
 ```
 
 ```
@@ -712,7 +712,7 @@ Status Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await finvaro.wallet.signature.status();
+const result = await clarnium.wallet.signature.status();
 ```
 
 ```
@@ -724,7 +724,7 @@ let options = {
   oldPassword?: string;
   password: string;
 }
-const result = await finvaro.wallet.signature.changePassword(options);
+const result = await clarnium.wallet.signature.changePassword(options);
 ```
 
 ```
@@ -732,5 +732,5 @@ Get Status Password Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await finvaro.wallet.signature.passwordStatus();
+const result = await clarnium.wallet.signature.passwordStatus();
 ```

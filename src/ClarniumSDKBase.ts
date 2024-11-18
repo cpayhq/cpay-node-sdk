@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { FinvaroToken } from "./interfaces/finvaro.interface";
+import { ClarniumToken } from "./interfaces/clarnium.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface FinvaroSDKBaseOptions {
+export interface ClarniumSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -34,17 +34,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000,
 };
 
-export class FinvaroSDKBase {
-  protected options: Required<FinvaroSDKBaseOptions> =
-    {} as Required<FinvaroSDKBaseOptions>;
+export class ClarniumSDKBase {
+  protected options: Required<ClarniumSDKBaseOptions> =
+    {} as Required<ClarniumSDKBaseOptions>;
 
-  constructor(options?: Partial<FinvaroSDKBaseOptions>) {
+  constructor(options?: Partial<ClarniumSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<FinvaroSDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<ClarniumSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
@@ -202,7 +202,7 @@ export class FinvaroSDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<FinvaroToken> {
+  ): Promise<ClarniumToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -218,7 +218,7 @@ export class FinvaroSDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<FinvaroToken>(`${path}`, {
+      return this.request<ClarniumToken>(`${path}`, {
         method: "POST",
         json: data,
       });

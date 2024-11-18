@@ -1,13 +1,13 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import {
   TransactionListInfo,
   TransactionListOptions,
 } from "./transaction.interface";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Transaction extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Transaction extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
   }
 

@@ -1,4 +1,4 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +8,10 @@ import {
   SwapHistoryListOptions,
 } from "./swap.interface";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Swap extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Swap extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
   }
 

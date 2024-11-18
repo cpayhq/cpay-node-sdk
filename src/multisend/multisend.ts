@@ -1,4 +1,4 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
 import {
   EstimateMultisendCommonOptions,
   EstimateMultisendInfo,
@@ -6,10 +6,10 @@ import {
   MultisendInfo,
 } from "./multisend.interface";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Multisend extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Multisend extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
   }
 

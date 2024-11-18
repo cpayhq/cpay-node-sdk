@@ -1,4 +1,4 @@
-export interface FinvaroToken {
+export interface ClarniumToken {
   token: string;
 }
 

@@ -1,5 +1,5 @@
-import { FinvaroSDKBase, FinvaroSDKBaseOptions } from "../FinvaroSDKBase";
-import { BasePaginationOptions } from "../interfaces/finvaro.interface";
+import { ClarniumSDKBase, ClarniumSDKBaseOptions } from "../ClarniumSDKBase";
+import { BasePaginationOptions } from "../interfaces/clarnium.interface";
 import {
   CheckoutChargeListInfo,
   CheckoutInfo,
@@ -15,10 +15,10 @@ import {
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
 
-export interface FinvaroSDKOptions extends FinvaroSDKBaseOptions {}
+export interface ClarniumSDKOptions extends ClarniumSDKBaseOptions {}
 
-export class Checkout extends FinvaroSDKBase {
-  constructor(parameters: FinvaroSDKOptions) {
+export class Checkout extends ClarniumSDKBase {
+  constructor(parameters: ClarniumSDKOptions) {
     super(parameters);
   }
 

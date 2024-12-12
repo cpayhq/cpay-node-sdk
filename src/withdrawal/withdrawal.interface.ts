@@ -38,6 +38,7 @@ export interface CreateWithdrawalOptions extends AccessWalletOptions {
   currencyToken?: string;
   payerFeePrivateKey?: string;
   comment?: string;
+  isSmartAccount?: boolean;
 }
 
 export interface InternalTransferOptions {
@@ -51,6 +52,7 @@ export interface EstimateFeeOptions extends AccessWalletOptions {
   priority?: PriorityTx;
   currencyToken?: string;
   payerFeePrivateKey?: string;
+  isSmartAccount?: boolean;
 }
 
 enum TypeNFt {
@@ -74,4 +76,5 @@ export interface EstimateMaxOptions extends AccessWalletOptions {
   currencyToken?: string;
   payerFeePrivateKey?: string;
   priority?: PriorityTx;
+  isSmartAccount?: boolean;
 }

@@ -23,6 +23,9 @@ interface NftData {
 }
 
 export interface WalletInfo {
+  id: string;
+  address: string;
+  currencyId: string;
   balance: string;
   balanceUSD: string;
   holdBalance: string;

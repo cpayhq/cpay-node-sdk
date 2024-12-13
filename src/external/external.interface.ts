@@ -7,6 +7,9 @@ export interface ExternalOptions extends AccessWalletOptions {
   args?: any[];
   value?: string;
   options?: Record<string, any>;
+  isSmartAccount?: boolean;
+  isGasless?: boolean;
+  paymasterCurrencyToken?: string;
 }
 
 export interface ExternalEstimateWriteInfo {

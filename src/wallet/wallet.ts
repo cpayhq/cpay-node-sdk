@@ -34,12 +34,38 @@ export class Wallet extends CpaySDKBase {
     }
   }
 
+  async createSmartAccount(accessToken?: string): Promise<boolean> {
+    try {
+      if (!accessToken) {
+        accessToken = await this.getToken();
+      }
+      const path = `/api/public/wallet/smart-account`;
+
+      return this.auth_post<boolean>(`${path}`, {}, accessToken);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async getWalletInfo(accessToken?: string): Promise<WalletInfo> {
     try {
       if (!accessToken) {
         accessToken = await this.getToken(true);
       }
       const path = `/api/public/wallet`;
+
+      return this.auth_get<WalletInfo>(`${path}`, {}, accessToken);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getSmartWalletInfo(accessToken?: string): Promise<WalletInfo> {
+    try {
+      if (!accessToken) {
+        accessToken = await this.getToken(true);
+      }
+      const path = `/api/public/wallet/smart-account`;
 
       return this.auth_get<WalletInfo>(`${path}`, {}, accessToken);
     } catch (err) {

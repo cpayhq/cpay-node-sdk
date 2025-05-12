@@ -124,12 +124,20 @@ export class CpaySDKBase {
   ) => {
     const PATH = `${this.options.url.rest}${path}`;
 
+    const { idempotencyKey, ...payload } = data;
+
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    if (idempotencyKey) {
+      headers['idempotency-key'] = idempotencyKey;
+    }
+
     return this._request<T>(PATH, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      json: data,
+      headers,
+      json: payload,
     });
   };
 

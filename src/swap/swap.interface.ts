@@ -16,6 +16,7 @@ export interface SwapCreateOptions extends AccessWalletOptions {
   partner: string;
   fixed: boolean;
   rateId: string;
+  idempotencyKey?: string;
 }
 
 export interface SwapEstimateInfo {

@@ -24,6 +24,7 @@ export interface EstimateMultisendInfo {
 
 export interface EstimateMultisendCommonOptions extends AccessWalletOptions {
   estimationId: string;
+  idempotencyKey?: string;
 }
 
 export interface MultisendInfo {

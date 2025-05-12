@@ -10,6 +10,7 @@ export interface ExternalOptions extends AccessWalletOptions {
   isSmartAccount?: boolean;
   isGasless?: boolean;
   paymasterCurrencyToken?: string;
+  idempotencyKey?: string;
 }
 
 export interface ExternalEstimateWriteInfo {

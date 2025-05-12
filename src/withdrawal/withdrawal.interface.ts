@@ -41,6 +41,7 @@ export interface CreateWithdrawalOptions extends AccessWalletOptions {
   isSmartAccount?: boolean;
   paymasterCurrencyToken?: string;
   isGasless?: boolean;
+  idempotencyKey?: string;
 }
 
 export interface InternalTransferOptions {
@@ -71,6 +72,7 @@ export interface EstimateFeeNftOptions extends AccessWalletOptions {
   tokenId: number;
   type: TypeNFt;
   payerFeePrivateKey?: string;
+  idempotencyKey?: string;
 }
 
 export interface CreateNftWithdrawalOptions extends EstimateFeeNftOptions {}

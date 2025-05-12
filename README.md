@@ -144,6 +144,7 @@ let options = {
   sign?: string;
   password?: string;
   payerFeePrivateKey?: string; // Only solana
+  idempotencyKey?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -162,6 +163,7 @@ let options = {
   sign?: string;
   password?: string;
   payerFeePrivateKey?: string; // Only solana
+  idempotencyKey?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -227,6 +229,7 @@ let options = {
   estimationId: string;
   sign?: string;
   password?: string;
+  idempotencyKey?: string;
 }
 const result = await cpay.multisend.create(options);
 ```
@@ -548,6 +551,7 @@ let options = {
   options?: Record<string, any>;
   sign?: string;
   password?: string;
+  idempotencyKey?: string;
 }
 const info = await cpay.externalCall.write(options);
 ```
@@ -650,6 +654,7 @@ let options = {
   rateId: string;
   sign?: string;
   password?: string;
+  idempotencyKey?: string;
 }
 const result = await cpay.swap.create(options);
 ```

@@ -176,6 +176,7 @@ Create InternalTransfer request.
 let options = {
   to: string;
   amount: string;
+  idempotencyKey?: string;
 }
 walletId - is required.
 passphrase - is required.
@@ -209,6 +210,7 @@ let options = {
   estimationId: string;
   sign?: string;
   password?: string;
+  idempotencyKey?: string;
 }
 const approveData = await cpay.multisend.approve(options);
 ```

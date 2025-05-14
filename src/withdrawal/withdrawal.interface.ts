@@ -45,6 +45,7 @@ export interface CreateWithdrawalOptions extends AccessWalletOptions {
 export interface InternalTransferOptions {
   to: string;
   amount: string;
+  idempotencyKey?: string;
 }
 
 export interface EstimateFeeOptions extends AccessWalletOptions {

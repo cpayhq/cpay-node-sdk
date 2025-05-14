@@ -176,6 +176,7 @@ Create InternalTransfer request.
 let options = {
   to: string;
   amount: string;
+  idempotencyKey?: string;
 }
 walletId - is required.
 passphrase - is required.

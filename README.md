@@ -209,6 +209,7 @@ let options = {
   estimationId: string;
   sign?: string;
   password?: string;
+  idempotencyKey?: string;
 }
 const approveData = await cpay.multisend.approve(options);
 ```

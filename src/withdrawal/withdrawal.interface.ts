@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/geme.interface";
 
 export interface CreateWithdrawalInfo {
   id: string;

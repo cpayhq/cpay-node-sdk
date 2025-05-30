@@ -1,10 +1,10 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
 import { CurrencyInfo, CurrencyOptions } from "./currency.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface GemeSDKOptions extends GemeSDKBaseOptions {}
 
-export class Currency extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Currency extends GemeSDKBase {
+  constructor(parameters: GemeSDKOptions) {
     super(parameters);
   }
 

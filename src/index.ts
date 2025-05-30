@@ -1,5 +1,5 @@
 export * from "./constant";
-export { default as CpaySDK } from "./CpaySDK";
-export { default as default } from "./CpaySDK";
-export { CpaySDKBase } from "./CpaySDKBase";
-export * from "./interfaces/cpay.interface";
+export { default as GemeSDK } from "./GemeSDK";
+export { default as default } from "./GemeSDK";
+export { GemeSDKBase } from "./GemeSDKBase";
+export * from "./interfaces/geme.interface";

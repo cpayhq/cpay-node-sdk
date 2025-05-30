@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
 import {
   CreateWalletInfo,
   CreateWalletOptions,
@@ -6,10 +6,10 @@ import {
 } from "./wallet.interface";
 import { WalletSignature } from "./wallet.signature";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface GemeSDKOptions extends GemeSDKBaseOptions {}
 
-export class Wallet extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Wallet extends GemeSDKBase {
+  constructor(parameters: GemeSDKOptions) {
     super(parameters);
     this.signature = new WalletSignature(parameters);
   }

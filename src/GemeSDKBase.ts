@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { CpayToken, IGetToken } from "./interfaces/cpay.interface";
+import { GemeToken, IGetToken } from "./interfaces/geme.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface CpaySDKBaseOptions {
+export interface GemeSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -34,17 +34,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000,
 };
 
-export class CpaySDKBase {
-  protected options: Required<CpaySDKBaseOptions> =
-    {} as Required<CpaySDKBaseOptions>;
+export class GemeSDKBase {
+  protected options: Required<GemeSDKBaseOptions> =
+    {} as Required<GemeSDKBaseOptions>;
 
-  constructor(options?: Partial<CpaySDKBaseOptions>) {
+  constructor(options?: Partial<GemeSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<GemeSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
@@ -131,7 +131,7 @@ export class CpaySDKBase {
     };
 
     if (idempotencyKey) {
-      headers['idempotency-key'] = idempotencyKey;
+      headers["idempotency-key"] = idempotencyKey;
     }
 
     return this._request<T>(PATH, {
@@ -210,7 +210,7 @@ export class CpaySDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<CpayToken> {
+  ): Promise<GemeToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -226,7 +226,7 @@ export class CpaySDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<CpayToken>(`${path}`, {
+      return this.request<GemeToken>(`${path}`, {
         method: "POST",
         json: data,
       });

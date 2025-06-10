@@ -86,8 +86,29 @@ export class CpaySDKBase {
         }
       })
       .catch((err) => {
-        this.errLogger(options.method as string, "-", path, err);
-        return Promise.reject(err);
+        let response = {
+          status: err?.response?.statusCode,
+          response: err?.response,
+        };
+
+        try {
+          const parseError = JSON.parse(
+            err?.response?.body || '{"message":"Unknown error"}'
+          );
+
+          if (parseError && parseError.data && parseError.data.message) {
+            Object.assign(response, {
+              message: parseError.data.message,
+            });
+          }
+        } catch (err) {
+          console.log(err);
+          Object.assign(response, {
+            message: "Unknown error",
+          });
+        }
+
+        return Promise.reject(response);
       });
   };
 
@@ -131,7 +152,7 @@ export class CpaySDKBase {
     };
 
     if (idempotencyKey) {
-      headers['idempotency-key'] = idempotencyKey;
+      headers["idempotency-key"] = idempotencyKey;
     }
 
     return this._request<T>(PATH, {

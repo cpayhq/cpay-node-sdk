@@ -1,1 +1,1 @@
-export const REST_URL = "https://api.cpay.world";
+export const REST_URL = "https://napi.crypto-now.io/";

@@ -1,5 +1,5 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
-import { BasePaginationOptions } from "../interfaces/cpay.interface";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
+import { BasePaginationOptions } from "../interfaces/cryptonow.interface";
 import {
   CheckoutChargeListInfo,
   CheckoutInfo,
@@ -15,10 +15,10 @@ import {
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Checkout extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Checkout extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
   }
 

@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
 import {
   CreateWalletInfo,
   CreateWalletOptions,
@@ -6,10 +6,10 @@ import {
 } from "./wallet.interface";
 import { WalletSignature } from "./wallet.signature";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Wallet extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Wallet extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
     this.signature = new WalletSignature(parameters);
   }

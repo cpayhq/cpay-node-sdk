@@ -1,6 +1,6 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
-import { CpaySDKBaseOptions } from "./CpaySDKBase";
+import { CryptoNowSDKBaseOptions } from "./CryptoNowSDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
 import { Multisend } from "./multisend/multisend";
@@ -9,13 +9,13 @@ import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class CpaySDK {
+export class CryptoNowSDK {
   /**
    * @param parameters
    */
-  constructor(parameters: CpaySDKOptions) {
+  constructor(parameters: CryptoNowSDKOptions) {
     this.wallet = new Wallet(parameters);
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
@@ -38,4 +38,4 @@ export class CpaySDK {
   swap: Swap;
 }
 
-export default CpaySDK;
+export default CryptoNowSDK;

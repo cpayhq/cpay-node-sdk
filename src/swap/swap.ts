@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +8,10 @@ import {
   SwapHistoryListOptions,
 } from "./swap.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Swap extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Swap extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
   }
 

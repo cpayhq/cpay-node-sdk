@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
 import {
   CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
@@ -12,10 +12,10 @@ import {
   InternalTransferOptions,
 } from "./withdrawal.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Withdrawal extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Withdrawal extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
   }
 

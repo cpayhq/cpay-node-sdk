@@ -1,13 +1,13 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
 import {
   TransactionListInfo,
   TransactionListOptions,
 } from "./transaction.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Transaction extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Transaction extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
   }
 

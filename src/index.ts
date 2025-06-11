@@ -1,5 +1,4 @@
 export * from "./constant";
-export { default as CpaySDK } from "./CpaySDK";
-export { default as default } from "./CpaySDK";
-export { CpaySDKBase } from "./CpaySDKBase";
-export * from "./interfaces/cpay.interface";
+export { default as CryptoNowSDK, default as default } from "./CryptoNowSDK";
+export { CryptoNowSDKBase } from "./CryptoNowSDKBase";
+export * from "./interfaces/cryptonow.interface";

@@ -1,9 +1,9 @@
 {
   "author": {
-    "name": "cpay"
+    "name": "cryptoNow"
   },
   "bugs": {
-    "url": "https://github.com/cpayhq/cpay-node-sdk/issues"
+    "url": ""
   },
   "bundleDependencies": [],
   "dependencies": {
@@ -13,23 +13,23 @@
     "typescript-memoize": "^1.1.1"
   },
   "deprecated": false,
-  "description": "Cpay REST API",
+  "description": "CryptoNow REST API",
   "devDependencies": {
     "@types/lodash": "^4.17.24",
     "typescript": "^4.8.4"
   },
-  "homepage": "https://github.com/cpayhq/cpay-node-sdk#readme",
+  "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
-  "name": "cpay-node-api-sdk",
+  "name": "cryptoNow-node-api-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cpayhq/cpay-node-sdk"
+    "url": ""
   },
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "publish:patch": "npm version patch && npm publish",
     "deploy": "npm run build && npm publish"
   },
-  "version": "2.1.1"
+  "version": "2.0.0"
 }

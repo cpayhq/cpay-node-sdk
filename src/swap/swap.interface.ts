@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/cryptonow.interface";
 
 export interface SwapEstimateOptions {
   fromId: string;

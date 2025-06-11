@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CryptoNowSDKBase, CryptoNowSDKBaseOptions } from "../CryptoNowSDKBase";
 import {
   ClientBalancesQuery,
   ClientListInfo,
@@ -8,16 +8,16 @@ import {
   RegisterClientOptions,
 } from "./client.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CryptoNowSDKOptions extends CryptoNowSDKBaseOptions {}
 
-export class Client extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Client extends CryptoNowSDKBase {
+  constructor(parameters: CryptoNowSDKOptions) {
     super(parameters);
   }
 
   async register(
     options: RegisterClientOptions,
-    accessToken?: string
+    accessToken?: string,
   ): Promise<ClientRegisterInfo> {
     try {
       if (!accessToken) {
@@ -25,7 +25,11 @@ export class Client extends CpaySDKBase {
       }
       const path = `/api/public/client/register`;
 
-      return this.auth_post<ClientRegisterInfo>(`${path}`, options, accessToken);
+      return this.auth_post<ClientRegisterInfo>(
+        `${path}`,
+        options,
+        accessToken,
+      );
     } catch (err) {
       throw err;
     }
@@ -33,7 +37,7 @@ export class Client extends CpaySDKBase {
 
   async list(
     options: ClientListQuery,
-    accessToken?: string
+    accessToken?: string,
   ): Promise<ClientListInfo> {
     try {
       if (!accessToken) {
@@ -41,7 +45,11 @@ export class Client extends CpaySDKBase {
       }
       const path = `/api/public/client/list`;
 
-      return this.auth_get<ClientListInfo>(`${path}`, { ...options }, accessToken);
+      return this.auth_get<ClientListInfo>(
+        `${path}`,
+        { ...options },
+        accessToken,
+      );
     } catch (err) {
       throw err;
     }
@@ -50,7 +58,7 @@ export class Client extends CpaySDKBase {
   async getBalances(
     clientId: string,
     options: ClientBalancesQuery,
-    accessToken?: string
+    accessToken?: string,
   ): Promise<ClientWalletInfo[]> {
     try {
       if (!accessToken) {
@@ -61,7 +69,7 @@ export class Client extends CpaySDKBase {
       return this.auth_get<ClientWalletInfo[]>(
         `${path}`,
         { ...options },
-        accessToken
+        accessToken,
       );
     } catch (err) {
       throw err;

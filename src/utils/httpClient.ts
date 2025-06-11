@@ -48,6 +48,13 @@ export const request = async function <T>(url, options: Options = {}) {
       throw Error(response.statusMessage);
     }
   } catch (err) {
-    throw err;
+    const parseError = JSON.parse(
+      err?.response?.body || '{"message":"Unknown error"}'
+    );
+    if (parseError && parseError.data && parseError.data.message) {
+      throw Error(parseError.data.message);
+    }
+
+    throw Error(err.message);
   }
 };

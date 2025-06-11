@@ -1,14 +1,14 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { InexSDKBase, InexSDKBaseOptions } from "../InexSDKBase";
 import {
   SignatureChangePasswordOptions,
   SignatureCommonOptions,
   SignatureOnOptions,
 } from "./wallet.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InexSDKOptions extends InexSDKBaseOptions {}
 
-export class WalletSignature extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class WalletSignature extends InexSDKBase {
+  constructor(parameters: InexSDKOptions) {
     super(parameters);
   }
 

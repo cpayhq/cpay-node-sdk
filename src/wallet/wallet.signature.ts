@@ -1,14 +1,17 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import {
   SignatureChangePasswordOptions,
   SignatureCommonOptions,
   SignatureOnOptions,
 } from "./wallet.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class WalletSignature extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class WalletSignature extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

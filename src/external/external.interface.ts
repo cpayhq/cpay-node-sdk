@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/instaxgateway.interface";
 
 export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];
@@ -39,7 +39,7 @@ export enum SolanaNftType {
 }
 
 export enum SolanaNftStorageType {
-  CPAY = "cpay",
+  INSTAXGATEWAY = "instaxgateway",
 }
 
 export interface SolanaCollectionInfo {

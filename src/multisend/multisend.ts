@@ -1,4 +1,7 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import {
   EstimateMultisendCommonOptions,
   EstimateMultisendInfo,
@@ -6,10 +9,10 @@ import {
   MultisendInfo,
 } from "./multisend.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class Multisend extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Multisend extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

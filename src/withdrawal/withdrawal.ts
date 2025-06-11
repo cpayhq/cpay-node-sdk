@@ -1,4 +1,7 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import {
   CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
@@ -12,10 +15,10 @@ import {
   InternalTransferOptions,
 } from "./withdrawal.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class Withdrawal extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Withdrawal extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

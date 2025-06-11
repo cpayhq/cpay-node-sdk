@@ -1,21 +1,21 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
-import { CpaySDKBaseOptions } from "./CpaySDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
+import { InstaxGatewaySDKBaseOptions } from "./InstaxGatewaySDKBase";
 import { Multisend } from "./multisend/multisend";
 import { Swap } from "./swap/swap";
 import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class CpaySDK {
+export class InstaxGatewaySDK {
   /**
    * @param parameters
    */
-  constructor(parameters: CpaySDKOptions) {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     this.wallet = new Wallet(parameters);
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
@@ -38,4 +38,4 @@ export class CpaySDK {
   swap: Swap;
 }
 
-export default CpaySDK;
+export default InstaxGatewaySDK;

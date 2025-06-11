@@ -1,10 +1,13 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import { RegisterInfo, RegisterOptions } from "./auth.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class Auth extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Auth extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

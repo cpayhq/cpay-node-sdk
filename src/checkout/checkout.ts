@@ -1,5 +1,8 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
-import { BasePaginationOptions } from "../interfaces/cpay.interface";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
+import { BasePaginationOptions } from "../interfaces/instaxgateway.interface";
 import {
   CheckoutChargeListInfo,
   CheckoutInfo,
@@ -15,10 +18,10 @@ import {
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class Checkout extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Checkout extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

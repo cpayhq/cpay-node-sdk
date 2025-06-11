@@ -1,14 +1,17 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalSolanaMintNftInfo,
   ExternalSolanaMintNftOptions,
 } from "./external.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class ExternalSolana extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class ExternalSolana extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

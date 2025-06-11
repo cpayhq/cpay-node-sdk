@@ -1,4 +1,7 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import {
+  InstaxGatewaySDKBase,
+  InstaxGatewaySDKBaseOptions,
+} from "../InstaxGatewaySDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +11,10 @@ import {
   SwapHistoryListOptions,
 } from "./swap.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface InstaxGatewaySDKOptions extends InstaxGatewaySDKBaseOptions {}
 
-export class Swap extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Swap extends InstaxGatewaySDKBase {
+  constructor(parameters: InstaxGatewaySDKOptions) {
     super(parameters);
   }
 

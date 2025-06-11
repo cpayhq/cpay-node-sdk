@@ -1,11 +1,11 @@
-# cpay-node-sdk
+# instaxgateway-node-sdk
 
 ```
-npm i cpay-node-api-sdk
+npm i instaxgateway-node-api-sdk
 ```
 
 ```
-import CpaySDK from 'cpay-node-api-sdk';
+import InstaxGatewaySDK from 'instaxgateway-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',
@@ -13,7 +13,7 @@ let options = {
   walletId?: 'walletId',
   passphrase?: 'passphrase'
 }
-const cpay = new CpaySDK(options)
+const instaxgateway = new InstaxGatewaySDK(options)
 ```
 
 Available Methods:
@@ -31,7 +31,7 @@ let options = {
   agent?: string;
 }
 
-const result = await cpay.auth.register(options);
+const result = await instaxgateway.auth.register(options);
 ```
 
 2. Wallet
@@ -49,7 +49,7 @@ let options = {
   isNew?: boolean;
 }
 Available Currencies: See point 5.
-const wallet = await cpay.wallet.createDepositWallet(options);
+const wallet = await instaxgateway.wallet.createDepositWallet(options);
 ```
 
 ```
@@ -57,7 +57,7 @@ Get wallet info
 
 walletId - is required.
 passphrase - is required.
-const walletInfo = await cpay.wallet.getWalletInfo();
+const walletInfo = await instaxgateway.wallet.getWalletInfo();
 
 ```
 
@@ -66,7 +66,7 @@ Get private key
 
 walletId - is required.
 passphrase - is required.
-const pk = await cpay.wallet.getPrivateKey();
+const pk = await instaxgateway.wallet.getPrivateKey();
 
 ```
 
@@ -75,7 +75,7 @@ Get mnemonic
 
 walletId - is required.
 passphrase - is required.
-const pk = await cpay.wallet.getMnemonic();
+const pk = await instaxgateway.wallet.getMnemonic();
 
 ```
 
@@ -96,7 +96,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await cpay.withdrawal.estimateFee(options);
+const estimateFee = await instaxgateway.withdrawal.estimateFee(options);
 ```
 
 ```
@@ -114,7 +114,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await cpay.withdrawal.estimateNftFee(options);
+const estimateFee = await instaxgateway.withdrawal.estimateNftFee(options);
 ```
 
 ```
@@ -130,7 +130,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const max = await cpay.withdrawal.estimateMax(options);
+const max = await instaxgateway.withdrawal.estimateMax(options);
 ```
 
 ```
@@ -148,7 +148,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.create(options);
+const withdrawal = await instaxgateway.withdrawal.create(options);
 ```
 
 ```
@@ -167,7 +167,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.nftTransfer(options);
+const withdrawal = await instaxgateway.withdrawal.nftTransfer(options);
 ```
 
 ```
@@ -180,7 +180,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.internalTransfer(options);
+const withdrawal = await instaxgateway.withdrawal.internalTransfer(options);
 ```
 
 4. Available merchant currencies
@@ -188,7 +188,7 @@ const withdrawal = await cpay.withdrawal.internalTransfer(options);
 ```
 let options = {
 }
-const currencies = await cpay.currency.getAvailableCurrencies(options);
+const currencies = await instaxgateway.currency.getAvailableCurrencies(options);
 ```
 
 5. Multisend
@@ -201,7 +201,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const estimateData = await cpay.multisend.estimateSystemFee(options);
+const estimateData = await instaxgateway.multisend.estimateSystemFee(options);
 ```
 
 ```
@@ -212,7 +212,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const approveData = await cpay.multisend.approve(options);
+const approveData = await instaxgateway.multisend.approve(options);
 ```
 
 ```
@@ -222,7 +222,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await cpay.multisend.estimateMinerFee(options);
+const approveData = await instaxgateway.multisend.estimateMinerFee(options);
 ```
 
 ```
@@ -233,7 +233,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await cpay.multisend.create(options);
+const result = await instaxgateway.multisend.create(options);
 ```
 
 6. Checkout
@@ -248,7 +248,7 @@ let options = {
   page?: number,
   limit?: number
 }
-const checkoutList = await cpay.checkout.list(options);
+const checkoutList = await instaxgateway.checkout.list(options);
 ```
 
 ```
@@ -268,7 +268,7 @@ let options = {
   organizationName: string
 }
 
-const createDonation = await cpay.checkout.createDonation(options);
+const createDonation = await instaxgateway.checkout.createDonation(options);
 ```
 
 ```
@@ -290,7 +290,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createDonation = await cpay.checkout.createCart(options);
+const createDonation = await instaxgateway.checkout.createCart(options);
 ```
 
 ```
@@ -312,7 +312,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createSale = await cpay.checkout.createSale(options);
+const createSale = await instaxgateway.checkout.createSale(options);
 ```
 
 ```
@@ -339,7 +339,7 @@ let options = {
   tradedWallet: string;
 }
 
-const createSaleToken = await cpay.checkout.createSaleToken(options);
+const createSaleToken = await instaxgateway.checkout.createSaleToken(options);
 ```
 
 ```
@@ -351,19 +351,19 @@ let options = {
   checkoutId?: string;
 }
 
-const saleTokenEstimateMax = await cpay.checkout.saleTokenEstimateMax(options);
+const saleTokenEstimateMax = await instaxgateway.checkout.saleTokenEstimateMax(options);
 ```
 
 ```
 Get checkout info.
 
-const info = await cpay.checkout.info(checkoutId: string);
+const info = await instaxgateway.checkout.info(checkoutId: string);
 ```
 
 ```
 Delete checkout.
 
-const remove = await cpay.checkout.remove(checkoutId: string);
+const remove = await instaxgateway.checkout.remove(checkoutId: string);
 ```
 
 ```
@@ -385,7 +385,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await cpay.checkout.updateDonation(checkoutId, options);
+const updateDonation = await instaxgateway.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -409,7 +409,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await cpay.checkout.updateSale(checkoutId, options);
+const updateSale = await instaxgateway.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -438,7 +438,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await cpay.checkout.updateSaleToken(checkoutId, options);
+const updateSaleToken = await instaxgateway.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -462,7 +462,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateCart = await cpay.checkout.updateCart(checkoutId, options);
+const updateCart = await instaxgateway.checkout.updateCart(checkoutId, options);
 ```
 
 ```
@@ -476,7 +476,7 @@ let options = {
   limit?: number
 }
 
-const updateSaleToken = await cpay.checkout.chargeList(checkoutId, options);
+const updateSaleToken = await instaxgateway.checkout.chargeList(checkoutId, options);
 ```
 
 7. Transaction
@@ -500,7 +500,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const transactionList = await cpay.transaction.list(options);
+const transactionList = await instaxgateway.transaction.list(options);
 ```
 
 8. External call
@@ -518,7 +518,7 @@ let options = {
   value?: string;
   options?: Record<string, any>;
 }
-const info = await cpay.externalCall.read(options);
+const info = await instaxgateway.externalCall.read(options);
 ```
 
 ```
@@ -536,7 +536,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await cpay.externalCall.estimateWrite(options);
+const info = await instaxgateway.externalCall.estimateWrite(options);
 ```
 
 ```
@@ -555,7 +555,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const info = await cpay.externalCall.write(options);
+const info = await instaxgateway.externalCall.write(options);
 ```
 
 ```
@@ -581,7 +581,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await cpay.externalCall.solana.mintNft(options);
+const result = await instaxgateway.externalCall.solana.mintNft(options);
 ```
 
 ```
@@ -607,7 +607,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await cpay.externalCall.solana.estimateMintNft(options);
+const result = await instaxgateway.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap
@@ -624,7 +624,7 @@ let options = {
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
-const result = await cpay.swap.estimate(options);
+const result = await instaxgateway.swap.estimate(options);
 ```
 
 ```
@@ -638,7 +638,7 @@ let options = {
   amount: string;
   type?: string; // fixed or float
 }
-const result = await cpay.swap.bestOffer(options);
+const result = await instaxgateway.swap.bestOffer(options);
 ```
 
 ```
@@ -658,7 +658,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await cpay.swap.create(options);
+const result = await instaxgateway.swap.create(options);
 ```
 
 ```
@@ -675,7 +675,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const result = await cpay.swap.history(options);
+const result = await instaxgateway.swap.history(options);
 ```
 
 10. Wallet Signature
@@ -689,7 +689,7 @@ let options = {
   sign: string;
   password?: string;
 }
-const result = await cpay.wallet.signature.on(options);
+const result = await instaxgateway.wallet.signature.on(options);
 ```
 
 ```
@@ -700,7 +700,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await cpay.wallet.signature.off(options);
+const result = await instaxgateway.wallet.signature.off(options);
 ```
 
 ```
@@ -711,7 +711,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await cpay.wallet.signature.download(options);
+const result = await instaxgateway.wallet.signature.download(options);
 ```
 
 ```
@@ -719,7 +719,7 @@ Status Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await cpay.wallet.signature.status();
+const result = await instaxgateway.wallet.signature.status();
 ```
 
 ```
@@ -731,7 +731,7 @@ let options = {
   oldPassword?: string;
   password: string;
 }
-const result = await cpay.wallet.signature.changePassword(options);
+const result = await instaxgateway.wallet.signature.changePassword(options);
 ```
 
 ```
@@ -739,5 +739,5 @@ Get Status Password Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await cpay.wallet.signature.passwordStatus();
+const result = await instaxgateway.wallet.signature.passwordStatus();
 ```

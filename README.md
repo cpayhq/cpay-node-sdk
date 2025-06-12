@@ -1,11 +1,11 @@
-# cryptoNow-node-sdk
+# crypto-now-node-sdk
 
 ```
-npm i cryptoNow-node-api-sdk
+npm i crypto-now-node-api-sdk
 ```
 
 ```
-import CryptoNowSDK from 'cryptoNow-node-api-sdk';
+import CryptoNowSDK from 'crypto-now-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',

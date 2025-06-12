@@ -20,7 +20,7 @@
     "homepage": "",
     "license": "ISC",
     "main": "lib/index.js",
-    "name": "cryptoNow-node-api-sdk",
+    "name": "crypto-now-node-api-sdk",
     "repository": {
         "type": "git",
         "url": ""
@@ -30,5 +30,5 @@
         "publish:patch": "npm version patch && npm publish",
         "deploy": "npm run build && npm publish"
     },
-    "version": "2.0.6"
+    "version": "1.0.0"
 }

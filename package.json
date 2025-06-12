@@ -21,7 +21,7 @@
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
-  "name": "cryptoNow-node-api-sdk",
+  "name": "crypto-now-node-api-sdk",
   "repository": {
     "type": "git",
     "url": ""

@@ -1,6 +1,7 @@
 import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
 import { BasePaginationOptions } from "../interfaces/cpay.interface";
 import {
+  ChargeTransactionsOptions,
   CheckoutChargeListInfo,
   CheckoutInfo,
   CheckoutListInfo,
@@ -14,6 +15,7 @@ import {
   UpdateSaleOptions,
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
+import { TransactionListInfo } from "../transaction/transaction.interface";
 
 export interface CpaySDKOptions extends CpaySDKBaseOptions {}
 
@@ -269,6 +271,31 @@ export class Checkout extends CpaySDKBase {
         `${path}`,
         { ...options },
         accessToken
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async chargeTransactionsList(
+      chargeId: string,
+      options?: ChargeTransactionsOptions,
+      accessToken?: string
+  ) {
+    try {
+      if (!accessToken) {
+        const { token } = await this.auth(
+            this.options.publicKey,
+            this.options.privateKey
+        );
+        accessToken = token;
+      }
+      const path = `/api/public/checkout/${chargeId}/transaction-list`;
+
+      return this.auth_get<TransactionListInfo>(
+          `${path}`,
+          { ...options },
+          accessToken
       );
     } catch (err) {
       throw err;

@@ -265,7 +265,8 @@ let options = {
   collectName?: boolean,
   collectEmail?: boolean,
   description: string,
-  organizationName: string
+  organizationName: string,
+  hideRetry?: boolean,
 }
 
 const createDonation = await cpay.checkout.createDonation(options);
@@ -288,6 +289,7 @@ let options = {
   organizationName: string;
   cartName: string;
   fiatCurrency: string;
+  hideRetry?: boolean,
 }
 
 const createDonation = await cpay.checkout.createCart(options);
@@ -310,6 +312,7 @@ let options = {
   productName: string;
   price: string;
   fiatCurrency: string;
+  hideRetry?: boolean,
 }
 
 const createSale = await cpay.checkout.createSale(options);
@@ -337,6 +340,7 @@ let options = {
   fixed: string;
   tradedCurrency: string;
   tradedWallet: string;
+  hideRetry?: boolean,
 }
 
 const createSaleToken = await cpay.checkout.createSaleToken(options);
@@ -476,7 +480,27 @@ let options = {
   limit?: number
 }
 
-const updateSaleToken = await cpay.checkout.chargeList(checkoutId, options);
+const chargeList = await cpay.checkout.chargeList(checkoutId, options);
+```
+
+```
+Get transactions list by charge
+
+typeNetwork - is required.
+
+let options = {
+  typeNetwork: string;
+  search?: string;
+  from?: number;
+  to?: number;
+  currencyId?: string;
+  sort?: string;
+  order?: string;
+  page?: number;
+  limit?: number;
+}
+
+const transactionsByChargeList = await cpay.checkout.chargeTransactionsList(chargeId, options);
 ```
 
 7. Transaction

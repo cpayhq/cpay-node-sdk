@@ -24,6 +24,7 @@ export interface CheckoutInfo {
   logoImage?: string;
   image?: string;
   metadata?: Record<string, any>;
+  hideRetry?: boolean;
 }
 export interface CheckoutListInfo {
   entities: CheckoutInfo[];
@@ -37,6 +38,7 @@ export interface CheckoutChargeListInfo {
     id: boolean;
     systemStatus: string;
     createdAt: string;
+    outsideOrderId?: string;
   }[];
   page: number;
   pages: number;
@@ -54,6 +56,7 @@ export interface CreateCheckoutBaseOptions {
   metadata?: Record<string, any>;
   accentColor?: string;
   backgroundColor?: string;
+  hideRetry?: boolean;
 }
 
 export interface UpdateCheckoutBaseOptions {
@@ -107,4 +110,16 @@ export interface SaleTokenEstimateMaxOptions {
   tradedWallet: string;
   tradedCurrency: string;
   checkoutId?: string;
+}
+
+export interface ChargeTransactionsOptions {
+  typeNetwork: string;
+  search?: string;
+  from?: number;
+  to?: number;
+  currencyId?: string;
+  sort?: string;
+  order?: string;
+  page?: number;
+  limit?: number;
 }

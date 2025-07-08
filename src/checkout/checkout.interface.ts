@@ -122,4 +122,5 @@ export interface ChargeTransactionsOptions {
   order?: string;
   page?: number;
   limit?: number;
+  chargeId?: string;
 }

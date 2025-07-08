@@ -278,7 +278,7 @@ export class Checkout extends CpaySDKBase {
   }
 
   async chargeTransactionsList(
-      chargeId: string,
+      checkoutId: string,
       options?: ChargeTransactionsOptions,
       accessToken?: string
   ) {
@@ -290,7 +290,7 @@ export class Checkout extends CpaySDKBase {
         );
         accessToken = token;
       }
-      const path = `/api/public/checkout/${chargeId}/transaction-list`;
+      const path = `/api/public/checkout/${checkoutId}/transaction-list`;
 
       return this.auth_get<TransactionListInfo>(
           `${path}`,

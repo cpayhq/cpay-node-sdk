@@ -484,7 +484,7 @@ const chargeList = await cpay.checkout.chargeList(checkoutId, options);
 ```
 
 ```
-Get transactions list by charge
+Get transactions list by checkout
 
 typeNetwork - is required.
 
@@ -498,6 +498,7 @@ let options = {
   order?: string;
   page?: number;
   limit?: number;
+  chargeId?: string;
 }
 
 const transactionsByChargeList = await cpay.checkout.chargeTransactionsList(chargeId, options);

@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { CpayToken, IGetToken } from "./interfaces/cpay.interface";
+import { CoineraToken } from "./interfaces/coinera.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface CpaySDKBaseOptions {
+export interface CoineraSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -29,30 +29,30 @@ const DEFAUTL_HTTP_OPTIONS = {
   headers: {
     "Content-Type": "application/json",
     "User-Agent":
-      "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36",
+      "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
   },
-  timeout: 6000,
+  timeout: 6000
 };
 
-export class CpaySDKBase {
-  protected options: Required<CpaySDKBaseOptions> =
-    {} as Required<CpaySDKBaseOptions>;
+export class CoineraSDKBase {
+  protected options: Required<CoineraSDKBaseOptions> =
+    {} as Required<CoineraSDKBaseOptions>;
 
-  constructor(options?: Partial<CpaySDKBaseOptions>) {
+  constructor(options?: Partial<CoineraSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<CoineraSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
       httpOptions: _.merge({}, DEFAUTL_HTTP_OPTIONS, httpOptions || {}),
       url: {
         rest: REST_URL,
-        ...(url || {}),
-      },
+        ...(url || {})
+      }
     });
     if (otherOptions) {
       _.merge(this.options, otherOptions);
@@ -88,7 +88,7 @@ export class CpaySDKBase {
       .catch((err) => {
         let response = {
           status: err?.response?.statusCode,
-          response: err?.response,
+          response: err?.response
         };
 
         try {
@@ -98,13 +98,13 @@ export class CpaySDKBase {
 
           if (parseError && parseError.data && parseError.data.message) {
             Object.assign(response, {
-              message: parseError.data.message,
+              message: parseError.data.message
             });
           }
         } catch (err) {
           console.log(err);
           Object.assign(response, {
-            message: "Unknown error",
+            message: "Unknown error"
           });
         }
 
@@ -132,9 +132,9 @@ export class CpaySDKBase {
     return this._request<T>(PATH, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      searchParams: params,
+      searchParams: params
     });
   };
 
@@ -148,7 +148,7 @@ export class CpaySDKBase {
     const { idempotencyKey, ...payload } = data;
 
     const headers: Record<string, string> = {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`
     };
 
     if (idempotencyKey) {
@@ -158,7 +158,7 @@ export class CpaySDKBase {
     return this._request<T>(PATH, {
       method: "POST",
       headers,
-      json: payload,
+      json: payload
     });
   };
 
@@ -167,7 +167,7 @@ export class CpaySDKBase {
 
     return this._request<T>(PATH, {
       method: "POST",
-      json: data,
+      json: data
     });
   };
 
@@ -181,9 +181,9 @@ export class CpaySDKBase {
     return this._request<T>(PATH, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      json: data,
+      json: data
     });
   };
 
@@ -197,9 +197,9 @@ export class CpaySDKBase {
     return this._request<T>(PATH, {
       method: "PATCH",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      json: data,
+      json: data
     });
   };
 
@@ -231,12 +231,12 @@ export class CpaySDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<CpayToken> {
+  ): Promise<CoineraToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
         publicKey,
-        privateKey,
+        privateKey
       };
 
       if (walletId) {
@@ -247,9 +247,9 @@ export class CpaySDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<CpayToken>(`${path}`, {
+      return this.request<CoineraToken>(`${path}`, {
         method: "POST",
-        json: data,
+        json: data
       });
     } else {
       throw new Error("Keys is required.");

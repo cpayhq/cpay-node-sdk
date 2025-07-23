@@ -1,14 +1,14 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
 import {
   SignatureChangePasswordOptions,
   SignatureCommonOptions,
-  SignatureOnOptions,
+  SignatureOnOptions
 } from "./wallet.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class WalletSignature extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class WalletSignature extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 

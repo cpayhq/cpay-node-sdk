@@ -1,17 +1,17 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
   SwapEstimateInfo,
   SwapEstimateOptions,
   SwapHistoryInfo,
-  SwapHistoryListOptions,
+  SwapHistoryListOptions
 } from "./swap.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class Swap extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Swap extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 

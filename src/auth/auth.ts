@@ -1,10 +1,10 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
 import { RegisterInfo, RegisterOptions } from "./auth.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class Auth extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Auth extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 

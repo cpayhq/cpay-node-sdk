@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/coinera.interface";
 
 export interface CreateWithdrawalInfo {
   id: string;
@@ -28,7 +28,7 @@ export interface EstimateMaxInfo {
 export enum PriorityTx {
   LOW = "low",
   MEDIUM = "medium",
-  HIGH = "high",
+  HIGH = "high"
 }
 
 export interface CreateWithdrawalOptions extends AccessWalletOptions {
@@ -63,7 +63,7 @@ export interface EstimateFeeOptions extends AccessWalletOptions {
 
 enum TypeNFt {
   ERC_721 = "erc721",
-  ERC_1155 = "erc1155",
+  ERC_1155 = "erc1155"
 }
 
 export interface EstimateFeeNftOptions extends AccessWalletOptions {

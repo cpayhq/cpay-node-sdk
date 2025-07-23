@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/coinera.interface";
 
 export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];
@@ -35,11 +35,11 @@ export interface SolanaMetadataOptions {
 
 export enum SolanaNftType {
   COLLECTION = "collection",
-  NFT = "nft",
+  NFT = "nft"
 }
 
 export enum SolanaNftStorageType {
-  CPAY = "cpay",
+  COINERA = "coinera"
 }
 
 export interface SolanaCollectionInfo {

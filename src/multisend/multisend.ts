@@ -1,15 +1,15 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
 import {
   EstimateMultisendCommonOptions,
   EstimateMultisendInfo,
   EstimateSystemFeeOptions,
-  MultisendInfo,
+  MultisendInfo
 } from "./multisend.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class Multisend extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Multisend extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 

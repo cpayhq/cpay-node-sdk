@@ -1,5 +1,5 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
-import { BasePaginationOptions } from "../interfaces/cpay.interface";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { BasePaginationOptions } from "../interfaces/coinera.interface";
 import {
   ChargeTransactionsOptions,
   CheckoutChargeListInfo,
@@ -13,14 +13,14 @@ import {
   UpdateCartOptions,
   UpdateDonationOptions,
   UpdateSaleOptions,
-  UpdateSaleTokenOptions,
+  UpdateSaleTokenOptions
 } from "./checkout.interface";
 import { TransactionListInfo } from "../transaction/transaction.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class Checkout extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Checkout extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 
@@ -278,24 +278,24 @@ export class Checkout extends CpaySDKBase {
   }
 
   async chargeTransactionsList(
-      checkoutId: string,
-      options?: ChargeTransactionsOptions,
-      accessToken?: string
+    checkoutId: string,
+    options?: ChargeTransactionsOptions,
+    accessToken?: string
   ) {
     try {
       if (!accessToken) {
         const { token } = await this.auth(
-            this.options.publicKey,
-            this.options.privateKey
+          this.options.publicKey,
+          this.options.privateKey
         );
         accessToken = token;
       }
       const path = `/api/public/checkout/${checkoutId}/transaction-list`;
 
       return this.auth_get<TransactionListInfo>(
-          `${path}`,
-          { ...options },
-          accessToken
+        `${path}`,
+        { ...options },
+        accessToken
       );
     } catch (err) {
       throw err;

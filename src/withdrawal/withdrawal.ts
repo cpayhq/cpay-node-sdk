@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { CoineraSDKBase, CoineraSDKBaseOptions } from 'src/CoineraSDKBase';
 import {
   CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
@@ -9,13 +9,13 @@ import {
   EstimateFeeOptions,
   EstimateMaxInfo,
   EstimateMaxOptions,
-  InternalTransferOptions,
-} from "./withdrawal.interface";
+  InternalTransferOptions
+} from './withdrawal.interface';
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
 
-export class Withdrawal extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Withdrawal extends CoineraSDKBase {
+  constructor(parameters: CoineraSDKOptions) {
     super(parameters);
   }
 

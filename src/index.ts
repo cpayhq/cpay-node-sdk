@@ -1,5 +1,5 @@
 export * from "./constant";
-export { default as CoineraSDK } from "./CoineraSDK";
-export { default as default } from "./CoineraSDK";
-export { CoineraSDKBase } from "./CoineraSDKBase";
-export * from "./interfaces/coinera.interface";
+export { default as FineraSDK } from "./FineraSDK";
+export { default as default } from "./FineraSDK";
+export { FineraSDKBase } from "./FineraSDKBase";
+export * from "./interfaces/finera.interface";

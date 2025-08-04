@@ -1,5 +1,5 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
-import { BasePaginationOptions } from "../interfaces/coinera.interface";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
+import { BasePaginationOptions } from "../interfaces/finera.interface";
 import {
   ChargeTransactionsOptions,
   CheckoutChargeListInfo,
@@ -17,10 +17,10 @@ import {
 } from "./checkout.interface";
 import { TransactionListInfo } from "../transaction/transaction.interface";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Checkout extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Checkout extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
   }
 

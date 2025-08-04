@@ -1,4 +1,4 @@
-export interface CoineraToken {
+export interface FineraToken {
   token: string;
 }
 

@@ -1,4 +1,4 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +8,10 @@ import {
   SwapHistoryListOptions
 } from "./swap.interface";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Swap extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Swap extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
   }
 

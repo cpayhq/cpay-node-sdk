@@ -1,11 +1,11 @@
-# coinera-node-sdk
+# finera-node-sdk
 
 ```
-npm i coinera-node-api-sdk
+npm i finera-node-api-sdk
 ```
 
 ```
-import CoineraSDK from 'coinera-node-api-sdk';
+import FineraSDK from 'finera-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',
@@ -13,7 +13,7 @@ let options = {
   walletId?: 'walletId',
   passphrase?: 'passphrase'
 }
-const coinera = new CoineraSDK(options)
+const finera = new FineraSDK(options)
 ```
 
 Available Methods:
@@ -31,7 +31,7 @@ let options = {
   agent?: string;
 }
 
-const result = await coinera.auth.register(options);
+const result = await finera.auth.register(options);
 ```
 
 2. Wallet
@@ -49,7 +49,7 @@ let options = {
   isNew?: boolean;
 }
 Available Currencies: See point 5.
-const wallet = await coinera.wallet.createDepositWallet(options);
+const wallet = await finera.wallet.createDepositWallet(options);
 ```
 
 ```
@@ -57,7 +57,7 @@ Get wallet info
 
 walletId - is required.
 passphrase - is required.
-const walletInfo = await coinera.wallet.getWalletInfo();
+const walletInfo = await finera.wallet.getWalletInfo();
 
 ```
 
@@ -66,7 +66,7 @@ Get private key
 
 walletId - is required.
 passphrase - is required.
-const pk = await coinera.wallet.getPrivateKey();
+const pk = await finera.wallet.getPrivateKey();
 
 ```
 
@@ -75,7 +75,7 @@ Get mnemonic
 
 walletId - is required.
 passphrase - is required.
-const pk = await coinera.wallet.getMnemonic();
+const pk = await finera.wallet.getMnemonic();
 
 ```
 
@@ -96,7 +96,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await coinera.withdrawal.estimateFee(options);
+const estimateFee = await finera.withdrawal.estimateFee(options);
 ```
 
 ```
@@ -114,7 +114,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await coinera.withdrawal.estimateNftFee(options);
+const estimateFee = await finera.withdrawal.estimateNftFee(options);
 ```
 
 ```
@@ -130,7 +130,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const max = await coinera.withdrawal.estimateMax(options);
+const max = await finera.withdrawal.estimateMax(options);
 ```
 
 ```
@@ -148,7 +148,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await coinera.withdrawal.create(options);
+const withdrawal = await finera.withdrawal.create(options);
 ```
 
 ```
@@ -167,7 +167,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await coinera.withdrawal.nftTransfer(options);
+const withdrawal = await finera.withdrawal.nftTransfer(options);
 ```
 
 ```
@@ -180,7 +180,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await coinera.withdrawal.internalTransfer(options);
+const withdrawal = await finera.withdrawal.internalTransfer(options);
 ```
 
 4. Available merchant currencies
@@ -188,7 +188,7 @@ const withdrawal = await coinera.withdrawal.internalTransfer(options);
 ```
 let options = {
 }
-const currencies = await coinera.currency.getAvailableCurrencies(options);
+const currencies = await finera.currency.getAvailableCurrencies(options);
 ```
 
 5. Multisend
@@ -201,7 +201,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const estimateData = await coinera.multisend.estimateSystemFee(options);
+const estimateData = await finera.multisend.estimateSystemFee(options);
 ```
 
 ```
@@ -212,7 +212,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const approveData = await coinera.multisend.approve(options);
+const approveData = await finera.multisend.approve(options);
 ```
 
 ```
@@ -222,7 +222,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await coinera.multisend.estimateMinerFee(options);
+const approveData = await finera.multisend.estimateMinerFee(options);
 ```
 
 ```
@@ -233,7 +233,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await coinera.multisend.create(options);
+const result = await finera.multisend.create(options);
 ```
 
 6. Checkout
@@ -248,7 +248,7 @@ let options = {
   page?: number,
   limit?: number
 }
-const checkoutList = await coinera.checkout.list(options);
+const checkoutList = await finera.checkout.list(options);
 ```
 
 ```
@@ -269,7 +269,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createDonation = await coinera.checkout.createDonation(options);
+const createDonation = await finera.checkout.createDonation(options);
 ```
 
 ```
@@ -292,7 +292,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createDonation = await coinera.checkout.createCart(options);
+const createDonation = await finera.checkout.createCart(options);
 ```
 
 ```
@@ -315,7 +315,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createSale = await coinera.checkout.createSale(options);
+const createSale = await finera.checkout.createSale(options);
 ```
 
 ```
@@ -343,7 +343,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createSaleToken = await coinera.checkout.createSaleToken(options);
+const createSaleToken = await finera.checkout.createSaleToken(options);
 ```
 
 ```
@@ -355,19 +355,19 @@ let options = {
   checkoutId?: string;
 }
 
-const saleTokenEstimateMax = await coinera.checkout.saleTokenEstimateMax(options);
+const saleTokenEstimateMax = await finera.checkout.saleTokenEstimateMax(options);
 ```
 
 ```
 Get checkout info.
 
-const info = await coinera.checkout.info(checkoutId: string);
+const info = await finera.checkout.info(checkoutId: string);
 ```
 
 ```
 Delete checkout.
 
-const remove = await coinera.checkout.remove(checkoutId: string);
+const remove = await finera.checkout.remove(checkoutId: string);
 ```
 
 ```
@@ -389,7 +389,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await coinera.checkout.updateDonation(checkoutId, options);
+const updateDonation = await finera.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -413,7 +413,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await coinera.checkout.updateSale(checkoutId, options);
+const updateSale = await finera.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -442,7 +442,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await coinera.checkout.updateSaleToken(checkoutId, options);
+const updateSaleToken = await finera.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -466,7 +466,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateCart = await coinera.checkout.updateCart(checkoutId, options);
+const updateCart = await finera.checkout.updateCart(checkoutId, options);
 ```
 
 ```
@@ -480,7 +480,7 @@ let options = {
   limit?: number
 }
 
-const chargeList = await coinera.checkout.chargeList(checkoutId, options);
+const chargeList = await finera.checkout.chargeList(checkoutId, options);
 ```
 
 ```
@@ -501,7 +501,7 @@ let options = {
   chargeId?: string;
 }
 
-const transactionsByChargeList = await coinera.checkout.chargeTransactionsList(chargeId, options);
+const transactionsByChargeList = await finera.checkout.chargeTransactionsList(chargeId, options);
 ```
 
 7. Transaction
@@ -525,7 +525,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const transactionList = await coinera.transaction.list(options);
+const transactionList = await finera.transaction.list(options);
 ```
 
 8. External call
@@ -543,7 +543,7 @@ let options = {
   value?: string;
   options?: Record<string, any>;
 }
-const info = await coinera.externalCall.read(options);
+const info = await finera.externalCall.read(options);
 ```
 
 ```
@@ -561,7 +561,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await coinera.externalCall.estimateWrite(options);
+const info = await finera.externalCall.estimateWrite(options);
 ```
 
 ```
@@ -580,7 +580,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const info = await coinera.externalCall.write(options);
+const info = await finera.externalCall.write(options);
 ```
 
 ```
@@ -606,7 +606,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await coinera.externalCall.solana.mintNft(options);
+const result = await finera.externalCall.solana.mintNft(options);
 ```
 
 ```
@@ -632,7 +632,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await coinera.externalCall.solana.estimateMintNft(options);
+const result = await finera.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap
@@ -649,7 +649,7 @@ let options = {
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
-const result = await coinera.swap.estimate(options);
+const result = await finera.swap.estimate(options);
 ```
 
 ```
@@ -663,7 +663,7 @@ let options = {
   amount: string;
   type?: string; // fixed or float
 }
-const result = await coinera.swap.bestOffer(options);
+const result = await finera.swap.bestOffer(options);
 ```
 
 ```
@@ -683,7 +683,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await coinera.swap.create(options);
+const result = await finera.swap.create(options);
 ```
 
 ```
@@ -700,7 +700,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const result = await coinera.swap.history(options);
+const result = await finera.swap.history(options);
 ```
 
 10. Wallet Signature
@@ -714,7 +714,7 @@ let options = {
   sign: string;
   password?: string;
 }
-const result = await coinera.wallet.signature.on(options);
+const result = await finera.wallet.signature.on(options);
 ```
 
 ```
@@ -725,7 +725,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await coinera.wallet.signature.off(options);
+const result = await finera.wallet.signature.off(options);
 ```
 
 ```
@@ -736,7 +736,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await coinera.wallet.signature.download(options);
+const result = await finera.wallet.signature.download(options);
 ```
 
 ```
@@ -744,7 +744,7 @@ Status Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await coinera.wallet.signature.status();
+const result = await finera.wallet.signature.status();
 ```
 
 ```
@@ -756,7 +756,7 @@ let options = {
   oldPassword?: string;
   password: string;
 }
-const result = await coinera.wallet.signature.changePassword(options);
+const result = await finera.wallet.signature.changePassword(options);
 ```
 
 ```
@@ -764,5 +764,5 @@ Get Status Password Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await coinera.wallet.signature.passwordStatus();
+const result = await finera.wallet.signature.passwordStatus();
 ```

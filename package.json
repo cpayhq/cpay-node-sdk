@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "coinera"
+    "name": "finera"
   },
   "bugs": {
     "url": ""
@@ -13,14 +13,14 @@
     "typescript-memoize": "^1.1.1"
   },
   "deprecated": false,
-  "description": "Coinera REST API",
+  "description": "Finera REST API",
   "devDependencies": {
     "typescript": "^4.1.3"
   },
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
-  "name": "coinera-node-api-sdk",
+  "name": "finera-node-api-sdk",
   "repository": {
     "type": "git",
     "url": ""

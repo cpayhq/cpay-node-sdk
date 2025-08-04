@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/coinera.interface";
+import { AccessWalletOptions } from "src/interfaces/finera.interface";
 
 export interface CreateWithdrawalInfo {
   id: string;

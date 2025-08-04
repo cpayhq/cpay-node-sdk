@@ -1,6 +1,6 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
-import { CoineraSDKBaseOptions } from "./CoineraSDKBase";
+import { FineraSDKBaseOptions } from "./FineraSDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
 import { Multisend } from "./multisend/multisend";
@@ -9,13 +9,13 @@ import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class CoineraSDK {
+export class FineraSDK {
   /**
    * @param parameters
    */
-  constructor(parameters: CoineraSDKOptions) {
+  constructor(parameters: FineraSDKOptions) {
     this.wallet = new Wallet(parameters);
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
@@ -38,4 +38,4 @@ export class CoineraSDK {
   swap: Swap;
 }
 
-export default CoineraSDK;
+export default FineraSDK;

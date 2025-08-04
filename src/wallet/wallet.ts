@@ -1,4 +1,4 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
 import {
   CreateWalletInfo,
   CreateWalletOptions,
@@ -6,10 +6,10 @@ import {
 } from "./wallet.interface";
 import { WalletSignature } from "./wallet.signature";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Wallet extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Wallet extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
     this.signature = new WalletSignature(parameters);
   }

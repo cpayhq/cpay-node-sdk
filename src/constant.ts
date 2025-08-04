@@ -1,1 +1,1 @@
-export const REST_URL = "https://napi.coinera-gate.com";
+export const REST_URL = "https://napi-coin.finera.com";

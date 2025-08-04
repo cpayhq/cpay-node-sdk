@@ -1,10 +1,10 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
 import { CurrencyInfo, CurrencyOptions } from "./currency.interface";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Currency extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Currency extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
   }
 

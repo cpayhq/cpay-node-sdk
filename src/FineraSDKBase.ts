@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { CoineraToken } from "./interfaces/coinera.interface";
+import { FineraToken } from "./interfaces/finera.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface CoineraSDKBaseOptions {
+export interface FineraSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -34,17 +34,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000
 };
 
-export class CoineraSDKBase {
-  protected options: Required<CoineraSDKBaseOptions> =
-    {} as Required<CoineraSDKBaseOptions>;
+export class FineraSDKBase {
+  protected options: Required<FineraSDKBaseOptions> =
+    {} as Required<FineraSDKBaseOptions>;
 
-  constructor(options?: Partial<CoineraSDKBaseOptions>) {
+  constructor(options?: Partial<FineraSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<CoineraSDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<FineraSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
@@ -231,7 +231,7 @@ export class CoineraSDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<CoineraToken> {
+  ): Promise<FineraToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -247,7 +247,7 @@ export class CoineraSDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<CoineraToken>(`${path}`, {
+      return this.request<FineraToken>(`${path}`, {
         method: "POST",
         json: data
       });

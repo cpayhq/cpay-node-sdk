@@ -1,4 +1,4 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalOptions,
@@ -6,10 +6,10 @@ import {
 } from "./external.interface";
 import { ExternalSolana } from "./external.solana";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class External extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class External extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
     this.solana = new ExternalSolana(parameters);
   }

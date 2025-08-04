@@ -1,4 +1,4 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from 'src/CoineraSDKBase';
+import { FineraSDKBase, FineraSDKBaseOptions } from 'src/FineraSDKBase';
 import {
   CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
@@ -12,10 +12,10 @@ import {
   InternalTransferOptions
 } from './withdrawal.interface';
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Withdrawal extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Withdrawal extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
   }
 

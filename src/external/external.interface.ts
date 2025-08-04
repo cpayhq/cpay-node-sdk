@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/coinera.interface";
+import { AccessWalletOptions } from "src/interfaces/finera.interface";
 
 export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];
@@ -39,7 +39,7 @@ export enum SolanaNftType {
 }
 
 export enum SolanaNftStorageType {
-  COINERA = "coinera"
+  FINERA = "finera"
 }
 
 export interface SolanaCollectionInfo {

@@ -1,4 +1,4 @@
-import { CoineraSDKBase, CoineraSDKBaseOptions } from "../CoineraSDKBase";
+import { FineraSDKBase, FineraSDKBaseOptions } from "../FineraSDKBase";
 import {
   EstimateMultisendCommonOptions,
   EstimateMultisendInfo,
@@ -6,10 +6,10 @@ import {
   MultisendInfo
 } from "./multisend.interface";
 
-export interface CoineraSDKOptions extends CoineraSDKBaseOptions {}
+export interface FineraSDKOptions extends FineraSDKBaseOptions {}
 
-export class Multisend extends CoineraSDKBase {
-  constructor(parameters: CoineraSDKOptions) {
+export class Multisend extends FineraSDKBase {
+  constructor(parameters: FineraSDKOptions) {
     super(parameters);
   }
 

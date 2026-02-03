@@ -1,5 +1,7 @@
 export * from "./constant";
-export { default as CpaySDK } from "./CpaySDK";
-export { default as default } from "./CpaySDK";
-export { CpaySDKBase } from "./CpaySDKBase";
-export * from "./interfaces/cpay.interface";
+export {
+    default as default,
+    default as PayblockSDK,
+} from "./PayblockSDK";
+export { PayblockSDKBase } from "./PayblockSDKBase";
+export * from "./interfaces/payblock.interface";

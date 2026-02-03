@@ -1,6 +1,6 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
-import { CpaySDKBaseOptions } from "./CpaySDKBase";
+import { PayblockSDKBaseOptions } from "./PayblockSDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
 import { Multisend } from "./multisend/multisend";
@@ -9,13 +9,13 @@ import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface PayblockSDKOptions extends PayblockSDKBaseOptions {}
 
-export class CpaySDK {
+export class PayblockSDK {
   /**
    * @param parameters
    */
-  constructor(parameters: CpaySDKOptions) {
+  constructor(parameters: PayblockSDKOptions) {
     this.wallet = new Wallet(parameters);
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
@@ -38,4 +38,4 @@ export class CpaySDK {
   swap: Swap;
 }
 
-export default CpaySDK;
+export default PayblockSDK;

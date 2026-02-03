@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { CpayToken, IGetToken } from "./interfaces/cpay.interface";
+import { PayblockToken } from "./interfaces/payblock.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface CpaySDKBaseOptions {
+export interface PayblockSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -34,17 +34,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000,
 };
 
-export class CpaySDKBase {
-  protected options: Required<CpaySDKBaseOptions> =
-    {} as Required<CpaySDKBaseOptions>;
+export class PayblockSDKBase {
+  protected options: Required<PayblockSDKBaseOptions> =
+    {} as Required<PayblockSDKBaseOptions>;
 
-  constructor(options?: Partial<CpaySDKBaseOptions>) {
+  constructor(options?: Partial<PayblockSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<CpaySDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<PayblockSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
@@ -231,7 +231,7 @@ export class CpaySDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<CpayToken> {
+  ): Promise<PayblockToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -247,7 +247,7 @@ export class CpaySDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<CpayToken>(`${path}`, {
+      return this.request<PayblockToken>(`${path}`, {
         method: "POST",
         json: data,
       });

@@ -1,5 +1,5 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
-import { BasePaginationOptions } from "../interfaces/cpay.interface";
+import { PayblockSDKBase, PayblockSDKBaseOptions } from "../PayblockSDKBase";
+import { BasePaginationOptions } from "../interfaces/payblock.interface";
 import {
   ChargeTransactionsOptions,
   CheckoutChargeListInfo,
@@ -17,10 +17,10 @@ import {
 } from "./checkout.interface";
 import { TransactionListInfo } from "../transaction/transaction.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface PayblockSDKOptions extends PayblockSDKBaseOptions {}
 
-export class Checkout extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Checkout extends PayblockSDKBase {
+  constructor(parameters: PayblockSDKOptions) {
     super(parameters);
   }
 

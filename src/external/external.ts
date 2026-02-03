@@ -1,4 +1,4 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { PayblockSDKBase, PayblockSDKBaseOptions } from "../PayblockSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalOptions,
@@ -6,10 +6,10 @@ import {
 } from "./external.interface";
 import { ExternalSolana } from "./external.solana";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface PayblockSDKOptions extends PayblockSDKBaseOptions {}
 
-export class External extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class External extends PayblockSDKBase {
+  constructor(parameters: PayblockSDKOptions) {
     super(parameters);
     this.solana = new ExternalSolana(parameters);
   }

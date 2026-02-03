@@ -1,11 +1,11 @@
-# cpay-node-sdk
+# payblock-node-sdk
 
 ```
-npm i cpay-node-api-sdk
+npm i payblock-node-api-sdk
 ```
 
 ```
-import CpaySDK from 'cpay-node-api-sdk';
+import PayblockSDK from 'payblock-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',
@@ -13,7 +13,7 @@ let options = {
   walletId?: 'walletId',
   passphrase?: 'passphrase'
 }
-const cpay = new CpaySDK(options)
+const payblock = new PayblockSDK(options)
 ```
 
 Available Methods:
@@ -31,7 +31,7 @@ let options = {
   agent?: string;
 }
 
-const result = await cpay.auth.register(options);
+const result = await payblock.auth.register(options);
 ```
 
 2. Wallet
@@ -49,7 +49,7 @@ let options = {
   isNew?: boolean;
 }
 Available Currencies: See point 5.
-const wallet = await cpay.wallet.createDepositWallet(options);
+const wallet = await payblock.wallet.createDepositWallet(options);
 ```
 
 ```
@@ -57,7 +57,7 @@ Get wallet info
 
 walletId - is required.
 passphrase - is required.
-const walletInfo = await cpay.wallet.getWalletInfo();
+const walletInfo = await payblock.wallet.getWalletInfo();
 
 ```
 
@@ -66,7 +66,7 @@ Get private key
 
 walletId - is required.
 passphrase - is required.
-const pk = await cpay.wallet.getPrivateKey();
+const pk = await payblock.wallet.getPrivateKey();
 
 ```
 
@@ -75,7 +75,7 @@ Get mnemonic
 
 walletId - is required.
 passphrase - is required.
-const pk = await cpay.wallet.getMnemonic();
+const pk = await payblock.wallet.getMnemonic();
 
 ```
 
@@ -96,7 +96,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await cpay.withdrawal.estimateFee(options);
+const estimateFee = await payblock.withdrawal.estimateFee(options);
 ```
 
 ```
@@ -114,7 +114,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await cpay.withdrawal.estimateNftFee(options);
+const estimateFee = await payblock.withdrawal.estimateNftFee(options);
 ```
 
 ```
@@ -130,7 +130,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const max = await cpay.withdrawal.estimateMax(options);
+const max = await payblock.withdrawal.estimateMax(options);
 ```
 
 ```
@@ -148,7 +148,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.create(options);
+const withdrawal = await payblock.withdrawal.create(options);
 ```
 
 ```
@@ -167,7 +167,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.nftTransfer(options);
+const withdrawal = await payblock.withdrawal.nftTransfer(options);
 ```
 
 ```
@@ -180,7 +180,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await cpay.withdrawal.internalTransfer(options);
+const withdrawal = await payblock.withdrawal.internalTransfer(options);
 ```
 
 4. Available merchant currencies
@@ -188,7 +188,7 @@ const withdrawal = await cpay.withdrawal.internalTransfer(options);
 ```
 let options = {
 }
-const currencies = await cpay.currency.getAvailableCurrencies(options);
+const currencies = await payblock.currency.getAvailableCurrencies(options);
 ```
 
 5. Multisend
@@ -201,7 +201,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const estimateData = await cpay.multisend.estimateSystemFee(options);
+const estimateData = await payblock.multisend.estimateSystemFee(options);
 ```
 
 ```
@@ -212,7 +212,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const approveData = await cpay.multisend.approve(options);
+const approveData = await payblock.multisend.approve(options);
 ```
 
 ```
@@ -222,7 +222,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await cpay.multisend.estimateMinerFee(options);
+const approveData = await payblock.multisend.estimateMinerFee(options);
 ```
 
 ```
@@ -233,7 +233,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await cpay.multisend.create(options);
+const result = await payblock.multisend.create(options);
 ```
 
 6. Checkout
@@ -248,7 +248,7 @@ let options = {
   page?: number,
   limit?: number
 }
-const checkoutList = await cpay.checkout.list(options);
+const checkoutList = await payblock.checkout.list(options);
 ```
 
 ```
@@ -269,7 +269,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createDonation = await cpay.checkout.createDonation(options);
+const createDonation = await payblock.checkout.createDonation(options);
 ```
 
 ```
@@ -292,7 +292,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createDonation = await cpay.checkout.createCart(options);
+const createDonation = await payblock.checkout.createCart(options);
 ```
 
 ```
@@ -315,7 +315,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createSale = await cpay.checkout.createSale(options);
+const createSale = await payblock.checkout.createSale(options);
 ```
 
 ```
@@ -343,7 +343,7 @@ let options = {
   hideRetry?: boolean,
 }
 
-const createSaleToken = await cpay.checkout.createSaleToken(options);
+const createSaleToken = await payblock.checkout.createSaleToken(options);
 ```
 
 ```
@@ -355,19 +355,19 @@ let options = {
   checkoutId?: string;
 }
 
-const saleTokenEstimateMax = await cpay.checkout.saleTokenEstimateMax(options);
+const saleTokenEstimateMax = await payblock.checkout.saleTokenEstimateMax(options);
 ```
 
 ```
 Get checkout info.
 
-const info = await cpay.checkout.info(checkoutId: string);
+const info = await payblock.checkout.info(checkoutId: string);
 ```
 
 ```
 Delete checkout.
 
-const remove = await cpay.checkout.remove(checkoutId: string);
+const remove = await payblock.checkout.remove(checkoutId: string);
 ```
 
 ```
@@ -389,7 +389,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await cpay.checkout.updateDonation(checkoutId, options);
+const updateDonation = await payblock.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -413,7 +413,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await cpay.checkout.updateSale(checkoutId, options);
+const updateSale = await payblock.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -442,7 +442,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await cpay.checkout.updateSaleToken(checkoutId, options);
+const updateSaleToken = await payblock.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -466,7 +466,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateCart = await cpay.checkout.updateCart(checkoutId, options);
+const updateCart = await payblock.checkout.updateCart(checkoutId, options);
 ```
 
 ```
@@ -480,7 +480,7 @@ let options = {
   limit?: number
 }
 
-const chargeList = await cpay.checkout.chargeList(checkoutId, options);
+const chargeList = await payblock.checkout.chargeList(checkoutId, options);
 ```
 
 ```
@@ -501,7 +501,7 @@ let options = {
   chargeId?: string;
 }
 
-const transactionsByChargeList = await cpay.checkout.chargeTransactionsList(chargeId, options);
+const transactionsByChargeList = await payblock.checkout.chargeTransactionsList(chargeId, options);
 ```
 
 7. Transaction
@@ -525,7 +525,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const transactionList = await cpay.transaction.list(options);
+const transactionList = await payblock.transaction.list(options);
 ```
 
 8. External call
@@ -543,7 +543,7 @@ let options = {
   value?: string;
   options?: Record<string, any>;
 }
-const info = await cpay.externalCall.read(options);
+const info = await payblock.externalCall.read(options);
 ```
 
 ```
@@ -561,7 +561,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await cpay.externalCall.estimateWrite(options);
+const info = await payblock.externalCall.estimateWrite(options);
 ```
 
 ```
@@ -580,7 +580,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const info = await cpay.externalCall.write(options);
+const info = await payblock.externalCall.write(options);
 ```
 
 ```
@@ -606,7 +606,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await cpay.externalCall.solana.mintNft(options);
+const result = await payblock.externalCall.solana.mintNft(options);
 ```
 
 ```
@@ -632,7 +632,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await cpay.externalCall.solana.estimateMintNft(options);
+const result = await payblock.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap
@@ -649,7 +649,7 @@ let options = {
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
-const result = await cpay.swap.estimate(options);
+const result = await payblock.swap.estimate(options);
 ```
 
 ```
@@ -663,7 +663,7 @@ let options = {
   amount: string;
   type?: string; // fixed or float
 }
-const result = await cpay.swap.bestOffer(options);
+const result = await payblock.swap.bestOffer(options);
 ```
 
 ```
@@ -683,7 +683,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await cpay.swap.create(options);
+const result = await payblock.swap.create(options);
 ```
 
 ```
@@ -700,7 +700,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const result = await cpay.swap.history(options);
+const result = await payblock.swap.history(options);
 ```
 
 10. Wallet Signature
@@ -714,7 +714,7 @@ let options = {
   sign: string;
   password?: string;
 }
-const result = await cpay.wallet.signature.on(options);
+const result = await payblock.wallet.signature.on(options);
 ```
 
 ```
@@ -725,7 +725,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await cpay.wallet.signature.off(options);
+const result = await payblock.wallet.signature.off(options);
 ```
 
 ```
@@ -736,7 +736,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await cpay.wallet.signature.download(options);
+const result = await payblock.wallet.signature.download(options);
 ```
 
 ```
@@ -744,7 +744,7 @@ Status Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await cpay.wallet.signature.status();
+const result = await payblock.wallet.signature.status();
 ```
 
 ```
@@ -756,7 +756,7 @@ let options = {
   oldPassword?: string;
   password: string;
 }
-const result = await cpay.wallet.signature.changePassword(options);
+const result = await payblock.wallet.signature.changePassword(options);
 ```
 
 ```
@@ -764,5 +764,5 @@ Get Status Password Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await cpay.wallet.signature.passwordStatus();
+const result = await payblock.wallet.signature.passwordStatus();
 ```

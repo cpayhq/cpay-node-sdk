@@ -1,10 +1,10 @@
-import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
+import { PayblockSDKBase, PayblockSDKBaseOptions } from "../PayblockSDKBase";
 import { RegisterInfo, RegisterOptions } from "./auth.interface";
 
-export interface CpaySDKOptions extends CpaySDKBaseOptions {}
+export interface PayblockSDKOptions extends PayblockSDKBaseOptions {}
 
-export class Auth extends CpaySDKBase {
-  constructor(parameters: CpaySDKOptions) {
+export class Auth extends PayblockSDKBase {
+  constructor(parameters: PayblockSDKOptions) {
     super(parameters);
   }
 

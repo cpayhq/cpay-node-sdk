@@ -1,4 +1,4 @@
-export interface CpayToken {
+export interface PayblockToken {
   token: string;
 }
 

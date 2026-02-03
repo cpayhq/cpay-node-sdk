@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/cpay.interface";
+import { AccessWalletOptions } from "src/interfaces/payblock.interface";
 
 interface MultisendFileOptions {
   address: string;

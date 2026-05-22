@@ -1,5 +1,6 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
+import { Client } from "./client/client";
 import { CpaySDKBaseOptions } from "./CpaySDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
@@ -25,6 +26,7 @@ export class CpaySDK {
     this.externalCall = new External(parameters);
     this.auth = new Auth(parameters);
     this.swap = new Swap(parameters);
+    this.client = new Client(parameters);
   }
 
   wallet: Wallet;
@@ -36,6 +38,7 @@ export class CpaySDK {
   externalCall: External;
   auth: Auth;
   swap: Swap;
+  client: Client;
 }
 
 export default CpaySDK;

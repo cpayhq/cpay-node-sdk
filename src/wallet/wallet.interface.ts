@@ -22,7 +22,7 @@ interface NftData {
   erc1155: NftItem[];
 }
 
-export interface WalletInfo {
+export interface WalletInfoV1 {
   id: string;
   address: string;
   currencyId: string;
@@ -35,6 +35,43 @@ export interface WalletInfo {
   nfts?: NftData;
 }
 
+export interface WalletBalanceV2 {
+  currency: {
+    id: string;
+    name: string;
+    nodeType: string;
+    currencyType: string;
+  };
+  balance: {
+    value: string;
+    usd: number;
+    hold: string;
+  };
+}
+
+export type ChainSymbol = "evm" | "solana" | "trx" | "ton" | "btc" | "dot" | "ksm";
+
+export interface WalletInfoV2 {
+  _id: string;
+  address: string;
+  main: boolean;
+  typeWallet: string;
+  balances: WalletBalanceV2[];
+  createdAt: string;
+  isSegwit: boolean;
+  chainSymbol: ChainSymbol;
+}
+
+export type WalletInfo = WalletInfoV1 | WalletInfoV2;
+
+export const isWalletInfoV2 = (info: WalletInfo): info is WalletInfoV2 =>
+  (info as WalletInfoV2).balances !== undefined;
+
+export enum WalletVersion {
+  v1 = "v1",
+  v2 = "v2",
+}
+
 export interface CreateWalletOptions {
   currencyId: string;
   typeWallet?: string;
@@ -43,14 +80,38 @@ export interface CreateWalletOptions {
   password?: string;
   setMain?: boolean;
   isNew?: boolean;
+  walletVersion?: WalletVersion;
+  clientId?: string;
+}
+
+export interface CreateMulticurrencyWalletsOptions {
+  currenciesIds: string[];
+  typeWallet?: string;
+  privateKey?: string;
+  isMnemonic?: boolean;
+  password?: string;
+  setMain?: boolean;
+  isNew?: boolean;
+  walletVersion?: WalletVersion;
+  clientId?: string;
+}
+
+export interface SupportCurrency {
+  id: string;
+  name: string;
+  nodeType: string;
 }
 
 export interface CreateWalletInfo {
   id: string;
   address: string;
-  balance: number;
-  balanceUSD: number;
-  passphrase: string;
+  privateKey?: string;
+  mnemonic?: string;
+  actualBalance?: string;
+  systemBalance?: string;
+  passphrase?: string | null;
+  nodeType?: string;
+  supportCurrencies?: SupportCurrency[];
 }
 
 export interface SignatureCommonOptions {

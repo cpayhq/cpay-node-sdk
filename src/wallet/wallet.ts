@@ -1,5 +1,6 @@
 import { CpaySDKBase, CpaySDKBaseOptions } from "../CpaySDKBase";
 import {
+  CreateMulticurrencyWalletsOptions,
   CreateWalletInfo,
   CreateWalletOptions,
   WalletInfo,
@@ -29,6 +30,22 @@ export class Wallet extends CpaySDKBase {
       delete options.currencyId;
 
       return this.auth_post<CreateWalletInfo>(`${path}`, options, accessToken);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async createMulticurrencyWallets(
+    options: CreateMulticurrencyWalletsOptions,
+    accessToken?: string
+  ): Promise<CreateWalletInfo[]> {
+    try {
+      if (!accessToken) {
+        accessToken = await this.getToken();
+      }
+      const path = `/api/public/wallet`;
+
+      return this.auth_post<CreateWalletInfo[]>(`${path}`, options, accessToken);
     } catch (err) {
       throw err;
     }

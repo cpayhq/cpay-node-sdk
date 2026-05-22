@@ -40,25 +40,64 @@ const result = await cpay.auth.register(options);
 Create deposit wallet.
 
 let options = {
-  currencyId?: string;
+  currencyId: string;
   typeWallet?: string; // user, merchant
   privateKey?: string;
   isMnemonic?: boolean;
-  setMain?: boolean;
   password?: string;
+  setMain?: boolean;
   isNew?: boolean;
+  walletVersion?: 'v1' | 'v2';
+  clientId?: string;
 }
 Available Currencies: See point 5.
 const wallet = await cpay.wallet.createDepositWallet(options);
 ```
 
 ```
-Get wallet info
+Get wallet info (the response shape differs based on the wallet version v1/v2)
 
 walletId - is required.
 passphrase - is required.
 const walletInfo = await cpay.wallet.getWalletInfo();
 
+```
+
+```
+Create multicurrency wallets.
+
+let options = {
+  currenciesIds: string[];
+  typeWallet?: string; // user, merchant
+  privateKey?: string;
+  isMnemonic?: boolean;
+  password?: string;
+  setMain?: boolean;
+  isNew?: boolean;
+  walletVersion?: 'v1' | 'v2';
+  clientId?: string;
+}
+const wallets = await cpay.wallet.createMulticurrencyWallets(options);
+```
+
+```
+Create wallet response.
+
+{
+  id: string;
+  address: string;
+  privateKey?: string;
+  mnemonic?: string;
+  actualBalance?: string;
+  systemBalance?: string;
+  passphrase?: string | null;
+  nodeType?: string;
+  supportCurrencies?: {
+    id: string;
+    name: string;
+    nodeType: string;
+  }[];
+}
 ```
 
 ```
@@ -635,7 +674,44 @@ let options = {
 const result = await cpay.externalCall.solana.estimateMintNft(options);
 ```
 
-9. Swap
+9. Client
+
+```
+Register client.
+
+let options = {
+  name: string;
+  email: string;
+}
+const client = await cpay.client.register(options);
+```
+
+```
+Client list.
+
+let options = {
+  typeNetwork: string;
+  hideZeroBalance?: boolean | string;
+  search?: string;
+  sort?: string;
+  order?: 'ASC' | 'DESC';
+  page?: number;
+  limit?: number;
+}
+const clientList = await cpay.client.list(options);
+```
+
+```
+Get client balances.
+
+let options = {
+  typeNetwork: string;
+  hideZeroBalance?: boolean | string;
+}
+const balances = await cpay.client.getBalances(clientId, options);
+```
+
+10. Swap
 
 ```
 Estimate swap
@@ -703,7 +779,7 @@ let options = {
 const result = await cpay.swap.history(options);
 ```
 
-10. Wallet Signature
+11. Wallet Signature
 
 ```
 Enable Signature

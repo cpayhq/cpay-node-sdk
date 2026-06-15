@@ -77,7 +77,7 @@ let options = {
   walletVersion?: 'v1' | 'v2';
   clientId?: string;
 }
-const wallets = await cpay.wallet.createMulticurrencyWallets(options);
+const wallets = await cryptoNow.wallet.createMulticurrencyWallets(options);
 ```
 
 ```
@@ -662,7 +662,7 @@ let options = {
   name: string;
   email: string;
 }
-const client = await cpay.client.register(options);
+const client = await cryptoNow.client.register(options);
 ```
 
 ```
@@ -677,7 +677,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const clientList = await cpay.client.list(options);
+const clientList = await cryptoNow.client.list(options);
 ```
 
 ```
@@ -687,7 +687,7 @@ let options = {
   typeNetwork: string;
   hideZeroBalance?: boolean | string;
 }
-const balances = await cpay.client.getBalances(clientId, options);
+const balances = await cryptoNow.client.getBalances(clientId, options);
 ```
 
 10. Swap

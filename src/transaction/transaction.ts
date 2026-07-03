@@ -17,7 +17,7 @@ export class Transaction extends CpaySDKBase {
   ): Promise<TransactionListInfo> {
     try {
       if (!accessToken) {
-        accessToken = await this.getToken(true);
+        accessToken = await this.getToken(false);
       }
       const path = `/api/public/transaction/list`;
 

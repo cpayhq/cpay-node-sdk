@@ -1,10 +1,10 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import { CurrencyInfo, CurrencyOptions } from "./currency.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class Currency extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class Currency extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

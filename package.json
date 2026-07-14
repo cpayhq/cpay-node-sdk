@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "geme"
+    "name": "paytonz"
   },
   "bundleDependencies": [],
   "dependencies": {
@@ -10,13 +10,13 @@
     "typescript-memoize": "^1.1.1"
   },
   "deprecated": false,
-  "description": "GEME REST API",
+  "description": "PAYTONZ REST API",
   "devDependencies": {
     "typescript": "^4.1.3"
   },
   "license": "ISC",
   "main": "lib/index.js",
-  "name": "geme-node-api-sdk",
+  "name": "paytonz-node-api-sdk",
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "publish:patch": "npm version patch && npm publish",

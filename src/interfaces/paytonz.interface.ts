@@ -1,4 +1,4 @@
-export interface GemeToken {
+export interface PaytonzToken {
   token: string;
 }
 

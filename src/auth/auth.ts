@@ -1,10 +1,10 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import { RegisterInfo, RegisterOptions } from "./auth.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class Auth extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class Auth extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

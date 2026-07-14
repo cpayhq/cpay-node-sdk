@@ -1,4 +1,4 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import {
   CreateNftWithdrawalOptions,
   CreateWithdrawalInfo,
@@ -12,10 +12,10 @@ import {
   InternalTransferOptions,
 } from "./withdrawal.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class Withdrawal extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class Withdrawal extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

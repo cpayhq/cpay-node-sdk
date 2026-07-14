@@ -1,11 +1,11 @@
-# geme-node-sdk
+# paytonz-node-sdk
 
 ```
-npm i geme-node-api-sdk
+npm i paytonz-node-api-sdk
 ```
 
 ```
-import GemeSDK from 'geme-node-api-sdk';
+import PaytonzSDK from 'paytonz-node-api-sdk';
 
 let options = {
   publicKey: 'publicKey',
@@ -13,7 +13,7 @@ let options = {
   walletId?: 'walletId',
   passphrase?: 'passphrase'
 }
-const geme = new GemeSDK(options)
+const paytonz = new PaytonzSDK(options)
 ```
 
 Available Methods:
@@ -31,7 +31,7 @@ let options = {
   agent?: string;
 }
 
-const result = await geme.auth.register(options);
+const result = await paytonz.auth.register(options);
 ```
 
 2. Wallet
@@ -49,7 +49,7 @@ let options = {
   isNew?: boolean;
 }
 Available Currencies: See point 5.
-const wallet = await geme.wallet.createDepositWallet(options);
+const wallet = await paytonz.wallet.createDepositWallet(options);
 ```
 
 ```
@@ -57,7 +57,7 @@ Get wallet info
 
 walletId - is required.
 passphrase - is required.
-const walletInfo = await geme.wallet.getWalletInfo();
+const walletInfo = await paytonz.wallet.getWalletInfo();
 
 ```
 
@@ -66,7 +66,7 @@ Get private key
 
 walletId - is required.
 passphrase - is required.
-const pk = await geme.wallet.getPrivateKey();
+const pk = await paytonz.wallet.getPrivateKey();
 
 ```
 
@@ -75,7 +75,7 @@ Get mnemonic
 
 walletId - is required.
 passphrase - is required.
-const pk = await geme.wallet.getMnemonic();
+const pk = await paytonz.wallet.getMnemonic();
 
 ```
 
@@ -96,7 +96,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await geme.withdrawal.estimateFee(options);
+const estimateFee = await paytonz.withdrawal.estimateFee(options);
 ```
 
 ```
@@ -114,7 +114,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const estimateFee = await geme.withdrawal.estimateNftFee(options);
+const estimateFee = await paytonz.withdrawal.estimateNftFee(options);
 ```
 
 ```
@@ -130,7 +130,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const max = await geme.withdrawal.estimateMax(options);
+const max = await paytonz.withdrawal.estimateMax(options);
 ```
 
 ```
@@ -148,7 +148,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await geme.withdrawal.create(options);
+const withdrawal = await paytonz.withdrawal.create(options);
 ```
 
 ```
@@ -167,7 +167,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await geme.withdrawal.nftTransfer(options);
+const withdrawal = await paytonz.withdrawal.nftTransfer(options);
 ```
 
 ```
@@ -180,7 +180,7 @@ let options = {
 }
 walletId - is required.
 passphrase - is required.
-const withdrawal = await geme.withdrawal.internalTransfer(options);
+const withdrawal = await paytonz.withdrawal.internalTransfer(options);
 ```
 
 4. Available merchant currencies
@@ -188,7 +188,7 @@ const withdrawal = await geme.withdrawal.internalTransfer(options);
 ```
 let options = {
 }
-const currencies = await geme.currency.getAvailableCurrencies(options);
+const currencies = await paytonz.currency.getAvailableCurrencies(options);
 ```
 
 5. Multisend
@@ -201,7 +201,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const estimateData = await geme.multisend.estimateSystemFee(options);
+const estimateData = await paytonz.multisend.estimateSystemFee(options);
 ```
 
 ```
@@ -212,7 +212,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const approveData = await geme.multisend.approve(options);
+const approveData = await paytonz.multisend.approve(options);
 ```
 
 ```
@@ -222,7 +222,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const approveData = await geme.multisend.estimateMinerFee(options);
+const approveData = await paytonz.multisend.estimateMinerFee(options);
 ```
 
 ```
@@ -233,7 +233,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await geme.multisend.create(options);
+const result = await paytonz.multisend.create(options);
 ```
 
 6. Checkout
@@ -248,7 +248,7 @@ let options = {
   page?: number,
   limit?: number
 }
-const checkoutList = await geme.checkout.list(options);
+const checkoutList = await paytonz.checkout.list(options);
 ```
 
 ```
@@ -268,7 +268,7 @@ let options = {
   organizationName: string
 }
 
-const createDonation = await geme.checkout.createDonation(options);
+const createDonation = await paytonz.checkout.createDonation(options);
 ```
 
 ```
@@ -290,7 +290,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createDonation = await geme.checkout.createCart(options);
+const createDonation = await paytonz.checkout.createCart(options);
 ```
 
 ```
@@ -312,7 +312,7 @@ let options = {
   fiatCurrency: string;
 }
 
-const createSale = await geme.checkout.createSale(options);
+const createSale = await paytonz.checkout.createSale(options);
 ```
 
 ```
@@ -339,7 +339,7 @@ let options = {
   tradedWallet: string;
 }
 
-const createSaleToken = await geme.checkout.createSaleToken(options);
+const createSaleToken = await paytonz.checkout.createSaleToken(options);
 ```
 
 ```
@@ -351,19 +351,19 @@ let options = {
   checkoutId?: string;
 }
 
-const saleTokenEstimateMax = await geme.checkout.saleTokenEstimateMax(options);
+const saleTokenEstimateMax = await paytonz.checkout.saleTokenEstimateMax(options);
 ```
 
 ```
 Get checkout info.
 
-const info = await geme.checkout.info(checkoutId: string);
+const info = await paytonz.checkout.info(checkoutId: string);
 ```
 
 ```
 Delete checkout.
 
-const remove = await geme.checkout.remove(checkoutId: string);
+const remove = await paytonz.checkout.remove(checkoutId: string);
 ```
 
 ```
@@ -385,7 +385,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateDonation = await geme.checkout.updateDonation(checkoutId, options);
+const updateDonation = await paytonz.checkout.updateDonation(checkoutId, options);
 ```
 
 ```
@@ -409,7 +409,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSale = await geme.checkout.updateSale(checkoutId, options);
+const updateSale = await paytonz.checkout.updateSale(checkoutId, options);
 ```
 
 ```
@@ -438,7 +438,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateSaleToken = await geme.checkout.updateSaleToken(checkoutId, options);
+const updateSaleToken = await paytonz.checkout.updateSaleToken(checkoutId, options);
 ```
 
 ```
@@ -462,7 +462,7 @@ let options = {
   deleteLogoImage?: boolean;
 }
 
-const updateCart = await geme.checkout.updateCart(checkoutId, options);
+const updateCart = await paytonz.checkout.updateCart(checkoutId, options);
 ```
 
 ```
@@ -476,7 +476,7 @@ let options = {
   limit?: number
 }
 
-const updateSaleToken = await geme.checkout.chargeList(checkoutId, options);
+const updateSaleToken = await paytonz.checkout.chargeList(checkoutId, options);
 ```
 
 7. Transaction
@@ -500,7 +500,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const transactionList = await geme.transaction.list(options);
+const transactionList = await paytonz.transaction.list(options);
 ```
 
 8. External call
@@ -518,7 +518,7 @@ let options = {
   value?: string;
   options?: Record<string, any>;
 }
-const info = await geme.externalCall.read(options);
+const info = await paytonz.externalCall.read(options);
 ```
 
 ```
@@ -536,7 +536,7 @@ let options = {
   sign?: string;
   password?: string;
 }
-const info = await geme.externalCall.estimateWrite(options);
+const info = await paytonz.externalCall.estimateWrite(options);
 ```
 
 ```
@@ -555,7 +555,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const info = await geme.externalCall.write(options);
+const info = await paytonz.externalCall.write(options);
 ```
 
 ```
@@ -581,7 +581,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await geme.externalCall.solana.mintNft(options);
+const result = await paytonz.externalCall.solana.mintNft(options);
 ```
 
 ```
@@ -607,7 +607,7 @@ let options = {
   creators?: {address: string; share: number}[]
   imageLink?: srting;
 }
-const result = await geme.externalCall.solana.estimateMintNft(options);
+const result = await paytonz.externalCall.solana.estimateMintNft(options);
 ```
 
 9. Swap
@@ -624,7 +624,7 @@ let options = {
   sort?: string; // rate or duration
   type?: string; // fixed or float
 }
-const result = await geme.swap.estimate(options);
+const result = await paytonz.swap.estimate(options);
 ```
 
 ```
@@ -638,7 +638,7 @@ let options = {
   amount: string;
   type?: string; // fixed or float
 }
-const result = await geme.swap.bestOffer(options);
+const result = await paytonz.swap.bestOffer(options);
 ```
 
 ```
@@ -658,7 +658,7 @@ let options = {
   password?: string;
   idempotencyKey?: string;
 }
-const result = await geme.swap.create(options);
+const result = await paytonz.swap.create(options);
 ```
 
 ```
@@ -675,7 +675,7 @@ let options = {
   page?: number;
   limit?: number;
 }
-const result = await geme.swap.history(options);
+const result = await paytonz.swap.history(options);
 ```
 
 10. Wallet Signature
@@ -689,7 +689,7 @@ let options = {
   sign: string;
   password?: string;
 }
-const result = await geme.wallet.signature.on(options);
+const result = await paytonz.wallet.signature.on(options);
 ```
 
 ```
@@ -700,7 +700,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await geme.wallet.signature.off(options);
+const result = await paytonz.wallet.signature.off(options);
 ```
 
 ```
@@ -711,7 +711,7 @@ passphrase - is required.
 let options = {
   password: string;
 }
-const result = await geme.wallet.signature.download(options);
+const result = await paytonz.wallet.signature.download(options);
 ```
 
 ```
@@ -719,7 +719,7 @@ Status Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await geme.wallet.signature.status();
+const result = await paytonz.wallet.signature.status();
 ```
 
 ```
@@ -731,7 +731,7 @@ let options = {
   oldPassword?: string;
   password: string;
 }
-const result = await geme.wallet.signature.changePassword(options);
+const result = await paytonz.wallet.signature.changePassword(options);
 ```
 
 ```
@@ -739,5 +739,5 @@ Get Status Password Signature
 walletId - is required.
 passphrase - is required.
 
-const result = await geme.wallet.signature.passwordStatus();
+const result = await paytonz.wallet.signature.passwordStatus();
 ```

@@ -1,14 +1,14 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import {
   SignatureChangePasswordOptions,
   SignatureCommonOptions,
   SignatureOnOptions,
 } from "./wallet.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class WalletSignature extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class WalletSignature extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

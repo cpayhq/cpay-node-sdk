@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/geme.interface";
+import { AccessWalletOptions } from "src/interfaces/paytonz.interface";
 
 interface MultisendFileOptions {
   address: string;

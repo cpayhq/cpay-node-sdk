@@ -1,5 +1,5 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
-import { BasePaginationOptions } from "../interfaces/geme.interface";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
+import { BasePaginationOptions } from "../interfaces/paytonz.interface";
 import {
   CheckoutChargeListInfo,
   CheckoutInfo,
@@ -15,10 +15,10 @@ import {
   UpdateSaleTokenOptions,
 } from "./checkout.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class Checkout extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class Checkout extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

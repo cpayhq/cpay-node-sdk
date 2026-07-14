@@ -1,4 +1,4 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import {
   ExternalEstimateWriteInfo,
   ExternalOptions,
@@ -6,10 +6,10 @@ import {
 } from "./external.interface";
 import { ExternalSolana } from "./external.solana";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class External extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class External extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
     this.solana = new ExternalSolana(parameters);
   }

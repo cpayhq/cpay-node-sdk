@@ -1,4 +1,4 @@
-import { AccessWalletOptions } from "src/interfaces/geme.interface";
+import { AccessWalletOptions } from "src/interfaces/paytonz.interface";
 
 export interface ExternalOptions extends AccessWalletOptions {
   abi: Record<string, any>[];

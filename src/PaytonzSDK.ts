@@ -1,6 +1,6 @@
 import { Auth } from "./auth/auth";
 import Checkout from "./checkout/checkout";
-import { GemeSDKBaseOptions } from "./GemeSDKBase";
+import { PaytonzSDKBaseOptions } from "./PaytonzSDKBase";
 import { Currency } from "./currency/currency";
 import External from "./external/external";
 import { Multisend } from "./multisend/multisend";
@@ -9,13 +9,13 @@ import Transaction from "./transaction/transaction";
 import { Wallet } from "./wallet/wallet";
 import { Withdrawal } from "./withdrawal/withdrawal";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class GemeSDK {
+export class PaytonzSDK {
   /**
    * @param parameters
    */
-  constructor(parameters: GemeSDKOptions) {
+  constructor(parameters: PaytonzSDKOptions) {
     this.wallet = new Wallet(parameters);
     this.currency = new Currency(parameters);
     this.withdrawal = new Withdrawal(parameters);
@@ -38,4 +38,4 @@ export class GemeSDK {
   swap: Swap;
 }
 
-export default GemeSDK;
+export default PaytonzSDK;

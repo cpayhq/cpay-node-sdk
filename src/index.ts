@@ -1,5 +1,5 @@
 export * from "./constant";
-export { default as GemeSDK } from "./GemeSDK";
-export { default as default } from "./GemeSDK";
-export { GemeSDKBase } from "./GemeSDKBase";
-export * from "./interfaces/geme.interface";
+export { default as PaytonzSDK } from "./PaytonzSDK";
+export { default as default } from "./PaytonzSDK";
+export { PaytonzSDKBase } from "./PaytonzSDKBase";
+export * from "./interfaces/paytonz.interface";

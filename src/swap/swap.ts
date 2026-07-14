@@ -1,4 +1,4 @@
-import { GemeSDKBase, GemeSDKBaseOptions } from "../GemeSDKBase";
+import { PaytonzSDKBase, PaytonzSDKBaseOptions } from "../PaytonzSDKBase";
 import {
   SwapCreateInfo,
   SwapCreateOptions,
@@ -8,10 +8,10 @@ import {
   SwapHistoryListOptions,
 } from "./swap.interface";
 
-export interface GemeSDKOptions extends GemeSDKBaseOptions {}
+export interface PaytonzSDKOptions extends PaytonzSDKBaseOptions {}
 
-export class Swap extends GemeSDKBase {
-  constructor(parameters: GemeSDKOptions) {
+export class Swap extends PaytonzSDKBase {
+  constructor(parameters: PaytonzSDKOptions) {
     super(parameters);
   }
 

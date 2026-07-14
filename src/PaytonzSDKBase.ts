@@ -3,12 +3,12 @@ import utc from "dayjs/plugin/utc";
 import _ from "lodash";
 
 import { REST_URL } from "./constant";
-import { GemeToken, IGetToken } from "./interfaces/geme.interface";
+import { PaytonzToken, IGetToken } from "./interfaces/paytonz.interface";
 import { request, Options as HttpOptions } from "./utils/httpClient";
 
 dayjs.extend(utc);
 
-export interface GemeSDKBaseOptions {
+export interface PaytonzSDKBaseOptions {
   publicKey?: string;
   privateKey?: string;
 
@@ -34,17 +34,17 @@ const DEFAUTL_HTTP_OPTIONS = {
   timeout: 6000,
 };
 
-export class GemeSDKBase {
-  protected options: Required<GemeSDKBaseOptions> =
-    {} as Required<GemeSDKBaseOptions>;
+export class PaytonzSDKBase {
+  protected options: Required<PaytonzSDKBaseOptions> =
+    {} as Required<PaytonzSDKBaseOptions>;
 
-  constructor(options?: Partial<GemeSDKBaseOptions>) {
+  constructor(options?: Partial<PaytonzSDKBaseOptions>) {
     if (!options) {
       return;
     }
     this.setOptions(options);
   }
-  protected setOptions(options: Partial<GemeSDKBaseOptions> = {}) {
+  protected setOptions(options: Partial<PaytonzSDKBaseOptions> = {}) {
     const { httpOptions, url, ...otherOptions } = options;
 
     _.merge(this.options, {
@@ -210,7 +210,7 @@ export class GemeSDKBase {
     privateKey: string,
     walletId?: string,
     passphrase?: string
-  ): Promise<GemeToken> {
+  ): Promise<PaytonzToken> {
     if (this.options.publicKey && this.options.privateKey) {
       const path = `/api/public/auth`;
       let data = {
@@ -226,7 +226,7 @@ export class GemeSDKBase {
         data = Object.assign(data, { passphrase });
       }
 
-      return this.request<GemeToken>(`${path}`, {
+      return this.request<PaytonzToken>(`${path}`, {
         method: "POST",
         json: data,
       });
